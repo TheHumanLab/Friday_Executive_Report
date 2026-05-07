@@ -18,23 +18,23 @@
         --text: #FFFFFF;
         --text-muted: #9CA3AF;
     }
-
+    
     * {
         font-family: 'Inter', sans-serif;
     }
-
+    
     body {
         background-color: var(--navy);
         color: var(--text);
     }
-
-  .gradient-border {
+    
+   .gradient-border {
         position: relative;
         background: linear-gradient(135deg, var(--navy-light), var(--navy-lighter));
         border: 1px solid rgba(212, 175, 55, 0.15);
     }
-
-  .gradient-border::before {
+    
+   .gradient-border::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -46,43 +46,43 @@
         mask-composite: exclude;
         pointer-events: none;
     }
-
-  .card-hover {
+    
+   .card-hover {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-  .card-hover:hover {
+    
+   .card-hover:hover {
         transform: translateY(-2px);
         box-shadow: 0 20px 40px rgba(212, 175, 55, 0.08);
         border-color: rgba(212, 175, 55, 0.3);
     }
-
-  .btn-gold {
+    
+   .btn-gold {
         background: linear-gradient(135deg, var(--gold), var(--gold-light));
         color: var(--navy);
         transition: all 0.3s ease;
     }
-
-  .btn-gold:hover {
+    
+   .btn-gold:hover {
         transform: translateY(-1px);
         box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
     }
-
-  .modal-backdrop {
+    
+   .modal-backdrop {
         backdrop-filter: blur(8px);
         background: rgba(11, 14, 20, 0.85);
     }
-
+    
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-
-  .fade-in {
+    
+   .fade-in {
         animation: fadeIn 0.4s ease-out;
     }
-
-  .upload-zone-active {
+    
+   .upload-zone-active {
         border-color: var(--gold)!important;
         background: rgba(212, 175, 55, 0.05);
     }
@@ -116,7 +116,7 @@
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">THIS WEEK'S OVERVIEW</h2>
                 </div>
                 <div class="gradient-border rounded-2xl p-6 sm:p-8 shadow-2xl">
-                    <div id="overviewContent" class="text-base leading-relaxed text-gray-200 min-h-">
+                    <div id="overviewContent" class="text- leading-relaxed text-gray-200 min-h-">
                         <div class="flex items-center gap-2 text-[var(--text-muted)]">
                             <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -191,7 +191,7 @@
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                             </div>
                             <div class="flex-1">
                                 <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">Organizational Stability</h3>
@@ -204,7 +204,7 @@
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                             </div>
                             <div class="flex-1">
                                 <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">Governance Maturity</h3>
@@ -221,4 +221,242 @@
                             </div>
                             <div class="flex-1">
                                 <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">Systems Standardization</h3>
-                                <p
+                                <p class="text-sm text-gray-300 leading-relaxed">Current workflows demonstrate opportunities for stronger standardization across approvals, reporting, documentation, and interdepartmental operational procedures.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 text-[var(--gold)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">Scalability Readiness</h3>
+                                <p class="text-sm text-gray-300 leading-relaxed">The organization demonstrates strong growth potential; however, long-term scalability will depend on strengthening operational infrastructure, governance visibility, and centralized systems integration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Executive Documents -->
+            <section class="fade-in">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
+                    <h2 class="text-lg sm:text-xl font-semibold tracking-wide">EXECUTIVE DOCUMENTS</h2>
+                </div>
+                <button id="documentsBtn" class="btn-gold w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-base flex items-center justify-center gap-3 shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    View Supporting Documents
+                </button>
+                <div id="documentsStatus" class="mt-4 text-sm text-[var(--gold)] hidden"></div>
+            </section>
+
+            <!-- Next Week Priorities -->
+            <section class="fade-in">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
+                    <h2 class="text-lg sm:text-xl font-semibold tracking-wide">NEXT WEEK PRIORITIES</h2>
+                </div>
+                <div class="gradient-border rounded-2xl p-6 sm:p-8">
+                    <ul id="nextWeekList" class="space-y-3">
+                        <li class="flex items-start gap-3 text-">
+                            <span class="text-[var(--gold)] mt-1">•</span>
+                            <span class="text-gray-200">Loading...</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Chairman Directives -->
+            <section class="fade-in">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
+                    <h2 class="text-lg sm:text-xl font-semibold tracking-wide">CHAIRMAN DIRECTIVES</h2>
+                </div>
+                <div class="gradient-border rounded-2xl p-6 sm:p-8">
+                    <p class="text-sm text-[var(--text-muted)] mb-4">Send note directly to COO</p>
+                    <form id="directiveForm" class="space-y-4">
+                        <textarea 
+                            id="directiveText" 
+                            rows="5" 
+                            class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] transition"
+                            placeholder="Enter directive or feedback..."></textarea>
+                        <div class="flex items-center justify-between flex-wrap gap-4">
+                            <button type="submit" class="btn-gold px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                Submit Directive
+                            </button>
+                            <div id="directiveStatus" class="text-sm"></div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Admin Panel -->
+            <section id="adminPanel" class="hidden fade-in">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
+                    <h2 class="text-lg sm:text-xl font-semibold tracking-wide">ADMIN MODE</h2>
+                </div>
+                <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-[var(--gold)]">This Week's Overview</label>
+                        <textarea id="adminOverview" rows="6" class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)]"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-[var(--gold)]">Next Week Priorities (one per line)</label>
+                        <textarea id="adminNextWeek" rows="5" class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)]"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-[var(--gold)]">Upload Documents (PDFs)</label>
+                        <div id="uploadZone" class="border-2 border-dashed border-white/20 rounded-xl p-8 text-center hover:border-[var(--gold)] transition cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-3 text-[var(--gold)]"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <p class="text-sm text-gray-300">Drag & drop PDFs here or click to browse</p>
+                            <p class="text-xs text-[var(--text-muted)] mt-1">Multiple files supported</p>
+                            <input type="file" id="fileInput" accept=".pdf" multiple class="hidden">
+                        </div>
+                        <div id="uploadList" class="mt-4 space-y-2"></div>
+                    </div>
+                    <button id="savePublishBtn" class="btn-gold w-full px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        Save & Publish
+                    </button>
+                    <div id="adminStatus" class="text-sm text-center"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-white/5 mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <p class="text-xs text-[var(--text-muted)]">Confidential Internal Executive Brief — MRH Tanzania</p>
+                    <button id="adminToggle" class="text-xs text-[var(--gold)] hover:text-[var(--gold-light)] transition">Admin</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Documents Modal -->
+    <div id="documentsModal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+        <div class="bg-[var(--navy-light)] border border-[var(--gold)]/20 rounded-2xl max-w-2xl w-full max-h- overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between p-6 border-b border-white/10">
+                <h3 class="text-lg font-semibold">Supporting Documents</h3>
+                <button id="closeModal" class="text-gray-400 hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div id="modalContent" class="p-6 overflow-y-auto max-h-[calc(80vh-80px)]">
+                <div class="flex items-center justify-center py-8">
+                    <svg class="animate-spin h-6 w-6 text-[var(--gold)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+(function() {
+    'use strict';
+    
+    const REPO = 'thehumanlab/Friday_Executive_Report';
+    const BRANCH = 'main';
+    const API_BASE = `https://api.github.com/repos/${REPO}/contents`;
+    const ADMIN_PIN = 'MRH2026';
+    
+    const DEFAULT_OVERVIEW = `This week focused on the completion of the initial operational diagnostics, structural mapping, and governance assessment across the MRH Tanzania operation. Early findings indicate that the organization remains operationally stable, growth-capable, and culturally aligned; however, increasing operational complexity is beginning to outpace current workflow visibility, approval architecture, communication governance, and systems standardization.
+The diagnostic review identified several recurring operational pressure points across departments, most notably approval dependency, fragmented communication channels, manual workflow coordination, limited CRM visibility, and inconsistent operational tracking structures. Current operational execution remains heavily reliant on spreadsheets, verbal coordination, WhatsApp communication, and centralized approval pathways, creating workflow latency, reduced accountability traceability, and increasing executive congestion in routine operational processes.
+Primary implementation focus areas identified this week include governance structuring, workflow visibility, CRM centralization, delegated authority mapping, communication standardization, operational accountability, and phased Odoo systems integration. Current implementation efforts are centered on strengthening operational governance, reducing infrastructure fragmentation, formalizing authority frameworks, and establishing centralized operational visibility ahead of broader systems deployment and long-term scalability initiatives.
+Based on the diagnostic findings, the primary organizational constraints identified are systemic and infrastructural rather than personnel-related. Workforce engagement, departmental cooperation, and organizational stability remain healthy overall, positioning MRH Tanzania favorably for structured operational stabilization, scalable systems maturity, and governance-led organizational growth.`;
+    
+    const DEFAULT_NEXT_WEEK = [
+        'Governance documentation audit',
+        'Operational forms & policy standardization',
+        'Workflow visibility implementation',
+        'Approval structure validation',
+        'Odoo process configuration continuation'
+    ];
+    
+    let isAdmin = false;
+    let githubToken = '';
+    
+    // Utility: Sanitize HTML to prevent raw GitHub 404 dump
+    function sanitizeContent(text) {
+        if (!text) return '';
+        // If response looks like HTML error page, return empty
+        if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
+            return '';
+        }
+        return text.trim();
+    }
+    
+    // Fetch with bulletproof error handling
+    async function safeFetch(url, options = {}) {
+        try {
+            const response = await fetch(url, options);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('text/html')) {
+                throw new Error('Received HTML instead of expected content');
+            }
+            
+            return await response.text();
+        } catch (error) {
+            console.warn(`Fetch failed for ${url}:`, error.message);
+            return null;
+        }
+    }
+    
+    // Load Overview
+    async function loadOverview() {
+        const overviewEl = document.getElementById('overviewContent');
+        let content = await safeFetch('/public/overview.txt');
+        content = sanitizeContent(content);
+        
+        if (!content) {
+            content = DEFAULT_OVERVIEW;
+        }
+        
+        overviewEl.textContent = content;
+        document.getElementById('adminOverview').value = content;
+    }
+    
+    // Load Next Week Priorities
+    async function loadNextWeek() {
+        const listEl = document.getElementById('nextWeekList');
+        let content = await safeFetch('/public/next-week.txt');
+        content = sanitizeContent(content);
+        
+        let items = content? content.split('\n').filter(l => l.trim()) : DEFAULT_NEXT_WEEK;
+        document.getElementById('adminNextWeek').value = items.join('\n');
+        
+        listEl.innerHTML = items.map(item => `
+            <li class="flex items-start gap-3 text-">
+                <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="text-gray-200 leading-relaxed">${item.replace(/^[-•]\s*/, '')}</span>
+            </li>
+        `).join('');
+    }
+    
+    // Documents Modal
+    document.getElementById('documentsBtn').addEventListener('click', async () => {
+        const modal = document.getElementById('documentsModal');
+        const content = document.getElementById('modalContent');
+        const status = document.getElementById('documentsStatus');
+        
+        modal.classList.remove('hidden');
+        content.innerHTML = `
+            <div class="flex items-center justify-center py-8">
+                <svg class="animate-spin h-6 w-6 text-[var(--gold)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
