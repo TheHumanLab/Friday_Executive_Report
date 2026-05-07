@@ -251,10 +251,17 @@ Based on the diagnostic findings, the primary organizational constraints identif
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">EXECUTIVE DOCUMENTS</h2>
                 </div>
-                <button id="documentsBtn" class="btn-gold w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-base flex items-center justify-center gap-3 shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                    View Supporting Documents
-                </button>
+                <a 
+    href="public/documents/" 
+    target="_blank"
+    class="inline-flex items-center gap-3 bg-[var(--gold)] text-black px-8 py-5 rounded-2xl font-semibold hover:opacity-90 transition"
+>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2h-5l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+    </svg>
+
+    View Supporting Documents
+</a>
                 <div id="documentsStatus" class="mt-4 text-sm text-[var(--gold)] hidden"></div>
             </section>
 
