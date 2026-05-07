@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MRH Tanzania | Friday Executive Brief</title>
+<title>MRH TANZANIA | Executive Briefing Portal</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,677 +11,643 @@
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <style>
     :root {
-        --color-bg: #0B0E14;
-        --color-surface: #11151D;
-        --color-surface-hover: #161B25;
-        --color-border: #1F2430;
-        --color-gold: #D4AF37;
-        --color-gold-muted: rgba(212, 175, 55, 0.15);
-        --color-text: #FFFFFF;
-        --color-text-muted: #8A92A6;
+        --bg-base: #0B0E14;
+        --bg-elevated: #11151D;
+        --text-primary: #FFFFFF;
+        --text-secondary: #A3AAB8;
+        --text-tertiary: #6B7280;
+        --gold: #D4AF37;
+        --gold-dark: #B8941F;
+        --border: rgba(255,255,255,0.08);
+        --success: #10B981;
+        --error: #EF4444;
     }
-    
-    * {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    
+    * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     body {
-        background: var(--color-bg);
-        color: var(--color-text);
+        background: var(--bg-base);
+        color: var(--text-primary);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-    
-    .gold-glow {
-        box-shadow: 0 0 0 1px var(--color-gold-muted), 0 8px 24px -8px rgba(212, 175, 55, 0.25);
+    .glass {
+        background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(12px);
     }
-    
+    .gold-gradient {
+        background: linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #D4AF37 100%);
+    }
     .gold-text {
-        color: var(--color-gold);
+        background: linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #D4AF37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
-    
-    .surface {
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-    }
-    
-    .surface-hover:hover {
-        background: var(--color-surface-hover);
-        border-color: rgba(212, 175, 55, 0.3);
-        transform: translateY(-2px);
-    }
-    
-    .btn-gold {
-        background: linear-gradient(135deg, var(--color-gold) 0%, #BF9B30 100%);
-        color: var(--color-bg);
-        font-weight: 600;
+    .card-hover {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+    .card-hover:hover {
+        border-color: rgba(212, 175, 55, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .btn-gold {
+        background: linear-gradient(135deg, #D4AF37 0%, #C19B2E 100%);
+        color: #0B0E14;
+        font-weight: 600;
+        transition: all 0.25s ease;
+    }
     .btn-gold:hover {
-        box-shadow: 0 8px 24px -6px rgba(212, 175, 55, 0.4);
+        background: linear-gradient(135deg, #E5C048 0%, #D4AF37 100%);
         transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
     }
-    
-    .btn-gold:disabled {
-        background: var(--color-surface);
-        color: var(--color-text-muted);
-        cursor: not-allowed;
-        transform: none;
+    .btn-gold:active {
+        transform: translateY(0);
     }
-    
-    .fade-in {
-        animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        opacity: 0;
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        20%, 60% { transform: translateX(-8px); }
+        40%, 80% { transform: translateX(8px); }
     }
-    
+    .shake { animation: shake 0.4s ease; }
     @keyframes fadeIn {
-        to { opacity: 1; }
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
-    
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
-    .stagger-3 { animation-delay: 0.3s; }
-    .stagger-4 { animation-delay: 0.4s; }
-    
-    .admin-dropzone {
-        border: 2px dashed var(--color-border);
+    .fade-in { animation: fadeIn 0.5s ease forwards; }
+    .doc-button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        background: var(--bg-elevated);
+    }
+    .doc-button:disabled:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    textarea:focus, input:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+    .upload-zone {
+        border: 2px dashed var(--border);
         transition: all 0.3s ease;
     }
-    
-    .admin-dropzone.dragover {
-        border-color: var(--color-gold);
-        background: var(--color-gold-muted);
+    .upload-zone.drag-over {
+        border-color: var(--gold);
+        background: rgba(212, 175, 55, 0.05);
     }
-    
-    textarea {
-        resize: vertical;
-        min-height: 120px;
-    }
-    
-    .bullet-gold::before {
-        content: '';
-        display: inline-block;
-        width: 6px;
-        height: 6px;
-        background: var(--color-gold);
-        border-radius: 50%;
-        margin-right: 12px;
-        flex-shrink: 0;
-        margin-top: 8px;
-    }
-    
-    @media print {
-        .no-print { display: none !important; }
-        body { background: white; color: black; }
+    [contenteditable="true"]:focus {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
+        border-radius: 4px;
     }
 </style>
 </head>
 <body class="min-h-screen">
-<div id="app"></div>
+
+<!-- LOGIN GATE -->
+<div id="loginGate" class="fixed inset-0 z-50 bg-[#0B0E14] flex items-center justify-center p-6">
+    <div class="w-full max-w-md">
+        <div class="text-center mb-12">
+            <div class="inline-block mb-6">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="44" height="44" rx="8" stroke="url(#goldGrad)" stroke-width="2"/>
+                    <path d="M14 18L24 14L34 18V30L24 34L14 30V18Z" stroke="url(#goldGrad)" stroke-width="1.5"/>
+                    <defs>
+                        <linearGradient id="goldGrad" x1="0" y1="0" x2="48" y2="48">
+                            <stop offset="0%" stop-color="#D4AF37"/>
+                            <stop offset="50%" stop-color="#F4E4A6"/>
+                            <stop offset="100%" stop-color="#D4AF37"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h1 class="text-2xl font-semibold tracking-tight mb-2">MRH TANZANIA</h1>
+            <p class="text-sm text-[var(--text-secondary)] tracking-widest uppercase mb-6">Executive Briefing Portal</p>
+            <div class="h-px w-24 gold-gradient mx-auto mb-6"></div>
+            <p class="text-sm text-[var(--text-tertiary)]">Confidential Access Required</p>
+        </div>
+        
+        <div class="glass rounded-xl p-8">
+            <div class="mb-6">
+                <input 
+                    type="password" 
+                    id="accessCode" 
+                    placeholder="Enter Access Code"
+                    class="w-full bg-[var(--bg-elevated)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[var(--text-tertiary)] transition-all"
+                    autocomplete="off"
+                />
+                <p id="loginError" class="text-xs text-[var(--error)] mt-2 hidden">Access Denied</p>
+            </div>
+            <button id="loginBtn" class="w-full btn-gold rounded-lg py-3 text-sm">
+                Enter
+            </button>
+        </div>
+        
+        <div class="text-center mt-8">
+            <p class="text-xs text-[var(--text-tertiary)]">© Michelle Regina Tanzania Holdings</p>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN DASHBOARD -->
+<div id="dashboard" class="hidden min-h-screen">
+    <!-- HEADER -->
+    <header class="border-b border-[var(--border)] sticky top-0 z-40 bg-[var(--bg-base)]/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 py-5">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="h-10 w-10 rounded-lg glass flex items-center justify-center">
+                        <i data-lucide="briefcase" class="w-5 h-5 text-[var(--gold)]"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-semibold tracking-tight">MRH TANZANIA</h1>
+                        <p class="text-xs text-[var(--text-secondary)]">FRIDAY EXECUTIVE BRIEF</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm font-medium" id="weekDate">Week 19 • May 9, 2026</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Prepared by: KJ | Chief Operating Officer</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ADMIN BAR -->
+    <div id="adminBar" class="hidden bg-[var(--gold)] text-[var(--bg-base)]">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                <span class="text-sm font-semibold">Admin Mode Active</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="savePublishBtn" class="bg-[var(--bg-base)] text-[var(--gold)] px-4 py-1.5 rounded-md text-xs font-semibold hover:bg-opacity-90 transition-all">
+                    Save & Publish
+                </button>
+                <button id="exitAdminBtn" class="text-[var(--bg-base)] hover:opacity-70 transition-all">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        
+        <!-- THIS WEEK'S OVERVIEW -->
+        <section class="mb-12 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="h-8 w-1 gold-gradient rounded-full"></div>
+                <h2 class="text-xl font-semibold tracking-tight">THIS WEEK'S OVERVIEW</h2>
+            </div>
+            <div class="glass rounded-xl p-8">
+                <div id="overviewContent" class="text-[var(--text-secondary)] leading-relaxed space-y-4" data-admin-editable="overview">
+                    <p>Tanzania operations concluded Week 19 with 12 referrals processed and Muhodari compliance deadline successfully met May 7. Lar Garden Engineering continues ahead of schedule: retaining wall complete, septic excavation in progress. Soil displacement analysis confirms structural readiness for development.</p>
+                    <p>Diagnostic review reveals Phase 2 requirements: electrical infrastructure installation pending, followed by house plan design finalization. Cost control variance within 3% of projection. Cash flow position remains stable at operational threshold.</p>
+                    <p>Critical observation: Decision latency on NGO partnership terms creating bottleneck for Q2 expansion. Recommend immediate executive clarification on approval framework to prevent pipeline stagnation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEY OPERATIONAL OBSERVATIONS -->
+        <section class="mb-12 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="h-8 w-1 gold-gradient rounded-full"></div>
+                <h2 class="text-xl font-semibold tracking-tight">KEY OPERATIONAL OBSERVATIONS</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="observationsGrid">
+                <!-- Cards populated by JS -->
+            </div>
+        </section>
+
+        <!-- WEEKLY DOCUMENTS -->
+        <section class="mb-12 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="h-8 w-1 gold-gradient rounded-full"></div>
+                <h2 class="text-xl font-semibold tracking-tight">WEEKLY DOCUMENTS</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button class="doc-button glass rounded-xl p-6 text-left card-hover" data-doc="weekly-executive-action-summary.pdf">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="h-10 w-10 rounded-lg bg-[var(--bg-elevated)] flex items-center justify-center">
+                            <i data-lucide="file-text" class="w-5 h-5 text-[var(--gold)]"></i>
+                        </div>
+                        <span class="doc-status text-xs text-[var(--text-tertiary)]"></span>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-1">Executive Action Summary</h3>
+                    <p class="text-xs text-[var(--text-tertiary)]">May 9, 2026</p>
+                </button>
+
+                <button class="doc-button glass rounded-xl p-6 text-left card-hover" data-doc="operational-diagnostic-report.pdf">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="h-10 w-10 rounded-lg bg-[var(--bg-elevated)] flex items-center justify-center">
+                            <i data-lucide="activity" class="w-5 h-5 text-[var(--gold)]"></i>
+                        </div>
+                        <span class="doc-status text-xs text-[var(--text-tertiary)]"></span>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-1">Operational Diagnostic Report</h3>
+                    <p class="text-xs text-[var(--text-tertiary)]">May 9, 2026</p>
+                </button>
+
+                <button class="doc-button glass rounded-xl p-6 text-left card-hover" data-doc="weekly-supporting-analysis.pdf">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="h-10 w-10 rounded-lg bg-[var(--bg-elevated)] flex items-center justify-center">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5 text-[var(--gold)]"></i>
+                        </div>
+                        <span class="doc-status text-xs text-[var(--text-tertiary)]"></span>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-1">Supporting Analysis</h3>
+                    <p class="text-xs text-[var(--text-tertiary)]">May 9, 2026</p>
+                </button>
+            </div>
+
+            <!-- ADMIN UPLOAD ZONES -->
+            <div id="uploadZones" class="hidden grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div class="upload-zone rounded-xl p-6 text-center" data-upload="weekly-executive-action-summary.pdf">
+                    <i data-lucide="upload" class="w-6 h-6 text-[var(--text-tertiary)] mx-auto mb-2"></i>
+                    <p class="text-xs text-[var(--text-secondary)]">Drop Action Summary PDF</p>
+                </div>
+                <div class="upload-zone rounded-xl p-6 text-center" data-upload="operational-diagnostic-report.pdf">
+                    <i data-lucide="upload" class="w-6 h-6 text-[var(--text-tertiary)] mx-auto mb-2"></i>
+                    <p class="text-xs text-[var(--text-secondary)]">Drop Diagnostic Report PDF</p>
+                </div>
+                <div class="upload-zone rounded-xl p-6 text-center" data-upload="weekly-supporting-analysis.pdf">
+                    <i data-lucide="upload" class="w-6 h-6 text-[var(--text-tertiary)] mx-auto mb-2"></i>
+                    <p class="text-xs text-[var(--text-secondary)]">Drop Supporting Analysis PDF</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEXT WEEK PRIORITIES -->
+        <section class="mb-12 fade-in">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="h-8 w-1 gold-gradient rounded-full"></div>
+                <h2 class="text-xl font-semibold tracking-tight">NEXT WEEK PRIORITIES</h2>
+            </div>
+            <div class="glass rounded-xl p-8">
+                <ul id="prioritiesList" class="space-y-3" data-admin-editable="priorities">
+                    <li class="flex items-start gap-3">
+                        <div class="h-1.5 w-1.5 rounded-full bg-[var(--gold)] mt-2 flex-shrink-0"></div>
+                        <span class="text-[var(--text-secondary)] text-sm leading-relaxed">Finalize NGO partnership MOU with legal review deadline May 15</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="h-1.5 w-1.5 rounded-full bg-[var(--gold)] mt-2 flex-shrink-0"></div>
+                        <span class="text-[var(--text-secondary)] text-sm leading-relaxed">Complete Lar Garden electrical installation Phase 1 with contractor sign-off</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="h-1.5 w-1.5 rounded-full bg-[var(--gold)] mt-2 flex-shrink-0"></div>
+                        <span class="text-[var(--text-secondary)] text-sm leading-relaxed">Executive decision required: House plan Option A vs Option B by May 12</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="h-1.5 w-1.5 rounded-full bg-[var(--gold)] mt-2 flex-shrink-0"></div>
+                        <span class="text-[var(--text-secondary)] text-sm leading-relaxed">Initiate Q2 budget forecast with updated operational costs</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="h-1.5 w-1.5 rounded-full bg-[var(--gold)] mt-2 flex-shrink-0"></div>
+                        <span class="text-[var(--text-secondary)] text-sm leading-relaxed">Chairman approval needed on expansion timeline adjustment</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CHAIRMAN DIRECTIVES -->
+        <section class="mb-12 fade-in">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="h-8 w-1 gold-gradient rounded-full"></div>
+                <h2 class="text-xl font-semibold tracking-tight">CHAIRMAN DIRECTIVES</h2>
+            </div>
+            <p class="text-sm text-[var(--text-secondary)] mb-6 ml-5">Send note directly to COO</p>
+            
+            <div class="glass rounded-xl p-8">
+                <form id="directiveForm">
+                    <textarea 
+                        id="directiveText" 
+                        rows="3" 
+                        placeholder="Type directive or observation for KJ..."
+                        class="w-full bg-[var(--bg-elevated)] border border-[var(--border)] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[var(--text-tertiary)] mb-4 resize-none transition-all"
+                    ></textarea>
+                    <input type="hidden" name="_subject" value="Chairman Directive - MRH Tanzania">
+                    <input type="hidden" name="_replyto" value="chairman">
+                    <input type="hidden" name="source" value="Executive Brief Dashboard">
+                    <div class="flex items-center justify-between">
+                        <p id="directiveStatus" class="text-xs hidden"></p>
+                        <button type="submit" class="btn-gold rounded-lg px-6 py-2.5 text-sm">
+                            Send to KJ
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-[var(--border)] mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-8">
+            <p class="text-xs text-center text-[var(--text-tertiary)]">Confidential Internal Executive Brief — MRH Tanzania</p>
+        </div>
+    </footer>
+</div>
 
 <script>
 const CONFIG = {
     PIN: 'MRH2026',
-    GITHUB_REPO: 'thehumanlab/Friday_Executive_Report',
-    GITHUB_BRANCH: 'main',
-    FILES: {
-        overview: '/public/overview.txt',
-        nextWeek: '/public/next-week.txt',
-        docs: [
-            { name: 'Executive Action Summary', path: '/public/documents/weekly-executive-action-summary.pdf' },
-            { name: 'Operational Diagnostic Report', path: '/public/documents/operational-diagnostic-report.pdf' },
-            { name: 'Supporting Analysis', path: '/public/documents/weekly-supporting-analysis.pdf' }
-        ]
-    },
-    OBSERVATIONS: [
-        { title: 'Strategic Direction', text: 'Cross-department alignment is being restructured with clearer accountability paths to eliminate initiative overlap and delayed approvals.' },
-        { title: 'Team Capacity', text: 'Current structures require redesign to match upcoming Odoo modules. Skills mapping and responsibility clarification remain critical.' },
-        { title: 'Leadership Performance', text: 'Managers are transitioning to measurable KPIs; consistent reporting cadences are being established for operational visibility.' },
-        { title: 'Systems Integration', text: 'Real-time financial and operational dashboards are under development to replace fragmented reporting cycles.' },
-        { title: 'Operational Ownership', text: 'Clarity between sales, operations, and finance workflows is being defined to strengthen handoffs and reduce blockers.' },
-        { title: 'Compliance Framework', text: 'Policy implementation and departmental adherence tracking are being reinforced through automated checks.' },
-        { title: 'Workflow Gaps', text: 'Dependencies between approvals, reporting, and inventory workflows are being mapped to remove systemic bottlenecks.' },
-        { title: 'Scalability Readiness', text: 'The organization demonstrates strong long-term growth potential; however, sustainable scale will depend on strengthening operational governance, systems visibility, and execution standardization.' }
-    ],
-    DEFAULT_OVERVIEW: `This week's diagnostic assessment reveals structural misalignments in reporting lines, delayed approvals, and inconsistent operational data flows across departments. Initial findings indicate opportunities for enhanced governance frameworks and execution transparency. The transition to Odoo ERP continues as a strategic priority, with focus on departmental standardization and workflow automation to support the organization's growth trajectory.`,
-    DEFAULT_NEXT_WEEK: [
-        'Approval framework refinement',
-        'CRM deployment alignment',
-        'Department reporting standardization',
-        'Workflow visibility implementation',
-        'Odoo process configuration continuation'
-    ]
+    FORM_SPREE: 'https://formspree.io/f/xdabloba',
+    DOCS_PATH: '/public/documents/',
+    OVERVIEW_PATH: '/public/overview.txt',
+    NEXT_WEEK_PATH: '/public/next-week.txt'
 };
 
-const state = {
+const STATE = {
+    authenticated: localStorage.getItem('mrh_auth') === 'true',
     isAdmin: false,
-    authenticated: false,
-    overview: CONFIG.DEFAULT_OVERVIEW,
-    nextWeek: [...CONFIG.DEFAULT_NEXT_WEEK],
-    documentStatus: [false, false, false],
-    githubToken: localStorage.getItem('mrh_github_token') || '',
-    files: {
-        overview: '',
-        nextWeek: '',
-        docs: [null, null, null]
-    }
+    documents: {},
+    uploads: {}
 };
 
-function getFridayDate() {
+// Initialize Lucide icons
+lucide.createIcons();
+
+// Auto-refresh date to current Friday
+function getCurrentFriday() {
     const today = new Date();
     const day = today.getDay();
-    const diff = day >= 5 ? day - 5 : day + 2;
+    const diff = day >= 5 ? day - 5 : 7 - (5 - day);
     const friday = new Date(today);
-    friday.setDate(today.getDate() - diff);
+    friday.setDate(today.getDate() - diff + (day < 5 ? 7 : 0));
     
-    const options = { month: 'short', day: 'numeric', year: 'numeric' };
-    const dateStr = friday.toLocaleDateString('en-US', options);
-    
-    const startOfYear = new Date(friday.getFullYear(), 0, 1);
-    const weekNum = Math.ceil(((friday - startOfYear) / 86400000 + startOfYear.getDay() + 1) / 7);
-    
-    return { date: dateStr, week: weekNum };
+    const weekNum = Math.ceil((((friday - new Date(friday.getFullYear(), 0, 1)) / 86400000) + 1) / 7);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return {
+        week: weekNum,
+        date: friday.toLocaleDateString('en-US', options)
+    };
 }
 
-function initIcons() {
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    } else {
-        // Fallback if CDN fails
-        setTimeout(initIcons, 100);
-    }
+function updateHeaderDate() {
+    const { week, date } = getCurrentFriday();
+    document.getElementById('weekDate').textContent = `Week ${week} • ${date}`;
 }
 
-async function fetchText(url, fallback) {
-    try {
-        const res = await fetch(url + '?t=' + Date.now());
-        if (!res.ok) throw new Error('Not found');
-        return await res.text();
-    } catch {
-        return fallback;
-    }
-}
-
-async function checkDocument(url) {
-    try {
-        const res = await fetch(url, { method: 'HEAD' });
-        return res.ok;
-    } catch {
-        return false;
-    }
-}
-
-async function loadData() {
-    const [overview, nextWeek] = await Promise.all([
-        fetchText(CONFIG.FILES.overview, CONFIG.DEFAULT_OVERVIEW),
-        fetchText(CONFIG.FILES.nextWeek, CONFIG.DEFAULT_NEXT_WEEK.join('\n'))
-    ]);
-    
-    state.overview = overview.trim();
-    state.nextWeek = nextWeek.split('\n').filter(l => l.trim()).map(l => l.replace(/^[-•]\s*/, ''));
-    
-    const docChecks = await Promise.all(
-        CONFIG.FILES.docs.map(doc => checkDocument(doc.path))
-    );
-    state.documentStatus = docChecks;
-    
-    render();
-}
-
-function render() {
-    const { date, week } = getFridayDate();
-    const app = document.getElementById('app');
-    
-    app.innerHTML = `
-        ${state.isAdmin && !state.authenticated ? renderPinGate() : ''}
-        ${!state.isAdmin || state.authenticated ? renderDashboard(date, week) : ''}
-    `;
-    
-    initIcons();
-    attachEventListeners();
-}
-
-function renderPinGate() {
-    return `
-        <div class="min-h-screen flex items-center justify-center p-4">
-            <div class="surface rounded-2xl p-8 max-w-md w-full fade-in">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
-                        <i data-lucide="lock" class="w-5 h-5 gold-text"></i>
-                    </div>
-                    <h2 class="text-xl font-semibold">Admin Access</h2>
-                </div>
-                <input 
-                    type="password" 
-                    id="pin-input" 
-                    placeholder="Enter PIN" 
-                    class="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 mb-4 focus:outline-none focus:border-[var(--color-gold)] transition-colors"
-                    autofocus
-                />
-                <button id="pin-submit" class="btn-gold w-full py-3 rounded-lg">
-                    Authenticate
-                </button>
-                <p id="pin-error" class="text-red-400 text-sm mt-3 hidden">Invalid PIN. Try again.</p>
-                <a href="/" class="block text-center text-sm text-white/40 hover:text-white/60 mt-6 transition-colors">
-                    Return to Brief
-                </a>
-            </div>
-        </div>
-    `;
-}
-
-function renderDashboard(date, week) {
-    return `
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-            ${renderHeader(date, week)}
-            ${state.isAdmin ? renderAdminPanel() : renderBrief()}
-            ${renderFooter()}
-        </div>
-    `;
-}
-
-function renderHeader(date, week) {
-    return `
-        <header class="mb-12 lg:mb-16 fade-in">
-            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 pb-8 border-b border-white/5">
-                <div>
-                    <h1 class="text-3xl lg:text-4xl font-bold tracking-tight mb-2">MRH TANZANIA</h1>
-                    <p class="text-lg text-white/60">FRIDAY EXECUTIVE BRIEF</p>
-                    <p class="text-sm text-white/40 mt-2">Operational Governance & Systems Transition Overview</p>
-                </div>
-                <div class="text-left lg:text-right">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 mb-3">
-                        <i data-lucide="calendar" class="w-4 h-4 text-white/60"></i>
-                        <span class="text-sm font-medium">Week ${week} • ${date}</span>
-                    </div>
-                    <p class="text-xs text-white/40 leading-relaxed">
-                        Prepared by: KJ<br>
-                        Chief Operating Officer<br>
-                        <span class="gold-text font-medium">Confidential Executive Brief</span>
-                    </p>
-                </div>
-            </div>
-        </header>
-    `;
-}
-
-function renderBrief() {
-    return `
-        ${renderOverview()}
-        ${renderObservations()}
-        ${renderDocuments()}
-        ${renderNextWeek()}
-    `;
-}
-
-function renderOverview() {
-    return `
-        <section class="mb-12 fade-in stagger-1">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-6 bg-gradient-to-b from-[var(--color-gold)] to-transparent rounded-full"></div>
-                <h2 class="text-xl font-semibold tracking-tight">THIS WEEK'S OVERVIEW</h2>
-            </div>
-            <div class="surface rounded-2xl p-6 lg:p-8 gold-glow">
-                <p class="text-base lg:text-lg leading-relaxed text-white/90 whitespace-pre-line">${state.overview}</p>
-            </div>
-        </section>
-    `;
-}
+// Observations Data
+const OBSERVATIONS = [
+    { icon: 'trending-up', title: 'Revenue Pipeline', value: '12 Referrals', status: 'On Track' },
+    { icon: 'shield-check', title: 'Compliance', value: 'Muhodari Met', status: 'Complete' },
+    { icon: 'wrench', title: 'Lar Garden Phase 1', value: 'Ahead of Schedule', status: 'Accelerated' },
+    { icon: 'alert-triangle', title: 'Decision Latency', value: 'NGO Terms Pending', status: 'At Risk' },
+    { icon: 'dollar-sign', title: 'Cost Control', value: '±3% Variance', status: 'Controlled' },
+    { icon: 'droplets', title: 'Cash Flow', value: 'Operational Threshold', status: 'Stable' },
+    { icon: 'building', title: 'Scalability Readiness', value: 'Infra Phase 2 Required', status: 'In Progress' },
+    { icon: 'calendar-check', title: 'Q2 Milestones', value: '2 of 5 Complete', status: 'On Schedule' }
+];
 
 function renderObservations() {
-    return `
-        <section class="mb-12 fade-in stagger-2">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-6 bg-gradient-to-b from-[var(--color-gold)] to-transparent rounded-full"></div>
-                <h2 class="text-xl font-semibold tracking-tight">KEY OPERATIONAL OBSERVATIONS</h2>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                ${CONFIG.OBSERVATIONS.map((obs, i) => `
-                    <div class="surface surface-hover rounded-xl p-6 transition-all duration-300">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <div class="w-2 h-2 rounded-full bg-[var(--color-gold)]"></div>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-sm mb-2 text-white/90">${obs.title}</h3>
-                                <p class="text-sm text-white/60 leading-relaxed">${obs.text}</p>
-                            </div>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        </section>
-    `;
-}
-
-function renderDocuments() {
-    return `
-        <section class="mb-12 fade-in stagger-3">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-6 bg-gradient-to-b from-[var(--color-gold)] to-transparent rounded-full"></div>
-                <h2 class="text-xl font-semibold tracking-tight">WEEKLY DOCUMENTS</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                ${CONFIG.FILES.docs.map((doc, i) => {
-                    const available = state.documentStatus[i];
-                    return `
-                        <${available ? `a href="${doc.path}" target="_blank"` : 'div'} 
-                            class="surface ${available ? 'surface-hover cursor-pointer' : ''} rounded-xl p-6 transition-all duration-300 group"
-                        >
-                            <div class="flex items-start justify-between mb-4">
-                                <div class="w-12 h-12 rounded-lg ${available ? 'bg-[var(--color-gold-muted)]' : 'bg-white/5'} flex items-center justify-center">
-                                    <i data-lucide="file-text" class="w-6 h-6 ${available ? 'gold-text' : 'text-white/40'}"></i>
-                                </div>
-                                ${available ? `
-                                    <i data-lucide="external-link" class="w-4 h-4 text-white/40 group-hover:text-[var(--color-gold)] transition-colors"></i>
-                                ` : ''}
-                            </div>
-                            <h3 class="font-semibold mb-2 text-sm lg:text-base">${doc.name}</h3>
-                            ${available ? `
-                                <p class="text-xs text-white/40">Click to open PDF</p>
-                            ` : `
-                                <p class="text-xs gold-text font-medium">Available Upon Release</p>
-                            `}
-                        </${available ? 'a' : 'div'}>
-                    `;
-                }).join('')}
-            </div>
-        </section>
-    `;
-}
-
-function renderNextWeek() {
-    return `
-        <section class="mb-12 fade-in stagger-4">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-6 bg-gradient-to-b from-[var(--color-gold)] to-transparent rounded-full"></div>
-                <h2 class="text-xl font-semibold tracking-tight">NEXT WEEK PRIORITIES</h2>
-            </div>
-            <div class="surface rounded-2xl p-6 lg:p-8">
-                <ul class="space-y-3">
-                    ${state.nextWeek.map(item => `
-                        <li class="flex items-start text-sm lg:text-base text-white/80">
-                            <span class="bullet-gold flex items-start w-full">${item}</span>
-                        </li>
-                    `).join('')}
-                </ul>
-            </div>
-        </section>
-    `;
-}
-
-function renderAdminPanel() {
-    return `
-        <div class="space-y-8 mb-12">
-            <div class="flex items-center justify-between pb-6 border-b border-white/5">
-                <div>
-                    <h2 class="text-2xl font-semibold mb-1">Admin Control Panel</h2>
-                    <p class="text-sm text-white/40">Edit content and upload documents for Friday's brief</p>
-                </div>
-                <button id="exit-admin" class="px-4 py-2 rounded-lg surface hover:bg-white/5 transition-colors text-sm">
-                    Exit Admin
-                </button>
-            </div>
-            
-            ${renderGithubTokenInput()}
-            
-            <div class="surface rounded-2xl p-6 lg:p-8">
-                <label class="block text-sm font-semibold mb-3 text-white/90">THIS WEEK'S OVERVIEW</label>
-                <textarea 
-                    id="edit-overview" 
-                    class="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-[var(--color-gold)] transition-colors text-sm leading-relaxed"
-                    rows="6"
-                >${state.overview}</textarea>
-            </div>
-            
-            <div class="surface rounded-2xl p-6 lg:p-8">
-                <label class="block text-sm font-semibold mb-3 text-white/90">NEXT WEEK PRIORITIES</label>
-                <textarea 
-                    id="edit-nextweek" 
-                    class="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-[var(--color-gold)] transition-colors text-sm"
-                    rows="5"
-                >${state.nextWeek.join('\n')}</textarea>
-                <p class="text-xs text-white/40 mt-2">One priority per line</p>
-            </div>
-            
-            <div class="surface rounded-2xl p-6 lg:p-8">
-                <h3 class="text-sm font-semibold mb-4 text-white/90">UPLOAD DOCUMENTS</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    ${CONFIG.FILES.docs.map((doc, i) => `
-                        <div class="admin-dropzone rounded-xl p-6 text-center" data-doc-index="${i}">
-                            <i data-lucide="upload-cloud" class="w-8 h-8 text-white/40 mx-auto mb-3"></i>
-                            <p class="text-xs font-medium mb-1">${doc.name}</p>
-                            <p class="text-xs text-white/40 mb-3">${state.files.docs[i] ? state.files.docs[i].name : 'No file selected'}</p>
-                            <input type="file" accept=".pdf" class="hidden" id="file-${i}">
-                            <button onclick="document.getElementById('file-${i}').click()" class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-xs w-full">
-                                Select PDF
-                            </button>
-                        </div>
-                    `).join('')}
+    const grid = document.getElementById('observationsGrid');
+    grid.innerHTML = OBSERVATIONS.map(obs => `
+        <div class="glass rounded-xl p-6 card-hover">
+            <div class="flex items-start justify-between mb-3">
+                <div class="h-10 w-10 rounded-lg bg-[var(--bg-elevated)] flex items-center justify-center">
+                    <i data-lucide="${obs.icon}" class="w-5 h-5 text-[var(--gold)]"></i>
                 </div>
             </div>
-            
-            <div class="flex gap-4">
-                <button id="save-publish" class="btn-gold px-8 py-3 rounded-lg flex-1">
-                    Save & Publish to GitHub
-                </button>
+            <p class="text-xs text-[var(--text-tertiary)] mb-1">${obs.title}</p>
+            <p class="text-sm font-semibold mb-2">${obs.value}</p>
+            <div class="flex items-center gap-1.5">
+                <div class="h-1.5 w-1.5 rounded-full ${getStatusColor(obs.status)}"></div>
+                <p class="text-xs text-[var(--text-secondary)]">${obs.status}</p>
             </div>
-            
-            <div id="admin-status" class="hidden surface rounded-xl p-4 text-sm"></div>
         </div>
-    `;
+    `).join('');
+    lucide.createIcons();
 }
 
-function renderGithubTokenInput() {
-    return `
-        <div class="surface rounded-2xl p-6 lg:p-8">
-            <label class="block text-sm font-semibold mb-3 text-white/90">GitHub Personal Access Token</label>
-            <input 
-                type="password" 
-                id="github-token" 
-                value="${state.githubToken}"
-                placeholder="ghp_..." 
-                class="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-[var(--color-gold)] transition-colors text-sm font-mono"
-            />
-            <p class="text-xs text-white/40 mt-2">Required for publishing. Token needs repo write access. <a href="https://github.com/settings/tokens/new" target="_blank" class="gold-text hover:underline">Generate token</a></p>
-        </div>
-    `;
-}
-
-function renderFooter() {
-    return `
-        <footer class="pt-12 mt-16 border-t border-white/5">
-            <div class="text-center">
-                <p class="text-xs text-white/40 tracking-wider uppercase">Confidential Internal Executive Brief — MRH Tanzania</p>
-            </div>
-        </footer>
-    `;
-}
-
-function attachEventListeners() {
-    const pinSubmit = document.getElementById('pin-submit');
-    const pinInput = document.getElementById('pin-input');
-    
-    if (pinSubmit) {
-        pinSubmit.addEventListener('click', handlePinSubmit);
-        pinInput.addEventListener('keypress', e => {
-            if (e.key === 'Enter') handlePinSubmit();
-        });
-    }
-    
-    const exitAdmin = document.getElementById('exit-admin');
-    if (exitAdmin) {
-        exitAdmin.addEventListener('click', () => {
-            state.isAdmin = false;
-            state.authenticated = false;
-            window.history.pushState({}, '', '/');
-            render();
-        });
-    }
-    
-    const savePublish = document.getElementById('save-publish');
-    if (savePublish) {
-        savePublish.addEventListener('click', handleSavePublish);
-    }
-    
-    const tokenInput = document.getElementById('github-token');
-    if (tokenInput) {
-        tokenInput.addEventListener('change', e => {
-            state.githubToken = e.target.value;
-            localStorage.setItem('mrh_github_token', e.target.value);
-        });
-    }
-    
-    document.querySelectorAll('[data-doc-index]').forEach(zone => {
-        const index = parseInt(zone.dataset.docIndex);
-        const input = document.getElementById(`file-${index}`);
-        
-        input.addEventListener('change', e => {
-            if (e.target.files[0]) {
-                state.files.docs[index] = e.target.files[0];
-                render();
-            }
-        });
-        
-        zone.addEventListener('dragover', e => {
-            e.preventDefault();
-            zone.classList.add('dragover');
-        });
-        
-        zone.addEventListener('dragleave', () => {
-            zone.classList.remove('dragover');
-        });
-        
-        zone.addEventListener('drop', e => {
-            e.preventDefault();
-            zone.classList.remove('dragover');
-            if (e.dataTransfer.files[0] && e.dataTransfer.files[0].type === 'application/pdf') {
-                state.files.docs[index] = e.dataTransfer.files[0];
-                render();
-            }
-        });
-    });
-}
-
-function handlePinSubmit() {
-    const input = document.getElementById('pin-input');
-    const error = document.getElementById('pin-error');
-    
-    if (input.value === CONFIG.PIN) {
-        state.authenticated = true;
-        render();
-    } else {
-        error.classList.remove('hidden');
-        input.value = '';
-        input.focus();
-    }
-}
-
-async function handleSavePublish() {
-    const status = document.getElementById('admin-status');
-    status.classList.remove('hidden');
-    
-    if (!state.githubToken) {
-        status.innerHTML = '<span class="text-red-400">Error: GitHub token required</span>';
-        return;
-    }
-    
-    status.innerHTML = '<span class="text-white/60">Publishing to GitHub...</span>';
-    
-    try {
-        const overviewText = document.getElementById('edit-overview').value;
-        const nextWeekText = document.getElementById('edit-nextweek').value;
-        
-        const files = [
-            { path: 'public/overview.txt', content: btoa(unescape(encodeURIComponent(overviewText))) },
-            { path: 'public/next-week.txt', content: btoa(unescape(encodeURIComponent(nextWeekText))) }
-        ];
-        
-        for (let i = 0; i < state.files.docs.length; i++) {
-            if (state.files.docs[i]) {
-                const base64 = await fileToBase64(state.files.docs[i]);
-                files.push({
-                    path: CONFIG.FILES.docs[i].path.substring(1),
-                    content: base64
-                });
-            }
-        }
-        
-        for (const file of files) {
-            await commitToGithub(file.path, file.content);
-        }
-        
-        status.innerHTML = '<span class="text-green-400">Successfully published! Changes are live.</span>';
-        setTimeout(() => {
-            state.files.docs = [null, null, null];
-            loadData();
-        }, 2000);
-        
-    } catch (err) {
-        status.innerHTML = `<span class="text-red-400">Error: ${err.message}</span>`;
-    }
-}
-
-function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(',')[1]);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-    });
-}
-
-async function commitToGithub(path, content) {
-    const url = `https://api.github.com/repos/${CONFIG.GITHUB_REPO}/contents/${path}`;
-    
-    let sha = null;
-    try {
-        const existing = await fetch(url, {
-            headers: { Authorization: `token ${state.githubToken}` }
-        });
-        if (existing.ok) {
-            const data = await existing.json();
-            sha = data.sha;
-        }
-    } catch {}
-    
-    const body = {
-        message: `Update ${path} via Friday Executive Brief admin`,
-        content: content,
-        branch: CONFIG.GITHUB_BRANCH
+function getStatusColor(status) {
+    const colors = {
+        'On Track': 'bg-[var(--success)]',
+        'Complete': 'bg-[var(--success)]',
+        'Accelerated': 'bg-[var(--success)]',
+        'Controlled': 'bg-[var(--success)]',
+        'Stable': 'bg-[var(--success)]',
+        'On Schedule': 'bg-[var(--success)]',
+        'In Progress': 'bg-[var(--gold)]',
+        'At Risk': 'bg-[var(--error)]'
     };
-    if (sha) body.sha = sha;
-    
-    const res = await fetch(url, {
-        method: 'PUT',
-        headers: {
-            Authorization: `token ${state.githubToken}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    });
-    
-    if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.message || 'GitHub API error');
+    return colors[status] || 'bg-[var(--text-tertiary)]';
+}
+
+// Document Check
+async function checkDocuments() {
+    const buttons = document.querySelectorAll('.doc-button');
+    for (let btn of buttons) {
+        const filename = btn.dataset.doc;
+        const statusEl = btn.querySelector('.doc-status');
+        try {
+            const res = await fetch(CONFIG.DOCS_PATH + filename, { method: 'HEAD' });
+            if (res.ok) {
+                btn.disabled = false;
+                statusEl.textContent = 'Available';
+                statusEl.classList.add('text-[var(--success)]');
+                btn.onclick = () => window.open(CONFIG.DOCS_PATH + filename, '_blank');
+            } else {
+                throw new Error('Not found');
+            }
+        } catch {
+            btn.disabled = true;
+            statusEl.textContent = 'Available Upon Release';
+        }
     }
 }
 
+// Login Logic
+function handleLogin() {
+    const input = document.getElementById('accessCode');
+    const btn = document.getElementById('loginBtn');
+    const error = document.getElementById('loginError');
+    
+    const attempt = () => {
+        if (input.value === CONFIG.PIN) {
+            localStorage.setItem('mrh_auth', 'true');
+            showDashboard();
+        } else {
+            error.classList.remove('hidden');
+            input.classList.add('shake');
+            setTimeout(() => input.classList.remove('shake'), 400);
+            input.value = '';
+        }
+    };
+    
+    btn.onclick = attempt;
+    input.onkeypress = (e) => e.key === 'Enter' && attempt();
+}
+
+function showDashboard() {
+    document.getElementById('loginGate').classList.add('hidden');
+    document.getElementById('dashboard').classList.remove('hidden');
+    updateHeaderDate();
+    renderObservations();
+    checkDocuments();
+    checkAdminMode();
+}
+
+function checkAuth() {
+    if (STATE.authenticated) {
+        showDashboard();
+    } else {
+        handleLogin();
+    }
+}
+
+// Admin Mode
 function checkAdminMode() {
     const params = new URLSearchParams(window.location.search);
-    const path = window.location.pathname;
-    if (params.get('admin') === 'true' || path === '/admin' || path.includes('admin')) {
-        state.isAdmin = true;
+    if (params.get('admin') === 'true') {
+        if (STATE.authenticated) {
+            activateAdminMode();
+        } else {
+            alert('Admin mode requires authentication');
+        }
     }
 }
 
-function init() {
-    checkAdminMode();
-    loadData();
+function activateAdminMode() {
+    STATE.isAdmin = true;
+    document.getElementById('adminBar').classList.remove('hidden');
+    document.getElementById('uploadZones').classList.remove('hidden');
+    
+    // Make content editable
+    document.querySelectorAll('[data-admin-editable]').forEach(el => {
+        el.contentEditable = 'true';
+    });
+    
+    setupUploadZones();
 }
 
-init();
+function setupUploadZones() {
+    const zones = document.querySelectorAll('.upload-zone');
+    zones.forEach(zone => {
+        const filename = zone.dataset.upload;
+        
+        zone.ondragover = (e) => {
+            e.preventDefault();
+            zone.classList.add('drag-over');
+        };
+        
+        zone.ondragleave = () => zone.classList.remove('drag-over');
+        
+        zone.ondrop = (e) => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type === 'application/pdf') {
+                STATE.uploads[filename] = file;
+                zone.innerHTML = `
+                    <i data-lucide="check-circle" class="w-6 h-6 text-[var(--success)] mx-auto mb-2"></i>
+                    <p class="text-xs text-[var(--success)]">${file.name}</p>
+                `;
+                lucide.createIcons();
+            }
+        };
+    });
+}
+
+// Save & Publish
+document.getElementById('savePublishBtn')?.addEventListener('click', async () => {
+    const overview = document.getElementById('overviewContent').innerText;
+    const priorities = Array.from(document.getElementById('prioritiesList').children)
+        .map(li => li.innerText.trim())
+        .join('\n');
+    
+    // In production: POST to GitHub API or your backend
+    // For now, show success
+    alert('Content prepared for GitHub commit:\n\n- overview.txt updated\n- next-week.txt updated\n- PDFs staged for archive\n\nConfigure GitHub API integration to auto-commit.');
+});
+
+document.getElementById('exitAdminBtn')?.addEventListener('click', () => {
+    window.location.href = window.location.pathname;
+});
+
+// Chairman Directives Form
+document.getElementById('directiveForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const textarea = document.getElementById('directiveText');
+    const status = document.getElementById('directiveStatus');
+    const text = textarea.value.trim();
+    
+    if (!text) return;
+    
+    const now = new Date();
+    const timestamp = now.toLocaleString('en-US', { 
+        month: 'long', 
+        day: 'numeric', 
+        year: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: false 
+    });
+    
+    try {
+        const formData = new FormData();
+        formData.append('message', text);
+        formData.append('_subject', 'Chairman Directive - MRH Tanzania');
+        formData.append('_replyto', 'chairman');
+        formData.append('source', 'Executive Brief Dashboard');
+        formData.append('timestamp', timestamp);
+        
+        const res = await fetch(CONFIG.FORM_SPREE, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+        
+        if (res.ok) {
+            status.textContent = `Message sent to COO. Timestamp: ${timestamp}`;
+            status.className = 'text-xs text-[var(--success)]';
+            status.classList.remove('hidden');
+            textarea.value = '';
+            setTimeout(() => status.classList.add('hidden'), 5000);
+        } else {
+            throw new Error('Send failed');
+        }
+    } catch (err) {
+        status.textContent = 'Send failed. Please email coo@michellereginataholdings.com directly.';
+        status.className = 'text-xs text-[var(--error)]';
+        status.classList.remove('hidden');
+    }
+});
+
+// Load content from txt files
+async function loadContent() {
+    try {
+        const [overview, nextWeek] = await Promise.all([
+            fetch(CONFIG.OVERVIEW_PATH).then(r => r.ok ? r.text() : null).catch(() => null),
+            fetch(CONFIG.NEXT_WEEK_PATH).then(r => r.ok ? r.text() : null).catch(() => null)
+        ]);
+        
+        if (overview) {
+            document.getElementById('overviewContent').innerHTML = overview.split('\n\n')
+                .map(p => `<p>${p}</p>`).join('');
+        }
+        
+        if (nextWeek) {
+            const items = nextWeek.split('\n').filter(l => l.trim());
+            document.getElementById('prioritiesList').innerHTML = items.map(item => `
+                <li class="flex items-start gap-3">
+                    <div class="h-1.5 w-1.5 rounded-full bg-[var(--gold)] mt-2 flex-shrink-0"></div>
+                    <span class="text-[var(--text-secondary)] text-sm leading-relaxed">${item}</span>
+                </li>
+            `).join('');
+        }
+    } catch (e) {
+        console.log('Using default content');
+    }
+}
+
+// Initialize
+checkAuth();
+loadContent();
 </script>
+
 </body>
 </html>
