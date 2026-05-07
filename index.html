@@ -254,12 +254,12 @@ Current implementation efforts are centered on strengthening governance structur
               <i data-lucide="trending-up" class="w-4 h-4 text-gold/60"></i>
               Scalability Readiness
             </h3>
-            <p class="text-sm leading-relaxed text-muted font-light">The organization demonstrates strong growth potential; however, long-term scalability will depend on strengthening operational infrastructure, governance visibility, and centralized systems integration.</p>
+            <p class="text-sm leading-relaxed text-muted font-light">The organization demonstrates strong long-term growth potential; however, sustainable scale will depend on strengthening operational governance, systems visibility, and execution standardization.”.</p>
           </div>
         </div>
       </section>
 
-      <!-- Weekly Documents -->
+      <!-- SUPPORTING EXECUTIVE DOCUMENTS -->
       <section class="fade-in" style="animation-delay: 0.2s">
         <div class="flex items-center gap-3 mb-5">
           <h2 class="text-sm font-semibold text-gold tracking-wider uppercase">Weekly Documents</h2>
@@ -553,14 +553,14 @@ Current implementation efforts are centered on strengthening governance structur
         if (!response.ok) {
           docEl.classList.add('pending');
           docEl.removeAttribute('href');
-          statusEl.textContent = 'Pending Upload';
+          statusEl.textContent = '';
           statusEl.classList.add('text-red-400/60');
         }
       } catch (e) {
         const docEl = document.getElementById(docs[i]);
         docEl.classList.add('pending');
         docEl.removeAttribute('href');
-        docEl.querySelector('.doc-status').textContent = 'Pending Upload';
+        docEl.querySelector('.doc-status').textContent = '';
       }
     }
   }
