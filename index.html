@@ -419,7 +419,7 @@ Based on the diagnostic findings, the primary organizational constraints identif
     // Load Overview
     async function loadOverview() {
         const overviewEl = document.getElementById('overviewContent');
-        let content = await safeFetch('./public/overview.txt');
+        safeFetch('public/documents/overview.txt')
         content = sanitizeContent(content);
         
         if (!content) {
