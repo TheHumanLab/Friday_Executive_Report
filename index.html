@@ -204,7 +204,7 @@
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                             </div>
                             <div class="flex-1">
                                 <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">Governance Maturity</h3>
@@ -217,7 +217,7 @@
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                             </div>
                             <div class="flex-1">
                                 <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">Systems Standardization</h3>
@@ -279,9 +279,9 @@
                 <div class="gradient-border rounded-2xl p-6 sm:p-8">
                     <p class="text-sm text-[var(--text-muted)] mb-4">Send note directly to COO</p>
                     <form id="directiveForm" class="space-y-4">
-                        <textarea
-                            id="directiveText"
-                            rows="5"
+                        <textarea 
+                            id="directiveText" 
+                            rows="5" 
                             class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] transition"
                             placeholder="Enter directive or feedback..."></textarea>
                         <div class="flex items-center justify-between flex-wrap gap-4">
@@ -321,7 +321,7 @@
                         <div id="uploadList" class="mt-4 space-y-2"></div>
                     </div>
                     <button id="savePublishBtn" class="btn-gold w-full px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
                         Save & Publish
                     </button>
                     <div id="adminStatus" class="text-sm text-center"></div>
@@ -442,4 +442,21 @@ Based on the diagnostic findings, the primary organizational constraints identif
         listEl.innerHTML = items.map(item => `
             <li class="flex items-start gap-3 text-">
                 <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="text-gray-200 leading-relaxed">${item.replace(/^[-•]\s*/, '')}</span>
+            </li>
+        `).join('');
+    }
+    
+    // Documents Modal
+    document.getElementById('documentsBtn').addEventListener('click', async () => {
+        const modal = document.getElementById('documentsModal');
+        const content = document.getElementById('modalContent');
+        const status = document.getElementById('documentsStatus');
+        
+        modal.classList.remove('hidden');
+        content.innerHTML = `
+            <div class="flex items-center justify-center py-8">
+                <svg class="animate-spin h-6 w-6 text-[var(--gold)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
