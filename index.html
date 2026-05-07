@@ -433,7 +433,7 @@ Based on the diagnostic findings, the primary organizational constraints identif
     // Load Next Week Priorities
     async function loadNextWeek() {
         const listEl = document.getElementById('nextWeekList');
-        let content = await safeFetch('/public/next-week.txt');
+       let content = await safeFetch('./public/next-week.txt');
         content = sanitizeContent(content);
         
         let items = content? content.split('\n').filter(l => l.trim()) : DEFAULT_NEXT_WEEK;
