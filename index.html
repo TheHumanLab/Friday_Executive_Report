@@ -28,13 +28,13 @@
         color: var(--text);
     }
 
- .gradient-border {
+.gradient-border {
         position: relative;
         background: linear-gradient(135deg, var(--navy-light), var(--navy-lighter));
         border: 1px solid rgba(212, 175, 55, 0.15);
     }
 
- .gradient-border::before {
+.gradient-border::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -47,28 +47,28 @@
         pointer-events: none;
     }
 
- .card-hover {
+.card-hover {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
- .card-hover:hover {
+.card-hover:hover {
         transform: translateY(-2px);
         box-shadow: 0 20px 40px rgba(212, 175, 55, 0.08);
         border-color: rgba(212, 175, 55, 0.3);
     }
 
- .btn-gold {
+.btn-gold {
         background: linear-gradient(135deg, var(--gold), var(--gold-light));
         color: var(--navy);
         transition: all 0.3s ease;
     }
 
- .btn-gold:hover {
+.btn-gold:hover {
         transform: translateY(-1px);
         box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
     }
 
- .modal-backdrop {
+.modal-backdrop {
         backdrop-filter: blur(8px);
         background: rgba(11, 14, 20, 0.85);
     }
@@ -78,11 +78,11 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
- .fade-in {
+.fade-in {
         animation: fadeIn 0.4s ease-out;
     }
 
- .upload-zone-active {
+.upload-zone-active {
         border-color: var(--gold)!important;
         background: rgba(212, 175, 55, 0.05);
     }
@@ -135,7 +135,6 @@
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">KEY OPERATIONAL OBSERVATIONS</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                    <!-- Card 1 -->
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
@@ -147,8 +146,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Card 2 -->
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
@@ -160,8 +157,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Card 3 -->
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
@@ -173,8 +168,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Card 4 -->
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
@@ -185,9 +178,6 @@
                                 <p class="text-sm text-gray-300 leading-relaxed">Operational coordination remains partially informal across communication channels, limiting traceability, accountability visibility, and standardized execution flow between departments.</p>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Card 5 -->
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
@@ -199,8 +189,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Card 6 -->
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
@@ -211,22 +199,16 @@
                                 <p class="text-sm text-gray-300 leading-relaxed">Operational governance structures are actively transitioning from reactive coordination toward formalized authority mapping, accountability frameworks, and system-governed execution.</p>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Card 7 -->
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                             </div>
                             <div class="flex-1">
                                 <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">Systems Standardization</h3>
                                 <p class="text-sm text-gray-300 leading-relaxed">Current workflows demonstrate opportunities for stronger standardization across approvals, reporting, documentation, and interdepartmental operational procedures.</p>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Card 8 -->
                     <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                         <div class="flex items-start gap-3">
                             <div class="mt-1 text-[var(--gold)]">
@@ -267,12 +249,53 @@
                 </div>
                 <div class="gradient-border rounded-2xl p-6 sm:p-8">
                     <ul id="nextWeekList" class="space-y-4">
-                        <li class="flex items-center gap-2 text-[var(--text-muted)]">
-                            <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Loading...
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="text-gray-200 leading-relaxed">Governance documentation audit across all departments</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="text-gray-200 leading-relaxed">Validation of leave forms, authorization workflows, and approval procedures</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="text-gray-200 leading-relaxed">Departmental template and letterhead standardization</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="text-gray-200 leading-relaxed">Reporting line and operational accountability verification</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="text-gray-200 leading-relaxed">CRM deployment alignment and centralized workflow visibility</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="text-gray-200 leading-relaxed">Odoo process configuration continuation</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="text-gray-200 leading-relaxed">Operational documentation consolidation and archive structuring</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="text-gray-200 leading-relaxed">Executive reporting framework refinement and governance control implementation</span>
                         </li>
                     </ul>
                 </div>
@@ -361,9 +384,9 @@
             </div>
             <div id="modalContent" class="p-6 overflow-y-auto max-h-[calc(80vh-80px)]">
                 <div class="flex items-center justify-center py-8">
-                    <svg class="animate-spin h-6 w-6 text-[var(--gold)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg class="animate-spin h-6 w-6 text-[var(--gold)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                 </div>
             </div>
@@ -388,41 +411,37 @@ Initial governance reviews further indicate that several departments are current
 Based on the diagnostic findings completed this week, the primary operational constraints identified are systemic and infrastructural rather than personnel-related. The organization demonstrates strong workforce stability and growth capability, with current implementation efforts focused on reducing operational fragmentation, improving executive visibility, and building a scalable governance foundation capable of supporting long-term operational expansion.`;
 
     const DEFAULT_NEXT_WEEK = [
-        'Governance documentation audit and standardization review',
-        'Operational forms and approval workflow validation',
-        'CRM deployment alignment and centralized reporting structure',
-        'Workflow visibility implementation across departments',
-        'Odoo process configuration continuation and systems mapping',
-        'Departmental reporting structure refinement'
+        'Governance documentation audit across all departments',
+        'Validation of leave forms, authorization workflows, and approval procedures',
+        'Departmental template and letterhead standardization',
+        'Reporting line and operational accountability verification',
+        'CRM deployment alignment and centralized workflow visibility',
+        'Odoo process configuration continuation',
+        'Operational documentation consolidation and archive structuring',
+        'Executive reporting framework refinement and governance control implementation'
     ];
 
     let isAdmin = false;
     let githubToken = '';
 
-    // Utility: Sanitize HTML to prevent raw GitHub 404 dump
     function sanitizeContent(text) {
         if (!text) return '';
-        // If response looks like HTML error page, return empty
         if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
             return '';
         }
         return text.trim();
     }
 
-    // Fetch with bulletproof error handling
     async function safeFetch(url, options = {}) {
         try {
             const response = await fetch(url, options);
-
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}`);
             }
-
             const contentType = response.headers.get('content-type');
             if (contentType && contentType.includes('text/html')) {
                 throw new Error('Received HTML instead of expected content');
             }
-
             return await response.text();
         } catch (error) {
             console.warn(`Fetch failed for ${url}:`, error.message);
@@ -430,7 +449,6 @@ Based on the diagnostic findings completed this week, the primary operational co
         }
     }
 
-    // Load Overview
     async function loadOverview() {
         const overviewEl = document.getElementById('overviewContent');
         let content = await safeFetch('public/documents/overview.txt');
@@ -444,55 +462,6 @@ Based on the diagnostic findings completed this week, the primary operational co
         document.getElementById('adminOverview').value = content;
     }
 
-    // Load Next Week Priorities
     async function loadNextWeek() {
         const listEl = document.getElementById('nextWeekList');
         let content = await safeFetch('public/documents/next-week.txt');
-        content = sanitizeContent(content);
-
-        let items = content? content.split('\n').filter(l => l.trim()) : DEFAULT_NEXT_WEEK;
-        document.getElementById('adminNextWeek').value = items.join('\n');
-
-        listEl.innerHTML = items.map(item => `
-            <li class="flex items-start gap-3">
-                <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-                <span class="text-gray-200 leading-relaxed">${item.replace(/^[-•✓]\s*/, '')}</span>
-            </li>
-        `).join('');
-    }
-
-    // Load Documents Modal
-    async function loadDocuments() {
-        const modalContent = document.getElementById('modalContent');
-        try {
-            const res = await fetch(`${API_BASE}/public/documents?ref=${BRANCH}`);
-            if (!res.ok) throw new Error('Failed to fetch documents');
-
-            const files = await res.json();
-            const pdfs = files.filter(f => f.name.endsWith('.pdf'));
-
-            if (pdfs.length === 0) {
-                modalContent.innerHTML = '<p class="text-center text-[var(--text-muted)] py-8">No documents available</p>';
-                return;
-            }
-
-            modalContent.innerHTML = `
-                <div class="space-y-3">
-                    ${pdfs.map(pdf => `
-                        <a href="${pdf.download_url}" target="_blank" class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--gold)] flex-shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                            <span class="text-sm text-gray-200 flex-1">${pdf.name}</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--text-muted)]"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        </a>
-                    `).join('')}
-                </div>
-            `;
-        } catch (error) {
-            modalContent.innerHTML = '<p class="text-center text-red-400 py-8">Error loading documents</p>';
-        }
-    }
-
-    // Documents Modal
-    document.getElementById
