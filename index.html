@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRH Tanzania — Friday Executive Report</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-primary: #0a0b0d;
+        --bg-secondary: #111316;
+        --bg-tertiary: #1a1d21;
+        --border-default: #2a2f36;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-tertiary: #64748b;
+        --accent-gold: #D4AF37;
+        --accent-green: #10b981;
+        --accent-amber: #f59e0b;
+        --accent-slate: #64748b;
+    }
+    
+    .light {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-tertiary: #f1f5f9;
+        --border-default: #e2e8f0;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --text-tertiary: #64748b;
+    }
+    
+    * {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .glass {
+        background: rgba(26, 29, 33, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border-default);
+    }
+    
+    .light .glass {
+        background: rgba(255, 255, 255, 0.7);
+    }
+    
+    .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
+        border-color: var(--accent-gold);
+    }
+    
+    .light .card-hover:hover {
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .status-pill {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        text-transform: uppercase;
+    }
+    
+    .status-completed {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--accent-green);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .status-progress {
+        background: rgba(212, 175, 55, 0.15);
+        color: var(--accent-gold);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    
+    .status-active {
+        background: rgba(245, 158, 11, 0.15);
+        color: var(--accent-amber);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    
+    .status-pending {
+        background: rgba(100, 116, 139, 0.15);
+        color: var(--accent-slate);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+    }
+    
+    .sidebar-link {
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    
+    .sidebar-link.active::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 24px;
+        background: var(--accent-gold);
+        border-radius: 0 2px 2px 0;
+    }
+    
+    .sidebar-link.active {
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--accent-gold);
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .accordion-content.open {
+        max-height: 2000px;
+    }
+    
+    .rotate-180 {
+        transform: rotate(180deg);
+    }
+</style>
+</head>
+<body>
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 fixed h-full glass border-r border-[var(--border-default)] z-40">
+        <div class="p-6 border-b border-[var(--border-default)]">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-[var(--accent-gold)] flex items-center justify-center">
+                    <span class="text-black font-bold text-lg">MRH</span>
+                </div>
+                <div>
+                    <div class="font-bold text-sm tracking-wide">MRH TANZANIA</div>
+                    <div class="text-[10px] text-[var(--text-tertiary)] tracking-wider uppercase">Executive Portal</div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+            <a href="#overview" class="sidebar-link active flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]">
+                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                <span>Executive Status</span>
+            </a>
+            <a href="#implementation" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]">
+                <i data-lucide="git-branch" class="w-4 h-4"></i>
+                <span>Implementation</span>
+            </a>
+            <a href="#observations" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>Key Observations</span>
+            </a>
+            <a href="#documents" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]">
+                <i data-lucide="folder-lock" class="w-4 h-4"></i>
+                <span>Document Center</span>
+            </a>
+            <a href="#roadmap" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]">
+                <i data-lucide="milestone" class="w-4 h-4"></i>
+                <span>Next Steps</span>
+            </a>
+            <a href="#executive-note" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]">
+                <i data-lucide="message-square-text" class="w-4 h-4"></i>
+                <span>COO Observation</span>
+            </a>
+            <a href="#metrics" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]">
+                <i data-lucide="activity" class="w-4 h-4"></i>
+                <span>Executive Metrics</span>
+            </a>
+        </nav>
+        
+        <div class="p-4 border-t border-[var(--border-default)]">
+            <button id="themeToggle" class="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm">
+                <i data-lucide="sun" class="w-4 h-4" id="themeIcon"></i>
+                <span id="themeText">Light Mode</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Mobile Sidebar -->
+    <div id="mobileMenu" class="lg:hidden fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+        <aside class="absolute left-0 top-0 h-full w-64 glass border-r border-[var(--border-default)]">
+            <div class="p-6 border-b border-[var(--border-default)] flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-[var(--accent-gold)] flex items-center justify-center">
+                        <span class="text-black font-bold text-lg">MRH</span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm tracking-wide">MRH TANZANIA</div>
+                    </div>
+                <button onclick="toggleMobileMenu()" class="p-2 hover:bg-[var(--bg-tertiary)] rounded-lg">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <nav class="px-4 py-6 space-y-1">
+                <a href="#overview" onclick="toggleMobileMenu()" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)]">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                    <span>Executive Status</span>
+                </a>
+                <a href="#implementation" onclick="toggleMobileMenu()" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)]">
+                    <i data-lucide="git-branch" class="w-4 h-4"></i>
+                    <span>Implementation</span>
+                </a>
+                <a href="#observations" onclick="toggleMobileMenu()" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)]">
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                    <span>Key Observations</span>
+                </a>
+                <a href="#documents" onclick="toggleMobileMenu()" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)]">
+                    <i data-lucide="folder-lock" class="w-4 h-4"></i>
+                    <span>Document Center</span>
+                </a>
+                <a href="#roadmap" onclick="toggleMobileMenu()" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)]">
+                    <i data-lucide="milestone" class="w-4 h-4"></i>
+                    <span>Next Steps</span>
+                </a>
+                <a href="#executive-note" onclick="toggleMobileMenu()" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)]">
+                    <i data-lucide="message-square-text" class="w-4 h-4"></i>
+                    <span>COO Observation</span>
+                </a>
+                <a href="#metrics" onclick="toggleMobileMenu()" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)]">
+                    <i data-lucide="activity" class="w-4 h-4"></i>
+                    <span>Executive Metrics</span>
+                </a>
+            </nav>
+        </aside>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 lg:ml-64">
+        <!-- Header -->
+        <header class="sticky top-0 z-30 glass border-b border-[var(--border-default)]">
+            <div class="px-4 lg:px-8 py-4">
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 hover:bg-[var(--bg-tertiary)] rounded-lg">
+                            <i data-lucide="menu" class="w-5 h-5"></i>
+                        </button>
+                        <div>
+                            <h1 class="text-xl lg:text-2xl font-bold tracking-tight">MRH TANZANIA</h1>
+                            <p class="text-xs lg:text-sm text-[var(--text-secondary)] mt-0.5">FRIDAY EXECUTIVE REPORT</p>
+                        </div>
+                    </div>
+                    <div class="text-right hidden sm:block">
+                        <div class="text-sm font-medium" id="currentDate"></div>
+                        <div class="text-xs text-[var(--text-tertiary)] mt-0.5">Prepared by: KJ | Chief Operating Officer</div>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-[var(--border-default)]">
+                    <p class="text-xs text-[var(--text-tertiary)] uppercase tracking-wider">Operational Governance & Systems Transition Overview</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="px-4 lg:px-8 py-8 space-y-12 max-w-7xl">
+            <!-- Section 1: Executive Status Overview -->
+            <section id="overview" class="scroll-mt-24">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold tracking-tight">Executive Status Overview</h2>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">Current operational governance and systems status</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(16,185,129,0.15)] flex items-center justify-center">
+                                <i data-lucide="search-check" class="w-5 h-5 text-[var(--accent-green)]"></i>
+                            </div>
+                            <span class="status-pill status-completed">Completed</span>
+                        </div>
+                        <h3 class="font-semibold mb-2">Operational Diagnostics</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Comprehensive assessment of current operational frameworks and process inefficiencies completed.</p>
+                    </div>
+                    
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(16,185,129,0.15)] flex items-center justify-center">
+                                <i data-lucide="clipboard-check" class="w-5 h-5 text-[var(--accent-green)]"></i>
+                            </div>
+                            <span class="status-pill status-completed">Completed</span>
+                        </div>
+                        <h3 class="font-semibold mb-2">Systems Assessment</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Full evaluation of existing technology stack and integration requirements documented.</p>
+                    </div>
+                    
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center">
+                                <i data-lucide="database" class="w-5 h-5 text-[var(--accent-gold)]"></i>
+                            </div>
+                            <span class="status-pill status-progress">In Progress</span>
+                        </div>
+                        <h3 class="font-semibold mb-2">Odoo Foundation Setup</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Core ERP infrastructure deployment and initial module configuration underway.</p>
+                    </div>
+                    
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center">
+                                <i data-lucide="workflow" class="w-5 h-5 text-[var(--accent-amber)]"></i>
+                            </div>
+                            <span class="status-pill status-active">Active</span>
+                        </div>
+                        <h3 class="font-semibold mb-2">Workflow Mapping</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Business process documentation and approval chain architecture in development.</p>
+                    </div>
+                    
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-[var(--accent-amber)]"></i>
+                            </div>
+                            <span class="status-pill status-active">Active</span>
+                        </div>
+                        <h3 class="font-semibold mb-2">Governance Structuring</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Corporate governance frameworks and accountability structures being formalized.</p>
+                    </div>
+                    
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(100,116,139,0.15)] flex items-center justify-center">
+                                <i data-lucide="file-check-2" class="w-5 h-5 text-[var(--accent-slate)]"></i>
+                            </div>
+                            <span class="status-pill status-pending">Pending Finalization</span>
+                        </div>
+                        <h3 class="font-semibold mb-2">Approval Architecture</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Multi-tier approval workflows awaiting stakeholder sign-off and implementation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Implementation Status -->
+            <section id="implementation" class="scroll-mt-24">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold tracking-tight">Implementation Status</h2>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">Phased deployment deliverables and milestones</p>
+                </div>
+                <div class="space-y-3">
+                    <!-- Phase 1 -->
+                    <div class="glass rounded-xl overflow-hidden">
+                        <button onclick="toggleAccordion('phase1')" class="w-full px-6 py-4 flex items-center justify-between hover:bg-[var(--bg-tertiary)] transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center text-[var(--accent-gold)] font-semibold text-sm">01</div>
+                                <div class="text-left">
+                                    <h3 class="font-semibold">Phase 1: Structural Foundation</h3>
+                                    <p class="text-xs text-[var(--text-tertiary)] mt-0.5">Core infrastructure and baseline systems</p>
+                                </div>
+                            <div class="flex items-center gap-3">
+                                <span class="status-pill status-progress">In Progress</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--text-tertiary)] transition-transform" id="phase1-icon"></i>
+                            </div>
+                        </button>
+                        <div id="phase1" class="accordion-content">
+                            <div class="px-6 pb-4 border-t border-[var(--border-default)] pt-4 space-y-3">
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-[var(--accent-green)]"></i>
+                                        <span class="text-sm">Infrastructure audit and gap analysis</span>
+                                    </div>
+                                    <span class="status-pill status-completed">Completed</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-[var(--accent-green)]"></i>
+                                        <span class="text-sm">Organizational diagnostic framework</span>
+                                    </div>
+                                    <span class="status-pill status-completed">Completed</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle-dot" class="w-4 h-4 text-[var(--accent-gold)]"></i>
+                                        <span class="text-sm">Data migration architecture</span>
+                                    </div>
+                                    <span class="status-pill status-progress">In Progress</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle-dot" class="w-4 h-4 text-[var(--accent-gold)]"></i>
+                                        <span class="text-sm">Core platform deployment</span>
+                                    </div>
+                                    <span class="status-pill status-progress">In Progress</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="glass rounded-xl overflow-hidden">
+                        <button onclick="toggleAccordion('phase2')" class="w-full px-6 py-4 flex items-center justify-between hover:bg-[var(--bg-tertiary)] transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[var(--accent-amber)] font-semibold text-sm">02</div>
+                                <div class="text-left">
+                                    <h3 class="font-semibold">Phase 2: Governance & Control Architecture</h3>
+                                    <p class="text-xs text-[var(--text-tertiary)] mt-0.5">Policy frameworks and approval hierarchies</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="status-pill status-active">Active Development</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--text-tertiary)] transition-transform" id="phase2-icon"></i>
+                            </div>
+                        </button>
+                        <div id="phase2" class="accordion-content">
+                            <div class="px-6 pb-4 border-t border-[var(--border-default)] pt-4 space-y-3">
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle-dot" class="w-4 h-4 text-[var(--accent-amber)]"></i>
+                                        <span class="text-sm">Approval workflow engineering</span>
+                                    </div>
+                                    <span class="status-pill status-active">Active</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle-dot" class="w-4 h-4 text-[var(--accent-amber)]"></i>
+                                        <span class="text-sm">Role-based access control matrix</span>
+                                    </div>
+                                    <span class="status-pill status-active">Active</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle-dot" class="w-4 h-4 text-[var(--accent-amber)]"></i>
+                                        <span class="text-sm">Corporate governance documentation</span>
+                                    </div>
+                                    <span class="status-pill status-active">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="glass rounded-xl overflow-hidden">
+                        <button onclick="toggleAccordion('phase3')" class="w-full px-6 py-4 flex items-center justify-between hover:bg-[var(--bg-tertiary)] transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center text-[var(--accent-gold)] font-semibold text-sm">03</div>
+                                <div class="text-left">
+                                    <h3 class="font-semibold">Phase 3: Operational Systems & Odoo Integration</h3>
+                                    <p class="text-xs text-[var(--text-tertiary)] mt-0.5">ERP deployment and process automation</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="status-pill status-progress">Initial Deployment</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--text-tertiary)] transition-transform" id="phase3-icon"></i>
+                            </div>
+                        </button>
+                        <div id="phase3" class="accordion-content">
+                            <div class="px-6 pb-4 border-t border-[var(--border-default)] pt-4 space-y-3">
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle-dot" class="w-4 h-4 text-[var(--accent-gold)]"></i>
+                                        <span class="text-sm">Odoo module configuration</span>
+                                    </div>
+                                    <span class="status-pill status-progress">In Progress</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle-dot" class="w-4 h-4 text-[var(--accent-gold)]"></i>
+                                        <span class="text-sm">Third-party system integration</span>
+                                    </div>
+                                    <span class="status-pill status-progress">In Progress</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle" class="w-4 h-4 text-[var(--accent-slate)]"></i>
+                                        <span class="text-sm">User acceptance testing protocol</span>
+                                    </div>
+                                    <span class="status-pill status-pending">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="glass rounded-xl overflow-hidden">
+                        <button onclick="toggleAccordion('phase4')" class="w-full px-6 py-4 flex items-center justify-between hover:bg-[var(--bg-tertiary)] transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-lg bg-[rgba(100,116,139,0.15)] flex items-center justify-center text-[var(--accent-slate)] font-semibold text-sm">04</div>
+                                <div class="text-left">
+                                    <h3 class="font-semibold">Phase 4: Scalability & Executive Visibility</h3>
+                                    <p class="text-xs text-[var(--text-tertiary)] mt-0.5">Advanced analytics and reporting infrastructure</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="status-pill status-pending">Future Phase</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--text-tertiary)] transition-transform" id="phase4-icon"></i>
+                            </div>
+                        </button>
+                        <div id="phase4" class="accordion-content">
+                            <div class="px-6 pb-4 border-t border-[var(--border-default)] pt-4 space-y-3">
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle" class="w-4 h-4 text-[var(--accent-slate)]"></i>
+                                        <span class="text-sm">Executive dashboard development</span>
+                                    </div>
+                                    <span class="status-pill status-pending">Pending</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle" class="w-4 h-4 text-[var(--accent-slate)]"></i>
+                                        <span class="text-sm">Predictive analytics implementation</span>
+                                    </div>
+                                    <span class="status-pill status-pending">Pending</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="circle" class="w-4 h-4 text-[var(--accent-slate)]"></i>
+                                        <span class="text-sm">Scalability stress testing</span>
+                                    </div>
+                                    <span class="status-pill status-pending">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Key Operational Observations -->
+            <section id="observations" class="scroll-mt-24">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold tracking-tight">Key Operational Observations</h2>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">Critical insights from operational diagnostics</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="glass rounded-xl p-6">
+                        <div class="w-10 h-10 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center mb-4">
+                            <i data-lucide="binoculars" class="w-5 h-5 text-[var(--accent-gold)]"></i>
+                        </div>
+                        <h3 class="font-semibold mb-3">Operational Visibility</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed italic">"Current manual tracking systems create significant blind spots in real-time operational performance monitoring across departments."</p>
+                    </div>
+                    
+                    <div class="glass rounded-xl p-6">
+                        <div class="w-10 h-10 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center mb-4">
+                            <i data-lucide="git-merge" class="w-5 h-5 text-[var(--accent-gold)]"></i>
+                        </div>
+                        <h3 class="font-semibold mb-3">Approval Dependency</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed italic">"Multi-tier approval processes currently bottleneck at executive level, causing 48-72 hour delays in critical business decisions."</p>
+                    </div>
+                    
+                    <div class="glass rounded-xl p-6">
+                        <div class="w-10 h-10 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center mb-4">
+                            <i data-lucide="users" class="w-5 h-5 text-[var(--accent-gold)]"></i>
+                        </div>
+                        <h3 class="font-semibold mb-3">CRM Requirement</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed italic">"Fragmented client data across spreadsheets and email threads limits cross-selling opportunities and client retention visibility."</p>
+                    </div>
+                    
+                    <div class="glass rounded-xl p-6">
+                        <div class="w-10 h-10 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center mb-4">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-[var(--accent-gold)]"></i>
+                        </div>
+                        <h3 class="font-semibold mb-3">Communication Structure</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed italic">"Ad-hoc WhatsApp and email chains result in critical information loss and accountability gaps during project handoffs."</p>
+                    </div>
+                    
+                    <div class="glass rounded-xl p-6 md:col-span-2 lg:col-span-1">
+                        <div class="w-10 h-10 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center mb-4">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-[var(--accent-gold)]"></i>
+                        </div>
+                        <h3 class="font-semibold mb-3">Organizational Stability</h3>
+                        <p class="text-sm text-[var(--text-secondary)] leading-relaxed italic">"Talent retention and institutional knowledge remain strong despite process gaps, providing solid foundation for systems transition."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Document Center -->
+            <section id="documents" class="scroll-mt-24">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold tracking-tight">Document Center</h2>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">Executive intelligence repository</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="file-text" class="w-6 h-6 text-[var(--accent-gold)]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold mb-1">Executive Action Summary</h3>
+                                <p class="text-xs text-[var(--text-tertiary)]">Updated October 2025 • PDF</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="handleDocumentAction('open', 'Executive Action Summary')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Open
+                            </button>
+                            <button onclick="handleDocumentAction('download', 'Executive Action Summary')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </button>
+                            <button onclick="handleDocumentAction('upload', 'Executive Action Summary')" class="px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors">
+                                <i data-lucide="upload" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="file-search" class="w-6 h-6 text-[var(--accent-gold)]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold mb-1">Operational Diagnostic Report</h3>
+                                <p class="text-xs text-[var(--text-tertiary)]">Updated September 2025 • PDF</p>
+                            </div>
+                        <div class="flex gap-2">
+                            <button onclick="handleDocumentAction('open', 'Operational Diagnostic Report')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Open
+                            </button>
+                            <button onclick="handleDocumentAction('download', 'Operational Diagnostic Report')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </button>
+                            <button onclick="handleDocumentAction('upload', 'Operational Diagnostic Report')" class="px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors">
+                                <i data-lucide="upload" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="network" class="w-6 h-6 text-[var(--accent-gold)]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold mb-1">Corporate Structure Hierarchy</h3>
+                                <p class="text-xs text-[var(--text-tertiary)]">Updated October 2025 • XLSX</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="handleDocumentAction('open', 'Corporate Structure Hierarchy')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Open
+                            </button>
+                            <button onclick="handleDocumentAction('download', 'Corporate Structure Hierarchy')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </button>
+                            <button onclick="handleDocumentAction('upload', 'Corporate Structure Hierarchy')" class="px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors">
+                                <i data-lucide="upload" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-hover glass rounded-xl p-6">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="layers" class="w-6 h-6 text-[var(--accent-gold)]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold mb-1">Operational Structure Overview</h3>
+                                <p class="text-xs text-[var(--text-tertiary)]">Updated October 2025 • PDF</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="handleDocumentAction('open', 'Operational Structure Overview')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Open
+                            </button>
+                            <button onclick="handleDocumentAction('download', 'Operational Structure Overview')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </button>
+                            <button onclick="handleDocumentAction('upload', 'Operational Structure Overview')" class="px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors">
+                                <i data-lucide="upload" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-hover glass rounded-xl p-6 md:col-span-2">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map" class="w-6 h-6 text-[var(--accent-gold)]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold mb-1">Operational Master Map</h3>
+                                <p class="text-xs text-[var(--text-tertiary)]">Updated October 2025 • PDF</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="handleDocumentAction('open', 'Operational Master Map')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Open
+                            </button>
+                            <button onclick="handleDocumentAction('download', 'Operational Master Map')" class="flex-1 px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors text-sm font-medium flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Download
+                            </button>
+                            <button onclick="handleDocumentAction('upload', 'Operational Master Map')" class="px-4 py-2 rounded-lg bg-[var(--bg-tertiary)] hover:bg-[var(--border-default)] transition-colors">
+                                <i data-lucide="upload" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Next Steps -->
+            <section id="roadmap" class="scroll-mt-24">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold tracking-tight">Next Steps</h2>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">Strategic roadmap and implementation timeline</p>
+                </div>
+                <div class="glass rounded-xl p-8">
+                    <div class="space-y-8">
+                        <div class="relative pl-8 pb-8 border-l-2 border-[var(--accent-gold)]">
+                            <div class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[var(--accent-gold)] border-4 border-[var(--bg-primary)]"></div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="status-pill status-active">Current Phase</span>
+                            </div>
+                            <h3 class="font-semibold mb-2">Governance & Workflow Mapping</h3>
+                            <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Finalize approval hierarchies, document business processes, and establish role-based access protocols. Target completion: Q4 2025.</p>
+                        </div>
+
+                        <div class="relative pl-8 pb-8 border-l-2 border-[var(--border-default)]">
+                            <div class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[var(--bg-tertiary)] border-4 border-[var(--bg-primary)]"></div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="status-pill status-pending">Upcoming</span>
+                            </div>
+                            <h3 class="font-semibold mb-2">Odoo Core Module Deployment</h3>
+                            <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Deploy CRM, Sales, Project, and Accounting modules with custom workflow automation. User training and pilot testing. Target: Q1 2026.</p>
+                        </div>
+
+                        <div class="relative pl-8 pb-8 border-l-2 border-[var(--border-default)]">
+                            <div class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[var(--bg-tertiary)] border-4 border-[var(--bg-primary)]"></div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="status-pill status-pending">Scheduled</span>
+                            </div>
+                            <h3 class="font-semibold mb-2">System Integration & Data Migration</h3>
+                            <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Legacy system data migration, third-party API integrations, and workflow automation testing across all departments. Target: Q2 2026.</p>
+                        </div>
+
+                        <div class="relative pl-8 pb-8 border-l-2 border-[var(--border-default)]">
+                            <div class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[var(--bg-tertiary)] border-4 border-[var(--bg-primary)]"></div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="status-pill status-pending">Planned</span>
+                            </div>
+                            <h3 class="font-semibold mb-2">Executive Visibility & Analytics</h3>
+                            <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Deploy real-time dashboards, KPI tracking, and predictive analytics for executive decision-making. Target: Q2 2026.</p>
+                        </div>
+
+                        <div class="relative pl-8">
+                            <div class="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[var(--bg-tertiary)] border-4 border-[var(--bg-primary)]"></div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="status-pill status-pending">Future</span>
+                            </div>
+                            <h3 class="font-semibold mb-2">Operational Scalability & Systems Maturity</h3>
+                            <p class="text-sm text-[var(--text-secondary)] leading-relaxed">Full operational autonomy, advanced automation, continuous process optimization, and organizational scaling infrastructure. Target: Q3-Q4 2026.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: COO Executive Observation -->
+            <section id="executive-note" class="scroll-mt-24">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold tracking-tight">COO Executive Observation</h2>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">Strategic commentary on operational transition</p>
+                </div>
+                <div class="glass rounded-xl p-8 border-l-4 border-[var(--accent-gold)]">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-[rgba(212,175,55,0.15)] flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="quote" class="w-6 h-6 text-[var(--accent-gold)]"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold">Chief Operating Officer</div>
+                            <div class="text-xs text-[var(--text-tertiary)] mt-0.5">Executive Review • October 2025</div>
+                        </div>
+                    <p class="text-base leading-relaxed text-[var(--text-secondary)] italic">
+                        "We are transitioning from reactive coordination toward structured systems governance. The foundation work completed this quarter has exposed critical operational dependencies while simultaneously revealing the organization's inherent resilience. Our immediate priority is establishing digital infrastructure that reduces executive approval bottlenecks without sacrificing accountability. The path forward requires disciplined adherence to governance frameworks, methodical system deployment, and unwavering commitment to process excellence. This transition will be challenging but represents the definitive shift from personality-driven operations to institutional-grade scalability."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 7: Executive Metrics -->
+            <section id="metrics" class="scroll-mt-24">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold tracking-tight">Executive Metrics</h2>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">High-level organizational health indicators</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(16,185,129,0.15)] flex items-center justify-center">
+                                <i data-lucide="shield" class="w-5 h-5 text-[var(--accent-green)]"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-[var(--accent-green)]">Stable</span>
+                        </div>
+                        <h3 class="font-semibold mb-1">Operational Stability</h3>
+                        <p class="text-xs text-[var(--text-tertiary)]">Core business operations continuity</p>
+                    </div>
+
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center">
+                                <i data-lucide="refresh-cw" class="w-5 h-5 text-[var(--accent-amber)]"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-[var(--accent-amber)]">Active</span>
+                        </div>
+                        <h3 class="font-semibold mb-1">Systems Transition</h3>
+                        <p class="text-xs text-[var(--text-tertiary)]">Digital transformation progress</p>
+                    </div>
+
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(212,175,55,0.15)] flex items-center justify-center">
+                                <i data-lucide="git-branch" class="w-5 h-5 text-[var(--accent-gold)]"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-[var(--accent-gold)]">In Progress</span>
+                        </div>
+                        <h3 class="font-semibold mb-1">Governance Structuring</h3>
+                        <p class="text-xs text-[var(--text-tertiary)]">Policy and framework development</p>
+                    </div>
+
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center">
+                                <i data-lucide="eye-off" class="w-5 h-5 text-[var(--accent-amber)]"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-[var(--accent-amber)]">Partial</span>
+                        </div>
+                        <h3 class="font-semibold mb-1">Workflow Visibility</h3>
+                        <p class="text-xs text-[var(--text-tertiary)]">Process transparency across org</p>
+                    </div>
+
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(239,68,68,0.15)] flex items-center justify-center">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-red-500">High</span>
+                        </div>
+                        <h3 class="font-semibold mb-1">Executive Dependency</h3>
+                        <p class="text-xs text-[var(--text-tertiary)]">Decision bottleneck risk level</p>
+                    </div>
+
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center">
+                                <i data-lucide="trending-up" class="w-5 h-5 text-[var(--accent-amber)]"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-[var(--accent-amber)]">Moderate</span>
+                        </div>
+                        <h3 class="font-semibold mb-1">Organizational Scalability</h3>
+                        <p class="text-xs text-[var(--text-tertiary)]">Growth infrastructure readiness</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="pt-8 pb-12 border-t border-[var(--border-default)]">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p class="text-xs text-[var(--text-tertiary)] tracking-wider uppercase">Confidential Internal Executive Dashboard — MRH</p>
+                    <div class="flex items-center gap-4 text-xs text-[var(--text-tertiary)]">
+                        <span>Version 1.0</span>
+                        <span class="w-1 h-1 rounded-full bg-[var(--text-tertiary)]"></span>
+                        <span>October 2025</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Set dynamic date
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+    
+    // Theme toggle
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    
+    function initTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            html.classList.add('light');
+            html.classList.remove('dark');
+            themeIcon.setAttribute('data-lucide', 'moon');
+            themeText.textContent = 'Dark Mode';
+        } else {
+            html.classList.add('dark');
+            html.classList.remove('light');
+            themeIcon.setAttribute('data-lucide', 'sun');
+            themeText.textContent = 'Light Mode';
+        }
+        lucide.createIcons();
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            html.classList.add('light');
+            localStorage.setItem('theme', 'light');
+            themeIcon.setAttribute('data-lucide', 'moon');
+            themeText.textContent = 'Dark Mode';
+        } else {
+            html.classList.remove('light');
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.setAttribute('data-lucide', 'sun');
+            themeText.textContent = 'Light Mode';
+        }
+        lucide.createIcons();
+    });
+    
+    initTheme();
+    
+    // Accordion toggle
+    function toggleAccordion(id) {
+        const content = document.getElementById(id);
+        const icon = document.getElementById(id + '-icon');
+        content.classList.toggle('open');
+        icon.classList.toggle('rotate-180');
+    }
+    
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+    
+    // Document actions placeholder
+    function handleDocumentAction(action, docName) {
+        const messages = {
+            'open': `Opening ${docName}...`,
+            'download': `Downloading ${docName}...`,
+            'upload': `Upload new version of ${docName}...`
+        };
+        alert(messages[action] + '\n\nNote: Connect to document management system for live functionality.');
+    }
+    
+    // Smooth scroll and active sidebar highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.sidebar-link');
+    
+    function highlightNavigation() {
+        let scrollPosition = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', highlightNavigation);
+    
+    // Auto-expand first phase
+    document.addEventListener('DOMContentLoaded', () => {
+        toggleAccordion('phase1');
+    });
+</script>
+</body>
+</html>
