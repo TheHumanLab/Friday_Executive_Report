@@ -101,9 +101,8 @@
                         <p class="text-sm text-[var(--text-muted)] mt-1">Week 19 • May 9, 2026</p>
                     </div>
                     <div class="text-left sm:text-right">
-                        <p class="text-sm font-medium">Prepared by: KJ</p>
-                        <p class="text-xs text-[var(--text-muted)]">Chief Operating Officer</p>
-                        <p class="text-xs text-[var(--gold)] mt-1 italic">"Confidential Executive Brief"</p>
+                        <p class="text-sm font-medium">Prepared by KJ | COO</p>
+                        <p class="text-xs text-[var(--text-muted)]">Confidential Executive Brief</p>
                     </div>
                 </div>
             </div>
@@ -242,7 +241,7 @@
                 </div>
             </section>
 
-            <!-- Weekly Documents -->
+            <!-- Executive Documents -->
             <section class="fade-in">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
@@ -288,7 +287,7 @@
                         <div class="flex items-center justify-between flex-wrap gap-4">
                             <button type="submit" class="btn-gold px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                                Send to KJ
+                                Submit Directive
                             </button>
                             <div id="directiveStatus" class="text-sm"></div>
                         </div>
@@ -370,7 +369,13 @@
     const API_BASE = `https://api.github.com/repos/${REPO}/contents`;
     const ADMIN_PIN = 'MRH2026';
     
-    const DEFAULT_OVERVIEW = `This week focused on the completion of the initial operational diagnostics, structural mapping, and governance assessment across the MRH Tanzania operation. Early findings indicate that the organization remains operationally stable and growth-capable, however increasing operational complexity is beginning to outpace current workflow visibility, approval architecture, and systems standardization. Primary implementation focus areas identified include: approval dependency, CRM centralization, communication governance, workflow visibility, operational accountability, and scalable systems integration. Current implementation efforts are centered on strengthening governance structures, reducing operational fragmentation, and establishing centralized operational visibility ahead of phased Odoo deployment expansion and broader systems standardization initiatives. Based on the diagnostic findings, the primary operational constraints identified are systemic and infrastructural rather than personnel-related.`;
+    const DEFAULT_OVERVIEW = `This week focused on the completion of the initial operational diagnostics, structural mapping, and governance assessment across the MRH Tanzania operation. Early findings indicate that the organization remains operationally stable, growth-capable, and culturally aligned; however, increasing operational complexity is beginning to outpace current workflow visibility, approval architecture, communication governance, and systems standardization.
+
+The diagnostic review identified several recurring operational pressure points across departments, most notably approval dependency, fragmented communication channels, manual workflow coordination, limited CRM visibility, and inconsistent operational tracking structures. Current operational execution remains heavily reliant on spreadsheets, verbal coordination, WhatsApp communication, and centralized approval pathways, creating workflow latency, reduced accountability traceability, and increasing executive congestion in routine operational processes.
+
+Primary implementation focus areas identified this week include governance structuring, workflow visibility, CRM centralization, delegated authority mapping, communication standardization, operational accountability, and phased Odoo systems integration. Current implementation efforts are centered on strengthening operational governance, reducing infrastructure fragmentation, formalizing authority frameworks, and establishing centralized operational visibility ahead of broader systems deployment and long-term scalability initiatives.
+
+Based on the diagnostic findings, the primary organizational constraints identified are systemic and infrastructural rather than personnel-related. Workforce engagement, departmental cooperation, and organizational stability remain healthy overall, positioning MRH Tanzania favorably for structured operational stabilization and scalable systems maturity through disciplined implementation and governance-led execution.`;
     
     const DEFAULT_NEXT_WEEK = [
         'Approval framework refinement',
