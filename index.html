@@ -278,29 +278,32 @@
                 </div>
             </section>
 
-            <!-- Chairman Directives -->
-            <section class="fade-in">
-                <div class="flex items-center gap-3 mb-5">
-                    <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
-                    <h2 class="text-lg sm:text-xl font-semibold tracking-wide">CHAIRMAN DIRECTIVES</h2>
-                </div>
-                <div class="gradient-border rounded-2xl p-6 sm:p-8">
-                    <p class="text-sm text-[var(--text-muted)] mb-4">Send note directly to COO</p>
-                    <form id="directiveForm" class="space-y-4">
-                        <textarea
-                            id="directiveText"
-                            rows="5"
-                            class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] transition"
-                            placeholder="Enter directive or feedback..."></textarea>
-                        <div class="flex items-center justify-between flex-wrap gap-4">
-                            <button type="submit" class="btn-gold px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                                Submit Directive
-                            </button>
-                            <div id="directiveStatus" class="text-sm"></div>
-                        </div>
-                    </form>
-                </div>
+           <!-- Chairman Directives -->
+<section class="fade-in">
+    <div class="flex items-center gap-3 mb-5">
+        <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
+        <h2 class="text-lg sm:text-xl font-semibold tracking-wide">CHAIRMAN DIRECTIVES</h2>
+    </div>
+    <div class="gradient-border rounded-2xl p-6 sm:p-8">
+        <p class="text-sm text-[var(--text-muted)] mb-4">Send note directly to COO</p>
+        <form id="directiveForm" action="https://formspree.io/f/xdabloba" method="POST" class="space-y-4">
+            <textarea 
+                id="directiveText" 
+                name="directive"
+                rows="5" 
+                required
+                class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] transition"
+                placeholder="Enter directive or feedback..."></textarea>
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <button type="submit" class="btn-gold px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    Submit Directive
+                </button>
+                <div id="directiveStatus" class="text-sm"></div>
+            </div>
+        </form>
+    </div>
+</section>
             </section>
 
             <!-- Admin Panel -->
