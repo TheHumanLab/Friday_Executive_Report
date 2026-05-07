@@ -1,707 +1,968 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MRH Tanzania — Friday Executive Report</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0B1220;
-    --charcoal: #151922;
-    --panel: #1A1F2C;
-    --border: #2A3240;
-    --gold: #D4AF37;
-    --text-primary: #FFFFFF;
-    --text-secondary: #A0AEC0;
-    --text-muted: #6B7280;
-  }
-  .light {
-    --navy: #F7F8FA;
-    --charcoal: #FFFFFF;
-    --panel: #FFFFFF;
-    --border: #E5E7EB;
-    --gold: #B89527;
-    --text-primary: #0B1220;
-    --text-secondary: #4B5563;
-    --text-muted: #6B7280;
-  }
-  * {
-    font-family: 'Inter', sans-serif;
-  }
-  body {
-    background: var(--navy);
-    color: var(--text-primary);
-  }
-  .glass-panel {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    transition: all 0.25s ease;
-  }
-  .glass-panel:hover {
-    border-color: rgba(212, 175, 55, 0.3);
-  }
-  .gold-accent {
-    color: var(--gold);
-  }
-  .gold-border {
-    border-color: var(--gold);
-  }
-  .status-active {
-    background: rgba(16, 185, 129, 0.15);
-    color: #10B981;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-  }
-  .status-progress {
-    background: rgba(212, 175, 55, 0.15);
-    color: var(--gold);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-  }
-  .status-partial {
-    background: rgba(245, 158, 11, 0.15);
-    color: #F59E0B;
-    border: 1px solid rgba(245, 158, 11, 0.3);
-  }
-  .status-high {
-    background: rgba(239, 68, 68, 0.15);
-    color: #EF4444;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-  }
-  .fade-in {
-    animation: fadeIn 0.4s ease-out;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .nav-item.active {
-    background: rgba(212, 175, 55, 0.1);
-    border-left: 2px solid var(--gold);
-    color: var(--gold);
-  }
-  .phase-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease-out;
-  }
-  .phase-content.expanded {
-    max-height: 1000px;
-  }
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--charcoal);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-muted);
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRH Tanzania — Friday Executive Report</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1426;
+      --navy-light: #111B2E;
+      --charcoal: #1A2332;
+      --charcoal-light: #222C3C;
+      --gold: #D4AF37;
+      --gold-light: #E5C15C;
+      --gold-dark: #B8941F;
+      --slate: #64748B;
+      --slate-light: #94A3B8;
+      --white: #F8FAFC;
+      --success: #16A34A;
+      --warning: #EA580C;
+      --info: #0EA5E9;
+    }
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--navy) 0%, #0F1B2E 100%);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .glass-effect {
+      background: rgba(26, 35, 50, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.08);
+    }
+
+    .card-premium {
+      background: linear-gradient(135deg, rgba(26, 35, 50, 0.8) 0%, rgba(17, 27, 46, 0.9) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.05) inset;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-premium:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.15) inset;
+      transform: translateY(-2px);
+    }
+
+    .gold-gradient {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sidebar-link {
+      position: relative;
+      transition: all 0.3s ease;
+      border-left: 2px solid transparent;
+    }
+
+    .sidebar-link:hover {
+      background: rgba(212, 175, 55, 0.05);
+      border-left-color: var(--gold);
+      padding-left: 1.25rem;
+    }
+
+    .sidebar-link.active {
+      background: rgba(212, 175, 55, 0.08);
+      border-left-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .phase-header {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .phase-header:hover {
+      background: rgba(212, 175, 55, 0.03);
+    }
+
+    .phase-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .phase-content.active {
+      max-height: 2500px;
+    }
+
+    .chevron {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .chevron.active {
+      transform: rotate(180deg);
+    }
+
+    .metric-badge {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .repo-item {
+      transition: all 0.3s ease;
+      border-left: 2px solid transparent;
+    }
+
+    .repo-item:hover {
+      background: rgba(212, 175, 55, 0.04);
+      border-left-color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    .progress-bar {
+      background: linear-gradient(90deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+    }
+
+    .divider-gold {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.3) 50%, transparent 100%);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--navy);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.3);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(212, 175, 55, 0.5);
+    }
+  </style>
 </head>
-<body class="antialiased">
-<div class="flex min-h-screen">
-  <!-- Sidebar -->
-  <aside id="sidebar" class="fixed lg:sticky top-0 left-0 h-screen w-64 glass-panel border-r z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
-    <div class="flex flex-col h-full p-6">
-      <div class="mb-10">
+<body class="min-h-screen">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-72 glass-effect border-r border-white/5 z-50">
+      <div class="p-8 border-b border-white/5">
         <div class="flex items-center gap-3 mb-2">
-          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#D4AF37] to-[#B89527] flex items-center justify-center">
-            <span class="text-white font-bold text-lg">M</span>
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--gold)] to-[var(--gold-dark)] flex items-center justify-center">
+            <i class="fas fa-chart-line text-[var(--navy)] text-lg"></i>
           </div>
           <div>
-            <h1 class="text-lg font-semibold tracking-tight">MRH TANZANIA</h1>
-            <p class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">Executive Report</p>
+            <h1 class="text-xl font-bold tracking-tight">MRH Tanzania</h1>
+            <p class="text-xs text-slate-400 font-medium">Executive Intelligence</p>
           </div>
         </div>
       </div>
 
-      <nav class="flex-1 space-y-1">
-        <a href="#overview" class="nav-item active flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all">
-          <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-          <span>Overview</span>
-        </a>
-        <a href="#implementation" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all">
-          <i data-lucide="git-merge" class="w-4 h-4"></i>
-          <span>Implementation</span>
-        </a>
-        <a href="#documents" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all">
-          <i data-lucide="folder" class="w-4 h-4"></i>
-          <span>Documents</span>
-        </a>
-        <a href="#observations" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all">
-          <i data-lucide="eye" class="w-4 h-4"></i>
-          <span>Observations</span>
-        </a>
-        <a href="#metrics" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all">
-          <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
-          <span>Metrics</span>
-        </a>
+      <nav class="flex-1 overflow-y-auto py-6">
+        <div class="px-6 mb-6">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Overview</p>
+          <a href="#dashboard" class="sidebar-link active flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium">
+            <i class="fas fa-gauge-high w-4"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="px-6 mb-6">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Analysis</p>
+          <a href="#observations" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300">
+            <i class="fas fa-clipboard-list w-4"></i>
+            <span>Key Observations</span>
+          </a>
+          <a href="#phases" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300">
+            <i class="fas fa-diagram-project w-4"></i>
+            <span>Strategic Phases</span>
+          </a>
+          <a href="#metrics" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300">
+            <i class="fas fa-chart-pie w-4"></i>
+            <span>Executive Metrics</span>
+          </a>
+        </div>
+
+        <div class="px-6">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Resources</p>
+          <a href="#repository" class="sidebar-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300">
+            <i class="fas fa-folder-open w-4"></i>
+            <span>Document Repository</span>
+          </a>
+        </div>
       </nav>
 
-      <div class="pt-6 border-t border-[var(--border)]">
-        <button id="themeToggle" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] w-full transition-all">
-          <i data-lucide="sun" class="w-4 h-4"></i>
-          <span>Toggle Theme</span>
-        </button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Main Content -->
-  <div class="flex-1 lg:ml-0">
-    <!-- Mobile Header -->
-    <header class="lg:hidden sticky top-0 z-30 glass-panel border-b px-4 py-3 flex items-center justify-between">
-      <button id="mobileMenuBtn" class="p-2">
-        <i data-lucide="menu" class="w-5 h-5"></i>
-      </button>
-      <span class="text-sm font-semibold">MRH TANZANIA</span>
-      <button id="mobileThemeToggle" class="p-2">
-        <i data-lucide="sun" class="w-5 h-5"></i>
-      </button>
-    </header>
-
-    <!-- Top Header -->
-    <div class="glass-panel border-b px-6 lg:px-10 py-6 lg:py-8">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-          <div>
-            <h1 class="text-2xl lg:text-3xl font-semibold tracking-tight mb-1">MRH TANZANIA</h1>
-            <h2 class="text-lg lg:text-xl font-light text-[var(--text-secondary)] mb-3">FRIDAY EXECUTIVE REPORT</h2>
-            <p class="text-sm text-[var(--text-muted)]">Operational Governance & Systems Transition Overview</p>
-            <div class="mt-4 flex items-center gap-2">
-              <div class="h-px w-12 bg-[var(--gold)] opacity-50"></div>
-              <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider">Confidential Executive Dashboard</p>
-            </div>
-          <div class="text-left lg:text-right">
-            <p class="text-sm font-medium" id="currentDate"></p>
-            <p class="text-xs text-[var(--text-secondary)] mt-1">Prepared by: KJ | Chief Operating Officer</p>
-          </div>
+      <div class="p-6 border-t border-white/5">
+        <div class="flex items-center gap-3 text-xs text-slate-400">
+          <i class="fas fa-calendar"></i>
+          <span>Updated: Friday, Oct 06 2025</span>
         </div>
       </div>
-    </div>
+    </aside>
 
-    <!-- Content Area -->
-    <main class="px-6 lg:px-10 py-8 lg:py-10 max-w-7xl mx-auto space-y-10">
-      
-      <!-- Section 1: Executive Status Overview -->
-      <section id="overview" class="fade-in space-y-6">
-        <div>
-          <h3 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-4">Executive Status Overview</h3>
-          
-          <!-- Current Focus Card -->
-          <div class="glass-panel rounded-xl p-6 mb-6 border-l-2 gold-border">
-            <div class="flex items-start justify-between">
-              <div>
-                <p class="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)] mb-2">Current Focus</p>
-                <h4 class="text-xl font-semibold gold-accent">Governance & Workflow Architecture</h4>
-              </div>
-              <i data-lucide="target" class="w-6 h-6 gold-accent"></i>
-            </div>
-          </div>
-
-          <!-- Status Cards Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="glass-panel rounded-xl p-5 hover:border-[rgba(212,175,55,0.3)] transition-all">
-              <div class="flex items-start justify-between mb-3">
-                <div class="p-2 rounded-lg bg-[rgba(212,175,55,0.1)]">
-                  <i data-lucide="database" class="w-5 h-5 gold-accent"></i>
-                </div>
-                <span class="status-active text-xs px-2.5 py-1 rounded-full font-medium">Active</span>
-              </div>
-              <h5 class="font-medium mb-1">ERP Deployment</h5>
-              <p class="text-sm text-[var(--text-secondary)]">Core ERP deployment underway</p>
-            </div>
-
-            <div class="glass-panel rounded-xl p-5 hover:border-[rgba(212,175,55,0.3)] transition-all">
-              <div class="flex items-start justify-between mb-3">
-                <div class="p-2 rounded-lg bg-[rgba(212,175,55,0.1)]">
-                  <i data-lucide="shield-check" class="w-5 h-5 gold-accent"></i>
-                </div>
-                <span class="status-progress text-xs px-2.5 py-1 rounded-full font-medium">In Progress</span>
-              </div>
-              <h5 class="font-medium mb-1">Governance Structures</h5>
-              <p class="text-sm text-[var(--text-secondary)]">Governance structures being formalized</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 2: Implementation Status -->
-      <section id="implementation" class="fade-in space-y-6">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">Implementation Status</h3>
-        
-        <div class="space-y-3">
-          <!-- Phase 1 -->
-          <div class="glass-panel rounded-xl overflow-hidden">
-            <button class="phase-header w-full flex items-center justify-between p-5 text-left" data-phase="1">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-1">
-                  <span class="text-sm font-semibold">Phase 1 — Structural Foundation</span>
-                  <span class="status-active text-xs px-2 py-0.5 rounded-full font-medium">Complete</span>
-                </div>
-                <p class="text-xs text-[var(--text-secondary)]">Core infrastructure & operational mapping</p>
-              </div>
-              <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--text-muted)] transition-transform"></i>
-            </button>
-            <div class="phase-content px-5">
-              <div class="pb-5 pt-2 space-y-2">
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
-                  <span>Organizational structure documented</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
-                  <span>Core process inventory completed</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
-                  <span>Role definitions established</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phase 2 -->
-          <div class="glass-panel rounded-xl overflow-hidden">
-            <button class="phase-header w-full flex items-center justify-between p-5 text-left" data-phase="2">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-1">
-                  <span class="text-sm font-semibold">Phase 2 — Governance & Control Architecture</span>
-                  <span class="status-progress text-xs px-2 py-0.5 rounded-full font-medium">Active</span>
-                </div>
-                <p class="text-xs text-[var(--text-secondary)]">Authority frameworks & operational governance</p>
-              </div>
-              <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--text-muted)] transition-transform"></i>
-            </button>
-            <div class="phase-content px-5">
-              <div class="pb-5 pt-2 space-y-2">
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
-                  <span>Approval matrix drafted</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="loader" class="w-4 h-4 gold-accent animate-spin"></i>
-                  <span>Policy documentation in progress</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="circle" class="w-4 h-4 text-[var(--text-muted)]"></i>
-                  <span>Control framework validation pending</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="circle" class="w-4 h-4 text-[var(--text-muted)]"></i>
-                  <span>Delegation protocols definition</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phase 3 -->
-          <div class="glass-panel rounded-xl overflow-hidden">
-            <button class="phase-header w-full flex items-center justify-between p-5 text-left" data-phase="3">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-1">
-                  <span class="text-sm font-semibold">Phase 3 — Operational Systems & Odoo Integration</span>
-                  <span class="status-progress text-xs px-2 py-0.5 rounded-full font-medium">Active</span>
-                </div>
-                <p class="text-xs text-[var(--text-secondary)]">ERP deployment & workflow visibility</p>
-              </div>
-              <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--text-muted)] transition-transform"></i>
-            </button>
-            <div class="phase-content px-5">
-              <div class="pb-5 pt-2 space-y-2">
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
-                  <span>Odoo core modules configuration</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="loader" class="w-4 h-4 gold-accent animate-spin"></i>
-                  <span>Data migration in progress</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="circle" class="w-4 h-4 text-[var(--text-muted)]"></i>
-                  <span>User acceptance testing</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phase 4 -->
-          <div class="glass-panel rounded-xl overflow-hidden">
-            <button class="phase-header w-full flex items-center justify-between p-5 text-left" data-phase="4">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-1">
-                  <span class="text-sm font-semibold">Phase 4 — Scalability & Executive Visibility</span>
-                  <span class="status-partial text-xs px-2 py-0.5 rounded-full font-medium">Planned</span>
-                </div>
-                <p class="text-xs text-[var(--text-secondary)]">Operational intelligence & reporting maturity</p>
-              </div>
-              <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--text-muted)] transition-transform"></i>
-            </button>
-            <div class="phase-content px-5">
-              <div class="pb-5 pt-2 space-y-2">
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="circle" class="w-4 h-4 text-[var(--text-muted)]"></i>
-                  <span>Executive dashboard development</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="circle" class="w-4 h-4 text-[var(--text-muted)]"></i>
-                  <span>KPI standardization</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                  <i data-lucide="circle" class="w-4 h-4 text-[var(--text-muted)]"></i>
-                  <span>Audit trail implementation</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- New Section: Executive Document Repository -->
-      <section id="documents" class="fade-in space-y-6">
-        <div>
-          <h3 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-1">Executive Documents</h3>
-          <p class="text-sm text-[var(--text-secondary)] mb-4">Operational governance documentation & strategic assessments</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Document Card Component -->
-          <div class="glass-panel rounded-xl p-5 hover:border-[rgba(212,175,55,0.3)] transition-all group">
-            <div class="flex items-start gap-3 mb-4">
-              <div class="p-2 rounded-lg bg-[rgba(212,175,55,0.1)]">
-                <i data-lucide="file-text" class="w-5 h-5 gold-accent"></i>
-              </div>
-              <div class="flex-1 min-w-0">
-                <h5 class="font-medium text-sm mb-1 truncate">Executive Action Summary</h5>
-                <p class="text-xs text-[var(--text-muted)]">Strategy Document</p>
-              </div>
-            </div>
-            <div class="flex gap-2">
-              <a href="/documents/executive-action-summary.pdf" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                Open
-              </a>
-              <a href="/documents/executive-action-summary.pdf" download class="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="download" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="glass-panel rounded-xl p-5 hover:border-[rgba(212,175,55,0.3)] transition-all group">
-            <div class="flex items-start gap-3 mb-4">
-              <div class="p-2 rounded-lg bg-[rgba(212,175,55,0.1)]">
-                <i data-lucide="file-text" class="w-5 h-5 gold-accent"></i>
-              </div>
-              <div class="flex-1 min-w-0">
-                <h5 class="font-medium text-sm mb-1 truncate">Operational Diagnostic Report</h5>
-                <p class="text-xs text-[var(--text-muted)]">Assessment</p>
-              </div>
-            </div>
-            <div class="flex gap-2">
-              <a href="/documents/operational-diagnostic-report.pdf" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                Open
-              </a>
-              <a href="/documents/operational-diagnostic-report.pdf" download class="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="download" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="glass-panel rounded-xl p-5 hover:border-[rgba(212,175,55,0.3)] transition-all group">
-            <div class="flex items-start gap-3 mb-4">
-              <div class="p-2 rounded-lg bg-[rgba(212,175,55,0.1)]">
-                <i data-lucide="network" class="w-5 h-5 gold-accent"></i>
-              </div>
-              <div class="flex-1 min-w-0">
-                <h5 class="font-medium text-sm mb-1 truncate">Corporate Structure Hierarchy</h5>
-                <p class="text-xs text-[var(--text-muted)]">Organizational Chart</p>
-              </div>
-            </div>
-            <div class="flex gap-2">
-              <a href="/documents/corporate-structure-hierarchy.pdf" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                Open
-              </a>
-              <a href="/documents/corporate-structure-hierarchy.pdf" download class="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="download" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="glass-panel rounded-xl p-5 hover:border-[rgba(212,175,55,0.3)] transition-all group">
-            <div class="flex items-start gap-3 mb-4">
-              <div class="p-2 rounded-lg bg-[rgba(212,175,55,0.1)]">
-                <i data-lucide="layers" class="w-5 h-5 gold-accent"></i>
-              </div>
-              <div class="flex-1 min-w-0">
-                <h5 class="font-medium text-sm mb-1 truncate">Operational Structure Overview</h5>
-                <p class="text-xs text-[var(--text-muted)]">Framework</p>
-              </div>
-            </div>
-            <div class="flex gap-2">
-              <a href="/documents/operational-structure-overview.pdf" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                Open
-              </a>
-              <a href="/documents/operational-structure-overview.pdf" download class="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="download" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="glass-panel rounded-xl p-5 hover:border-[rgba(212,175,55,0.3)] transition-all group">
-            <div class="flex items-start gap-3 mb-4">
-              <div class="p-2 rounded-lg bg-[rgba(212,175,55,0.1)]">
-                <i data-lucide="map" class="w-5 h-5 gold-accent"></i>
-              </div>
-              <div class="flex-1 min-w-0">
-                <h5 class="font-medium text-sm mb-1 truncate">Operational Master Map</h5>
-                <p class="text-xs text-[var(--text-muted)]">Process Documentation</p>
-              </div>
-            <div class="flex gap-2">
-              <a href="/documents/operational-master-map.pdf" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                Open
-              </a>
-              <a href="/documents/operational-master-map.pdf" download class="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border)] text-xs font-medium hover:bg-[rgba(212,175,55,0.15)] hover:text-[var(--gold)] transition-all">
-                <i data-lucide="download" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section: Key Operational Observations -->
-      <section id="observations" class="fade-in space-y-6">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">Key Operational Observations</h3>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="glass-panel rounded-xl p-5">
-            <div class="flex items-start gap-3">
-              <i data-lucide="eye-off" class="w-5 h-5 text-[var(--text-muted)] mt-0.5"></i>
-              <div>
-                <h5 class="font-medium text-sm mb-1">Operational Visibility</h5>
-                <p class="text-sm text-[var(--text-secondary)]">Systems visibility remains fragmented.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-panel rounded-xl p-5">
-            <div class="flex items-start gap-3">
-              <i data-lucide="git-branch" class="w-5 h-5 text-[var(--text-muted)] mt-0.5"></i>
-              <div>
-                <h5 class="font-medium text-sm mb-1">Approval Dependency</h5>
-                <p class="text-sm text-[var(--text-secondary)]">Operational movement remains centralized.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-panel rounded-xl p-5">
-            <div class="flex items-start gap-3">
-              <i data-lucide="users" class="w-5 h-5 text-[var(--text-muted)] mt-0.5"></i>
-              <div>
-                <h5 class="font-medium text-sm mb-1">CRM Requirement</h5>
-                <p class="text-sm text-[var(--text-secondary)]">Customer management requires centralization.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-panel rounded-xl p-5">
-            <div class="flex items-start gap-3">
-              <i data-lucide="message-circle" class="w-5 h-5 text-[var(--text-muted)] mt-0.5"></i>
-              <div>
-                <h5 class="font-medium text-sm mb-1">Communication Structure</h5>
-                <p class="text-sm text-[var(--text-secondary)]">Operational coordination remains partially informal.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-panel rounded-xl p-5 md:col-span-2">
-            <div class="flex items-start gap-3">
-              <i data-lucide="shield" class="w-5 h-5 text-[var(--text-muted)] mt-0.5"></i>
-              <div>
-                <h5 class="font-medium text-sm mb-1">Organizational Stability</h5>
-                <p class="text-sm text-[var(--text-secondary)]">Workforce engagement remains stable.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section: COO Executive Observation -->
-      <section class="fade-in">
-        <div class="glass-panel rounded-xl p-6 border-l-2 gold-border">
-          <div class="flex items-start gap-4">
-            <div class="p-2 rounded-lg bg-[rgba(212,175,55,0.1)]">
-              <i data-lucide="quote" class="w-5 h-5 gold-accent"></i>
+    <!-- Main Content -->
+    <main class="flex-1 lg:ml-72">
+      <!-- Top Bar Mobile -->
+      <div class="lg:hidden sticky top-0 z-40 glass-effect border-b border-white/5 px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-[var(--gold)] to-[var(--gold-dark)] flex items-center justify-center">
+              <i class="fas fa-chart-line text-[var(--navy)]"></i>
             </div>
             <div>
-              <p class="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)] mb-2">COO Executive Observation</p>
-              <p class="text-base leading-relaxed text-[var(--text-secondary)]">MRH Tanzania is transitioning toward structured operational governance, centralized workflow visibility, and scalable systems infrastructure through phased implementation and organizational standardization.</p>
+              <h1 class="text-lg font-bold">MRH Tanzania</h1>
+              <p class="text-xs text-slate-400">Friday Executive Report</p>
             </div>
           </div>
+          <button id="mobileMenuBtn" class="w-10 h-10 rounded-lg glass-effect flex items-center justify-center text-slate-300">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
-      </section>
+      </div>
 
-      <!-- Section: Executive Metrics -->
-      <section id="metrics" class="fade-in space-y-6">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">Executive Metrics</h3>
-        
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div class="glass-panel rounded-xl p-5 text-center">
-            <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">Operational Stability</p>
-            <div class="flex items-center justify-center gap-2 mb-2">
-              <div class="w-2 h-2 rounded-full bg-green-500"></div>
-              <p class="text-base font-semibold">Stable</p>
+      <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+        <!-- Header -->
+        <header id="dashboard" class="mb-10 lg:mb-14 animate-fade-in-up">
+          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <span class="metric-badge px-3 py-1 rounded-full text-xs font-semibold text-[var(--gold)] uppercase tracking-wider">
+                  Confidential
+                </span>
+                <span class="text-xs text-slate-500">Week 40 • 2025</span>
+              </div>
+              <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">
+                Friday Executive <span class="gold-gradient">Report</span>
+              </h1>
+              <p class="text-lg text-slate-400 max-w-2xl font-light">
+                Operational transformation insights, strategic progress, and governance evolution across MRH Tanzania operations.
+              </p>
+            </div>
+            <div class="glass-effect rounded-xl p-5 lg:min-w-[280px]">
+              <div class="flex items-center gap-2 text-xs text-slate-400 mb-2">
+                <i class="fas fa-signal"></i>
+                <span class="uppercase tracking-wider font-semibold">Report Status</span>
+              </div>
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-sm font-semibold text-[var(--gold-light)]">Active Review</span>
+              </div>
+              <div class="divider-gold mb-3"></div>
+              <p class="text-xs text-slate-500">Phase 2.4 Implementation</p>
             </div>
           </div>
 
-          <div class="glass-panel rounded-xl p-5 text-center">
-            <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">Systems Transition</p>
-            <div class="flex items-center justify-center gap-2 mb-2">
-              <div class="w-2 h-2 rounded-full bg-[var(--gold)]"></div>
-              <p class="text-base font-semibold">Active</p>
+          <!-- CURRENT FOCUS Card -->
+          <div class="card-premium rounded-2xl p-6 lg:p-8">
+            <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--gold)] to-[var(--gold-dark)] flex items-center justify-center shadow-lg shadow-[var(--gold)]/20">
+                  <i class="fas fa-bullseye text-[var(--navy)] text-xl"></i>
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4">
+                  <h2 class="text-sm font-bold uppercase tracking-widest text-[var(--gold)]">Current Focus</h2>
+                  <div class="h-px flex-1 bg-gradient-to-r from-[var(--gold)]/30 to-transparent"></div>
+                </div>
+                <h3 class="text-2xl lg:text-3xl font-bold mb-4 tracking-tight">
+                  Systems Integration & Governance Formalization
+                </h3>
+                <p class="text-slate-300 leading-relaxed mb-6 text-base">
+                  Transitioning from departmental visibility gaps toward centralized operational infrastructure. Current initiatives focus on CRM deployment, approval workflow standardization, and governance framework implementation to eliminate operational latency and establish scalable accountability structures.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                  <div class="flex items-center gap-2 text-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[var(--info)]/10 border border-[var(--info)]/20 flex items-center justify-center">
+                      <i class="fas fa-database text-[var(--info)] text-xs"></i>
+                    </div>
+                    <span class="text-slate-300 font-medium">CRM Rollout</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[var(--success)]/10 border border-[var(--success)]/20 flex items-center justify-center">
+                      <i class="fas fa-sitemap text-[var(--success)] text-xs"></i>
+                    </div>
+                    <span class="text-slate-300 font-medium">Authority Mapping</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[var(--warning)]/10 border border-[var(--warning)]/20 flex items-center justify-center">
+                      <i class="fas fa-file-signature text-[var(--warning)] text-xs"></i>
+                    </div>
+                    <span class="text-slate-300 font-medium">SOP Standardization</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Key Operational Observations -->
+        <section id="observations" class="mb-12 lg:mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-1 h-8 bg-gradient-to-b from-[var(--gold)] to-transparent"></div>
+            <div>
+              <h2 class="text-2xl lg:text-3xl font-bold tracking-tight">Key Operational Observations</h2>
+              <p class="text-sm text-slate-400 mt-1">Critical infrastructure and governance insights from operational assessment</p>
             </div>
           </div>
 
-          <div class="glass-panel rounded-xl p-5 text-center">
-            <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">Governance Structuring</p>
-            <div class="flex items-center justify-center gap-2 mb-2">
-              <div class="w-2 h-2 rounded-full bg-[var(--gold)]"></div>
-              <p class="text-base font-semibold">In Progress</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+            <!-- Observation 1 -->
+            <div class="card-premium rounded-xl p-7 lg:p-8">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--info)]/10 border border-[var(--info)]/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-eye text-[var(--info)]"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-3 tracking-tight">Operational Visibility</h3>
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Current operational visibility remains fragmented across departments due to reliance on isolated spreadsheets, manual reporting, and non-centralized workflow tracking. Centralized systems visibility will significantly improve coordination, accountability, and reporting continuity.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Observation 2 -->
+            <div class="card-premium rounded-xl p-7 lg:p-8">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--warning)]/10 border border-[var(--warning)]/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-user-shield text-[var(--warning)]"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-3 tracking-tight">Approval Dependency</h3>
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Operational movement remains partially dependent on centralized approvals and informal escalation pathways, creating workflow latency and unnecessary leadership congestion in routine operational processes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Observation 3 -->
+            <div class="card-premium rounded-xl p-7 lg:p-8">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--success)]/10 border border-[var(--success)]/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-users text-[var(--success)]"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-3 tracking-tight">CRM Requirement</h3>
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Customer engagement and sales coordination currently rely on fragmented tracking methods. Centralized CRM deployment will improve customer visibility, follow-up continuity, pipeline tracking, and commercial scalability.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Observation 4 -->
+            <div class="card-premium rounded-xl p-7 lg:p-8">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-comments text-[var(--gold)]"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-3 tracking-tight">Communication Structure</h3>
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Operational coordination remains partially informal across communication channels, limiting traceability, accountability visibility, and standardized execution flow between departments.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Observation 5 -->
+            <div class="card-premium rounded-xl p-7 lg:p-8">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--success)]/10 border border-[var(--success)]/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-shield-halved text-[var(--success)]"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-3 tracking-tight">Organizational Stability</h3>
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Workforce engagement and departmental cooperation remain stable. The primary operational challenges identified are systemic and infrastructural rather than personnel-related.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Observation 6 -->
+            <div class="card-premium rounded-xl p-7 lg:p-8">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--info)]/10 border border-[var(--info)]/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-scale-balanced text-[var(--info)]"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-3 tracking-tight">Governance Maturity</h3>
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Operational governance structures are actively transitioning from reactive coordination toward formalized authority mapping, accountability frameworks, and system-governed execution.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Observation 7 -->
+            <div class="card-premium rounded-xl p-7 lg:p-8">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--warning)]/10 border border-[var(--warning)]/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-clipboard-check text-[var(--warning)]"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-3 tracking-tight">Systems Standardization</h3>
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    Current workflows demonstrate opportunities for stronger standardization across approvals, reporting, documentation, and interdepartment operational procedures.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Observation 8 -->
+            <div class="card-premium rounded-xl p-7 lg:p-8">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-arrow-trend-up text-[var(--gold)]"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold mb-3 tracking-tight">Scalability Readiness</h3>
+                  <p class="text-slate-400 leading-relaxed text-sm">
+                    The organization demonstrates strong growth potential; however, long-term scalability will depend on strengthening operational infrastructure, governance visibility, and centralized systems integration.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COO Observation -->
+        <section class="mb-12 lg:mb-16">
+          <div class="card-premium rounded-2xl p-6 lg:p-10 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[var(--gold)]/5 to-transparent rounded-full blur-3xl"></div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--gold)] to-[var(--gold-dark)] flex items-center justify-center">
+                  <i class="fas fa-quote-left text-[var(--navy)]"></i>
+                </div>
+                <h3 class="text-sm font-bold uppercase tracking-widest text-[var(--gold)]">COO Strategic Observation</h3>
+              </div>
+              <blockquote class="text-xl lg:text-2xl font-light leading-relaxed text-slate-200 mb-6 italic">
+                "The transformation trajectory is clear: we're moving from relationship-based coordination to system-governed execution. The infrastructure investments we make in Q4 will determine our operational velocity for the next 24 months."
+              </blockquote>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-slate-600 to-slate-700"></div>
+                <div>
+                  <p class="font-semibold text-sm">Chief Operations Officer</p>
+                  <p class="text-xs text-slate-500">MRH Tanzania</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Strategic Phases -->
+        <section id="phases" class="mb-12 lg:mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-1 h-8 bg-gradient-to-b from-[var(--gold)] to-transparent"></div>
+            <div>
+              <h2 class="text-2xl lg:text-3xl font-bold tracking-tight">Strategic Implementation Phases</h2>
+              <p class="text-sm text-slate-400 mt-1">Governance transformation roadmap and execution milestones</p>
             </div>
           </div>
 
-          <div class="glass-panel rounded-xl p-5 text-center">
-            <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">Workflow Visibility</p>
-            <div class="flex items-center justify-center gap-2 mb-2">
-              <div class="w-2 h-2 rounded-full bg-amber-500"></div>
-              <p class="text-base font-semibold">Partial</p>
+          <div class="space-y-4">
+            <!-- Phase 1 -->
+            <div class="card-premium rounded-xl overflow-hidden">
+              <div class="phase-header flex items-center justify-between p-6" data-phase="1">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+                    <i class="fas fa-check text-green-500"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold mb-1">Phase 1: Operational Assessment</h3>
+                    <p class="text-sm text-slate-400">System mapping, stakeholder alignment, and baseline establishment</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="metric-badge px-3 py-1 rounded-full text-xs font-semibold text-green-400">Complete</span>
+                  <i class="fas fa-chevron-down chevron text-slate-500"></i>
+                </div>
+              <div class="phase-content" id="phase-1">
+                <div class="px-6 pb-6 pt-2">
+                  <div class="divider-gold mb-6"></div>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle-check text-green-500 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Current-State Process Mapping</p>
+                        <p class="text-xs text-slate-400">Comprehensive workflow documentation across 8 departments</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle-check text-green-500 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Infrastructure Audit</p>
+                        <p class="text-xs text-slate-400">Technology stack and data architecture review completed</p>
+                      </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle-check text-green-500 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Stakeholder Interviews</p>
+                        <p class="text-xs text-slate-400">42 leadership and operational team engagements</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle-check text-green-500 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Gap Analysis Delivery</p>
+                        <p class="text-xs text-slate-400">Critical infrastructure deficits identified and prioritized</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="card-premium rounded-xl overflow-hidden border-2 border-[var(--gold)]/30">
+              <div class="phase-header flex items-center justify-between p-6" data-phase="2">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/30 flex items-center justify-center">
+                    <i class="fas fa-spinner text-[var(--gold)] animate-spin"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold mb-1">Phase 2: Systems Integration</h3>
+                    <p class="text-sm text-slate-400">CRM deployment, workflow automation, and governance frameworks</p>
+                  </div>
+                <div class="flex items-center gap-4">
+                  <span class="metric-badge px-3 py-1 rounded-full text-xs font-semibold text-[var(--gold)]">In Progress • 68%</span>
+                  <i class="fas fa-chevron-down chevron text-slate-500"></i>
+                </div>
+              <div class="phase-content active" id="phase-2">
+                <div class="px-6 pb-6 pt-2">
+                  <div class="divider-gold mb-6"></div>
+                  <div class="mb-6">
+                    <div class="flex items-center justify-between text-sm mb-2">
+                      <span class="text-slate-400">Overall Progress</span>
+                      <span class="font-semibold text-[var(--gold)]">68% Complete</span>
+                    </div>
+                    <div class="w-full h-2 bg-[var(--charcoal)] rounded-full overflow-hidden">
+                      <div class="progress-bar h-full rounded-full" style="width: 68%"></div>
+                    </div>
+                  </div>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle-notch text-[var(--gold)] text-xs mt-1.5 animate-spin"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">CRM Platform Configuration</p>
+                        <p class="text-xs text-slate-400">Sales pipeline and customer database implementation</p>
+                      </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle-notch text-[var(--gold)] text-xs mt-1.5 animate-spin"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Approval Workflow Engine</p>
+                        <p class="text-xs text-slate-400">Automated routing and escalation logic deployment</p>
+                      </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle-check text-green-500 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Authority Matrix Finalized</p>
+                        <p class="text-xs text-slate-400">Decision rights and accountability mapping complete</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle text-slate-600 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">SOP Standardization</p>
+                        <p class="text-xs text-slate-400">Documentation templates and training protocols</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="card-premium rounded-xl overflow-hidden">
+              <div class="phase-header flex items-center justify-between p-6" data-phase="3">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-lg bg-slate-700/30 border border-slate-600/30 flex items-center justify-center">
+                    <i class="fas fa-clock text-slate-500"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold mb-1">Phase 3: Operational Maturity</h3>
+                    <p class="text-sm text-slate-400">Performance monitoring, continuous improvement, and scale optimization</p>
+                  </div>
+                <div class="flex items-center gap-4">
+                  <span class="metric-badge px-3 py-1 rounded-full text-xs font-semibold text-slate-500">Scheduled Q1 2026</span>
+                  <i class="fas fa-chevron-down chevron text-slate-500"></i>
+                </div>
+              </div>
+              <div class="phase-content" id="phase-3">
+                <div class="px-6 pb-6 pt-2">
+                  <div class="divider-gold mb-6"></div>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle text-slate-600 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">KPI Dashboard Deployment</p>
+                        <p class="text-xs text-slate-400">Real-time operational metrics and executive scorecards</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle text-slate-600 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Continuous Improvement Loops</p>
+                        <p class="text-xs text-slate-400">Feedback systems and iterative optimization protocols</p>
+                      </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle text-slate-600 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Scale Readiness Assessment</p>
+                        <p class="text-xs text-slate-400">Infrastructure capacity and growth scenario planning</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-circle text-slate-600 text-xs mt-1.5"></i>
+                      <div>
+                        <p class="font-semibold text-sm mb-1">Governance Certification</p>
+                        <p class="text-xs text-slate-400">External audit and compliance framework validation</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Executive Metrics -->
+        <section id="metrics" class="mb-12 lg:mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-1 h-8 bg-gradient-to-b from-[var(--gold)] to-transparent"></div>
+            <div>
+              <h2 class="text-2xl lg:text-3xl font-bold tracking-tight">Executive Metrics</h2>
+              <p class="text-sm text-slate-400 mt-1">Operational health indicators and transformation KPIs</p>
             </div>
           </div>
 
-          <div class="glass-panel rounded-xl p-5 text-center">
-            <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">Executive Dependency</p>
-            <div class="flex items-center justify-center gap-2 mb-2">
-              <div class="w-2 h-2 rounded-full bg-red-500"></div>
-              <p class="text-base font-semibold">High</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="card-premium rounded-xl p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-lg bg-[var(--info)]/10 border border-[var(--info)]/20 flex items-center justify-center">
+                  <i class="fas fa-diagram-project text-[var(--info)]"></i>
+                </div>
+                <span class="text-xs text-green-400 font-semibold flex items-center gap-1">
+                  <i class="fas fa-arrow-up text-[10px]"></i> 12%
+                </span>
+              </div>
+              <h3 class="text-3xl font-bold mb-1">8/12</h3>
+              <p class="text-sm text-slate-400 mb-3">Process Standardization</p>
+              <div class="w-full h-1.5 bg-[var(--charcoal)] rounded-full overflow-hidden">
+                <div class="h-full bg-[var(--info)] rounded-full" style="width: 67%"></div>
+              </div>
+            </div>
+
+            <div class="card-premium rounded-xl p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center">
+                  <i class="fas fa-sitemap text-[var(--gold)]"></i>
+                </div>
+                <span class="text-xs text-green-400 font-semibold flex items-center gap-1">
+                  <i class="fas fa-check text-[10px]"></i> On Track
+                </span>
+              </div>
+              <h3 class="text-3xl font-bold mb-1">68%</h3>
+              <p class="text-sm text-slate-400 mb-3">Authority Mapping</p>
+              <div class="w-full h-1.5 bg-[var(--charcoal)] rounded-full overflow-hidden">
+                <div class="progress-bar h-full rounded-full" style="width: 68%"></div>
+              </div>
+            </div>
+
+            <div class="card-premium rounded-xl p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-lg bg-[var(--success)]/10 border border-[var(--success)]/20 flex items-center justify-center">
+                  <i class="fas fa-database text-[var(--success)]"></i>
+                </div>
+                <span class="text-xs text-[var(--gold)] font-semibold flex items-center gap-1">
+                  <i class="fas fa-clock text-[10px]"></i> Active
+                </span>
+              </div>
+              <h3 class="text-3xl font-bold mb-1">Phase 2</h3>
+              <p class="text-sm text-slate-400 mb-3">CRM Implementation</p>
+              <div class="w-full h-1.5 bg-[var(--charcoal)] rounded-full overflow-hidden">
+                <div class="h-full bg-[var(--success)] rounded-full" style="width: 72%"></div>
+              </div>
+            </div>
+
+            <div class="card-premium rounded-xl p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 rounded-lg bg-[var(--warning)]/10 border border-[var(--warning)]/20 flex items-center justify-center">
+                  <i class="fas fa-shield-halved text-[var(--warning)]"></i>
+                </div>
+                <span class="text-xs text-green-400 font-semibold flex items-center gap-1">
+                  <i class="fas fa-arrow-up text-[10px]"></i> Stable
+                </span>
+              </div>
+              <h3 class="text-3xl font-bold mb-1">94%</h3>
+              <p class="text-sm text-slate-400 mb-3">Team Engagement</p>
+              <div class="w-full h-1.5 bg-[var(--charcoal)] rounded-full overflow-hidden">
+                <div class="h-full bg-[var(--warning)] rounded-full" style="width: 94%"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Executive Document Repository -->
+        <section id="repository" class="mb-12">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-1 h-8 bg-gradient-to-b from-[var(--gold)] to-transparent"></div>
+            <div>
+              <h2 class="text-2xl lg:text-3xl font-bold tracking-tight">Executive Document Repository</h2>
+              <p class="text-sm text-slate-400 mt-1">Strategic frameworks, governance documentation, and operational playbooks</p>
             </div>
           </div>
 
-          <div class="glass-panel rounded-xl p-5 text-center">
-            <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">Organizational Scalability</p>
-            <div class="flex items-center justify-center gap-2 mb-2">
-              <div class="w-2 h-2 rounded-full bg-amber-500"></div>
-              <p class="text-base font-semibold">Moderate</p>
+          <div class="card-premium rounded-2xl p-6 lg:p-8">
+            <div class="space-y-2">
+              <a href="#" class="repo-item flex items-center justify-between p-4 rounded-lg group">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--info)]/10 border border-[var(--info)]/20 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-file-pdf text-[var(--info)]"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-sm mb-0.5 group-hover:text-[var(--gold)] transition-colors">Operational Assessment Report Q4 2025</h4>
+                    <p class="text-xs text-slate-500">Comprehensive infrastructure and process analysis • 2.4 MB</p>
+                  </div>
+                <i class="fas fa-download text-slate-600 group-hover:text-[var(--gold)] transition-colors"></i>
+              </a>
+
+              <div class="divider-gold"></div>
+
+              <a href="#" class="repo-item flex items-center justify-between p-4 rounded-lg group">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--success)]/10 border border-[var(--success)]/20 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-file-csv text-[var(--success)]"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-sm mb-0.5 group-hover:text-[var(--gold)] transition-colors">Authority Matrix & Decision Rights Framework</h4>
+                    <p class="text-xs text-slate-500">RACI documentation and escalation protocols • 1.1 MB</p>
+                  </div>
+                </div>
+                <i class="fas fa-download text-slate-600 group-hover:text-[var(--gold)] transition-colors"></i>
+              </a>
+
+              <div class="divider-gold"></div>
+
+              <a href="#" class="repo-item flex items-center justify-between p-4 rounded-lg group">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-file-powerpoint text-[var(--gold)]"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-sm mb-0.5 group-hover:text-[var(--gold)] transition-colors">CRM Implementation Playbook</h4>
+                    <p class="text-xs text-slate-500">Configuration standards and rollout methodology • 8.3 MB</p>
+                  </div>
+                </div>
+                <i class="fas fa-download text-slate-600 group-hover:text-[var(--gold)] transition-colors"></i>
+              </a>
+
+              <div class="divider-gold"></div>
+
+              <a href="#" class="repo-item flex items-center justify-between p-4 rounded-lg group">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--warning)]/10 border border-[var(--warning)]/20 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-file-word text-[var(--warning)]"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-sm mb-0.5 group-hover:text-[var(--gold)] transition-colors">SOP Standardization Templates</h4>
+                    <p class="text-xs text-slate-500">Process documentation framework and style guide • 3.7 MB</p>
+                  </div>
+                </div>
+                <i class="fas fa-download text-slate-600 group-hover:text-[var(--gold)] transition-colors"></i>
+              </a>
+
+              <div class="divider-gold"></div>
+
+              <a href="#" class="repo-item flex items-center justify-between p-4 rounded-lg group">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-slate-600/10 border border-slate-600/20 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-file-excel text-slate-400"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-sm mb-0.5 group-hover:text-[var(--gold)] transition-colors">Governance Transformation Roadmap</h4>
+                    <p class="text-xs text-slate-500">24-month implementation timeline and milestone tracker • 1.8 MB</p>
+                  </div>
+                </div>
+                <i class="fas fa-download text-slate-600 group-hover:text-[var(--gold)] transition-colors"></i>
+              </a>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Footer -->
-      <footer class="pt-8 pb-4 border-t border-[var(--border)] text-center">
-        <p class="text-xs text-[var(--text-muted)]">MRH Tanzania — Confidential Executive Dashboard © 2025</p>
-      </footer>
+        <!-- Footer -->
+        <footer class="pt-8 pb-6 border-t border-white/5">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-slate-500">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-lock text-xs"></i>
+              <span>Confidential Executive Material • MRH Tanzania Internal Use Only</span>
+            </div>
+            <div class="flex items-center gap-6">
+              <a href="#" class="hover:text-[var(--gold)] transition-colors">Privacy</a>
+              <a href="#" class="hover:text-[var(--gold)] transition-colors">Terms</a>
+              <span>© 2025 MRH Tanzania</span>
+            </div>
+          </div>
+        </footer>
+      </div>
     </main>
   </div>
-</div>
 
-<script>
-  // Initialize Lucide icons
-  lucide.createIcons();
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden hidden">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="mobileMenuOverlay"></div>
+    <div class="absolute right-0 top-0 h-full w-80 glass-effect border-l border-white/10 p-6 overflow-y-auto">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-lg font-bold">Navigation</h2>
+        <button id="closeMobileMenu" class="w-9 h-9 rounded-lg bg-[var(--charcoal)] flex items-center justify-center">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="space-y-2">
+        <a href="#dashboard" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium glass-effect">
+          <i class="fas fa-gauge-high w-4"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#observations" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
+          <i class="fas fa-clipboard-list w-4"></i>
+          <span>Key Observations</span>
+        </a>
+        <a href="#phases" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
+          <i class="fas fa-diagram-project w-4"></i>
+          <span>Strategic Phases</span>
+        </a>
+        <a href="#metrics" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
+          <i class="fas fa-chart-pie w-4"></i>
+          <span>Executive Metrics</span>
+        </a>
+        <a href="#repository" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
+          <i class="fas fa-folder-open w-4"></i>
+          <span>Document Repository</span>
+        </a>
+      </nav>
+    </div>
+  </div>
 
-  // Dynamic date
-  const dateEl = document.getElementById('currentDate');
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  dateEl.textContent = new Date().toLocaleDateString('en-US', options);
-
-  // Theme toggle
-  const themeToggle = document.getElementById('themeToggle');
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-  
-  function toggleTheme() {
-    document.documentElement.classList.toggle('light');
-    const isLight = document.documentElement.classList.contains('light');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    lucide.createIcons();
-  }
-  
-  themeToggle?.addEventListener('click', toggleTheme);
-  mobileThemeToggle?.addEventListener('click', toggleTheme);
-
-  // Load saved theme
-  if (localStorage.getItem('theme') === 'light') {
-    document.documentElement.classList.add('light');
-  }
-
-  // Mobile menu
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const sidebar = document.getElementById('sidebar');
-  
-  mobileMenuBtn?.addEventListener('click', () => {
-    sidebar.classList.toggle('-translate-x-full');
-  });
-
-  // Close sidebar on nav click mobile
-  document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', () => {
-      if (window.innerWidth < 1024) {
-        sidebar.classList.add('-translate-x-full');
-      }
-    });
-  });
-
-  // Phase accordion
-  document.querySelectorAll('.phase-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const content = header.nextElementSibling;
-      const icon = header.querySelector('[data-lucide="chevron-down"]');
-      
-      content.classList.toggle('expanded');
-      icon.style.transform = content.classList.contains('expanded') ? 'rotate(180deg)' : 'rotate(0deg)';
-    });
-  });
-
-  // Smooth scroll and active nav
-  const navItems = document.querySelectorAll('.nav-item');
-  const sections = document.querySelectorAll('section[id]');
-
-  function updateActiveNav() {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (window.scrollY >= sectionTop) {
-        current = section.getAttribute('id');
-      }
+  <script>
+    // Phase Accordion
+    document.querySelectorAll('.phase-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const phaseNum = header.getAttribute('data-phase');
+        const content = document.getElementById(`phase-${phaseNum}`);
+        const chevron = header.querySelector('.chevron');
+        
+        // Close other phases
+        document.querySelectorAll('.phase-content').forEach(p => {
+          if (p.id !== `phase-${phaseNum}`) {
+            p.classList.remove('active');
+          }
+        });
+        document.querySelectorAll('.chevron').forEach(c => {
+          if (c !== chevron) {
+            c.classList.remove('active');
+          }
+        });
+        
+        // Toggle current phase
+        content.classList.toggle('active');
+        chevron.classList.toggle('active');
+      });
     });
 
-    navItems.forEach(item => {
-      item.classList.remove('active');
-      if (item.getAttribute('href') === `#${current}`) {
-        item.classList.add('active');
-      }
-    });
-  }
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
-  window.addEventListener('scroll', updateActiveNav);
-  
-  navItems.forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
     });
-  });
-</script>
+
+    closeMobileMenu?.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+
+    mobileMenuOverlay?.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Active Sidebar Link
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinks = document.querySelectorAll('.sidebar-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll for sidebar links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offset = 80;
+          const targetPosition = target.offsetTop - offset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
