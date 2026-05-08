@@ -383,17 +383,20 @@
         document.getElementById('adminOverview').value = currentData.overview;
     }
 
-    function renderObservations() {
-        const grid = document.getElementById('observationsGrid');
-        const icons = {
-            'Operational Visibility': '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
-            'Approval Dependency': '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-            'CRM Requirement': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-            'Communication Structure': '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
-            'Organizational Stability': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-            'Governance Maturity': '<path d="M12 1v22"/><path d="M17 5H9.5a3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
-            'Systems Standardization': '<path d="M14.7 6.3a1 1 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
-            'Scalability Readiness': '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>'
+   function renderObservations() {
+    const grid = document.getElementById('observationsGrid');
+    grid.innerHTML = Object.entries(currentData.observations).map(([title, text]) => `
+        <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
+            <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-[var(--gold)] flex-shrink-0 mt-2"></div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">${title}</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">${text}</p>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
         };
 
         grid.innerHTML = Object.entries(currentData.observations).map(([title, text]) => `
