@@ -142,20 +142,19 @@
     </div>
 
 <script>
-<script>
 (function () {
 
-    // OPEN MODAL
+    // OPEN DOCUMENT MODAL
     document.getElementById('documentsBtn').addEventListener('click', function () {
         document.getElementById('documentsModal').classList.remove('hidden');
     });
 
-    // CLOSE MODAL
+    // CLOSE DOCUMENT MODAL
     document.getElementById('closeModal').addEventListener('click', function () {
         document.getElementById('documentsModal').classList.add('hidden');
     });
 
-    // LOAD STATIC DOCUMENTS
+    // STATIC DOCUMENT LINKS
     document.getElementById('modalContent').innerHTML = `
         <div class="space-y-3">
 
@@ -187,7 +186,7 @@
         </div>
     `;
 
-    // FORM SUBMIT
+    // FORM SUBMISSION
     document.getElementById('directiveForm').addEventListener('submit', async function (e) {
 
         e.preventDefault();
@@ -220,52 +219,7 @@
 
     });
 
-})();
-</script>
-            </div>
-        `;
-    }
 
-    async function handleDirectiveSubmit(e) {
-        e.preventDefault();
-
-        const form = e.target;
-        const status = document.getElementById('directiveStatus');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-        submitBtn.disabled = true;
-        status.textContent = 'Sending...';
-        status.className = 'text-sm text-[var(--text-muted)]';
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                status.textContent = 'Directive sent to COO successfully';
-                status.className = 'text-sm text-[var(--gold)]';
-                form.reset();
-            } else {
-                throw new Error('Failed to send');
-            }
-
-        } catch (error) {
-            status.textContent = 'Error sending directive. Please try again.';
-            status.className = 'text-sm text-red-400';
-
-        } finally {
-            submitBtn.disabled = false;
-
-            setTimeout(() => {
-                status.textContent = '';
-            }, 5000);
-        }
-
-    }
-})();
 </script>
 </body>
 </html>
