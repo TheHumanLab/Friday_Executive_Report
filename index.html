@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MICHELLE REGINATA HOLDINGS LTD | Friday Executive Brief</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
@@ -14,22 +12,16 @@
         --navy-light: #151921;
         --navy-lighter: #1D222E;
         --gold: #D4AF37;
-        --gold-light: #E5C96B;
         --text: #FFFFFF;
         --text-muted: #9CA3AF;
     }
     * { font-family: 'Inter', sans-serif; }
     body { background-color: var(--navy); color: var(--text); }
-   .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), var(--navy-lighter)); border: 1px solid rgba(212, 175, 55, 0.15); }
-   .gradient-border::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
-   .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-   .card-hover:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.08); border-color: rgba(212, 175, 55, 0.3); }
-   .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); transition: all 0.3s ease; }
-   .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); }
-   .modal-backdrop { backdrop-filter: blur(8px); background: rgba(11, 14, 20, 0.85); }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-   .fade-in { animation: fadeIn 0.4s ease-out; }
-   .upload-zone-active { border-color: var(--gold)!important; background: rgba(212, 175, 55, 0.05); }
+  .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), var(--navy-lighter)); border: 1px solid rgba(212, 175, 55, 0.15); }
+  .gradient-border::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); }
+  .modal-backdrop { backdrop-filter: blur(8px); background: rgba(11, 14, 20, 0.85); }
 </style>
 </head>
 <body class="antialiased">
@@ -41,7 +33,7 @@
                         <h1 class="text-xl sm:text-2xl font-bold tracking-tight">
                             MICHELLE REGINATA HOLDINGS LTD | <span class="font-light text-[var(--gold)]">FRIDAY EXECUTIVE BRIEF</span>
                         </h1>
-                        <p class="text-sm text-[var(--text-muted)] mt-1" id="briefDate">Week 1 • May 8, 2026 • Jesse Ndambala • Chairman</p>
+                        <p class="text-sm text-[var(--text-muted)] mt-1" id="briefDate"></p>
                     </div>
                     <div class="text-left sm:text-right">
                         <p class="text-sm font-medium">Prepared by KJ | COO</p>
@@ -52,17 +44,17 @@
         </header>
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
-            <section class="fade-in">
+            <section>
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">THIS WEEK'S OVERVIEW</h2>
                 </div>
                 <div class="gradient-border rounded-2xl p-6 sm:p-8 shadow-2xl">
-                    <div id="overviewContent" class="text-sm leading-relaxed text-gray-200 min-h-[200px]"></div>
+                    <div id="overviewContent" class="text-sm leading-relaxed text-gray-200 whitespace-pre-wrap min-h-"></div>
                 </div>
             </section>
 
-            <section class="fade-in">
+            <section>
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">KEY OPERATIONAL OBSERVATIONS</h2>
@@ -70,20 +62,18 @@
                 <div id="observationsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5"></div>
             </section>
 
-            <section class="fade-in">
+            <section>
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">EXECUTIVE DOCUMENTS</h2>
                 </div>
                 <button id="documentsBtn" class="inline-flex items-center gap-3 bg-[var(--gold)] text-black px-8 py-5 rounded-2xl font-semibold hover:opacity-90 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2h-5l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2h-5l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     View Supporting Documents
                 </button>
             </section>
 
-            <section class="fade-in">
+            <section>
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">NEXT WEEK PRIORITIES</h2>
@@ -93,7 +83,7 @@
                 </div>
             </section>
 
-            <section class="fade-in">
+            <section>
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">CHAIRMAN DIRECTIVES</h2>
@@ -101,10 +91,10 @@
                 <div class="gradient-border rounded-2xl p-6 sm:p-8">
                     <p class="text-sm text-[var(--text-muted)] mb-4">Send note directly to COO</p>
                     <form id="directiveForm" action="https://formspree.io/f/xdabloba" method="POST" class="space-y-4">
-                        <textarea id="directiveText" name="directive" rows="5" required class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] transition" placeholder="Enter directive or feedback..."></textarea>
+                        <textarea name="directive" rows="5" required class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)]" placeholder="Enter directive or feedback..."></textarea>
                         <div class="flex items-center justify-between flex-wrap gap-4">
                             <button type="submit" class="btn-gold px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                                 Submit Directive
                             </button>
                             <div id="directiveStatus" class="text-sm"></div>
@@ -113,7 +103,7 @@
                 </div>
             </section>
 
-            <section id="adminPanel" class="hidden fade-in">
+            <section id="adminPanel" class="hidden">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">ADMIN MODE</h2>
@@ -121,32 +111,30 @@
                 <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
                     <div class="bg-[var(--navy)] border border-[var(--gold)]/30 rounded-xl p-6">
                         <label class="block text-sm font-medium mb-2 text-[var(--gold)]">⚡ Quick Weekly Update - Drag & Drop</label>
-                        <p class="text-xs text-[var(--text-muted)] mb-3">Drop your weekly-update.txt file here. Updates Overview, Observations & Priorities automatically.</p>
+                        <p class="text-xs text-[var(--text-muted)] mb-3">Drop your weekly-update.txt file here. Format: === THIS WEEK'S OVERVIEW === etc</p>
                         <div id="quickUpdateZone" class="border-2 border-dashed border-[var(--gold)]/40 rounded-xl p-8 text-center hover:border-[var(--gold)] transition cursor-pointer bg-[var(--navy-light)]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-3 text-[var(--gold)]"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="mx-auto mb-3 text-[var(--gold)]"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                             <p class="text-sm text-gray-300 font-medium">Drop weekly-update.txt here</p>
                             <p class="text-xs text-[var(--text-muted)] mt-1">or click to browse</p>
                             <input type="file" id="quickUpdateInput" accept=".txt" class="hidden">
                         </div>
                         <div id="quickUpdateStatus" class="mt-3 text-sm text-center"></div>
                     </div>
-                    <div class="border-t border-white/10 pt-6">
-                        <p class="text-xs text-[var(--text-muted)] mb-4">Manual editing:</p>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-[var(--gold)]">This Week's Overview</label>
-                                <textarea id="adminOverview" rows="6" class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)]"></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-[var(--gold)]">Next Week Priorities (one per line)</label>
-                                <textarea id="adminNextWeek" rows="5" class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)]"></textarea>
-                            </div>
-                            <button id="savePublishBtn" class="btn-gold w-full px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                                Save Manual Changes
-                            </button>
+                    <div class="border-t border-white/10 pt-6 space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-[var(--gold)]">This Week's Overview</label>
+                            <textarea id="adminOverview" rows="6" class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--gold)]"></textarea>
                         </div>
-                    <div id="adminStatus" class="text-sm text-center"></div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-[var(--gold)]">Next Week Priorities (one per line)</label>
+                            <textarea id="adminNextWeek" rows="5" class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--gold)]"></textarea>
+                        </div>
+                        <button id="savePublishBtn" class="btn-gold w-full px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                            Save Manual Changes
+                        </button>
+                        <div id="adminStatus" class="text-sm text-center"></div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -162,11 +150,11 @@
     </div>
 
     <div id="documentsModal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
-        <div class="bg-[var(--navy-light)] border border-[var(--gold)]/20 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden shadow-2xl">
+        <div class="bg-[var(--navy-light)] border border-[var(--gold)]/20 rounded-2xl max-w-2xl w-full max-h- overflow-hidden shadow-2xl">
             <div class="flex items-center justify-between p-6 border-b border-white/10">
                 <h3 class="text-lg font-semibold">Supporting Documents</h3>
                 <button id="closeModal" class="text-gray-400 hover:text-white transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
             </div>
             <div id="modalContent" class="p-6 overflow-y-auto max-h-[calc(80vh-80px)]">
@@ -181,289 +169,207 @@
     </div>
 
 <script>
-(function() {
-    'use strict';
+const ADMIN_PIN = 'MRH2026';
+const REPO = 'thehumanlab/Friday_Executive_Report';
+const BRANCH = 'main';
+const API_BASE = `https://api.github.com/repos/${REPO}/contents`;
 
-    const REPO = 'thehumanlab/Friday_Executive_Report';
-    const BRANCH = 'main';
-    const API_BASE = `https://api.github.com/repos/${REPO}/contents`;
-    const ADMIN_PIN = 'MRH2026';
+const DEFAULT_OBS = {
+    'Operational Visibility': 'Current operational visibility remains fragmented across departments due to reliance on isolated spreadsheets, manual reporting, and non-centralized workflow tracking.',
+    'Approval Dependency': 'Operational movement remains partially dependent on centralized approvals and informal escalation pathways.',
+    'CRM Requirement': 'Customer engagement and sales coordination currently rely on fragmented tracking methods.',
+    'Communication Structure': 'Operational coordination remains partially informal across communication channels.',
+    'Organizational Stability': 'Workforce engagement and departmental cooperation remain stable.',
+    'Governance Maturity': 'Operational governance structures are actively transitioning toward formalized authority mapping.',
+    'Systems Standardization': 'Current workflows demonstrate opportunities for stronger standardization.',
+    'Scalability Readiness': 'The organization demonstrates strong growth potential.'
+};
 
-    const DEFAULT_OBSERVATIONS = {
-        'Operational Visibility': 'Current operational visibility remains fragmented across departments due to reliance on isolated spreadsheets, manual reporting, and non-centralized workflow tracking. Centralized systems visibility will significantly improve coordination, accountability, and reporting continuity.',
-        'Approval Dependency': 'Operational movement remains partially dependent on centralized approvals and informal escalation pathways, creating workflow latency and unnecessary leadership congestion in routine operational processes.',
-        'CRM Requirement': 'Customer engagement and sales coordination currently rely on fragmented tracking methods. Centralized CRM deployment will improve customer visibility, follow-up continuity, pipeline tracking, and commercial scalability.',
-        'Communication Structure': 'Operational coordination remains partially informal across communication channels, limiting traceability, accountability visibility, and standardized execution flow between departments.',
-        'Organizational Stability': 'Workforce engagement and departmental cooperation remain stable. The primary operational challenges identified are systemic and infrastructural rather than personnel-related.',
-        'Governance Maturity': 'Operational governance structures are actively transitioning from reactive coordination toward formalized authority mapping, accountability frameworks, and system-governed execution.',
-        'Systems Standardization': 'Current workflows demonstrate opportunities for stronger standardization across approvals, reporting, documentation, and interdepartmental operational procedures.',
-        'Scalability Readiness': 'The organization demonstrates strong growth potential; however, long-term scalability will depend on strengthening operational infrastructure, governance visibility, and centralized systems integration.'
+let data = { overview: '', observations: DEFAULT_OBS, priorities: [] };
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+    render();
+    setDate();
+    init();
+});
+
+function init() {
+    document.getElementById('adminToggle').onclick = () => {
+        const pin = prompt('Enter Admin PIN:');
+        if (pin === ADMIN_PIN) {
+            document.getElementById('adminPanel').classList.remove('hidden');
+            document.getElementById('adminToggle').textContent = 'Admin Active';
+            document.getElementById('adminToggle').classList.add('text-green-400');
+            window.scrollTo({ top: document.getElementById('adminPanel').offsetTop - 100, behavior: 'smooth' });
+        } else if (pin!== null) alert('Incorrect PIN');
     };
 
-    let currentData = {
-        overview: '',
-        observations: DEFAULT_OBSERVATIONS,
-        priorities: []
+    document.getElementById('documentsBtn').onclick = async () => {
+        document.getElementById('documentsModal').classList.remove('hidden');
+        await loadDocs();
     };
 
-    document.addEventListener('DOMContentLoaded', () => {
-        loadFromStorage();
-        renderAll();
-        updateDate();
-        initEventListeners();
-    });
+    document.getElementById('closeModal').onclick = () => {
+        document.getElementById('documentsModal').classList.add('hidden');
+    };
 
-    function initEventListeners() {
-        document.getElementById('adminToggle').addEventListener('click', () => {
-            const pin = prompt('Enter Admin PIN:');
-            if (pin === ADMIN_PIN) {
-                document.getElementById('adminPanel').classList.remove('hidden');
-                document.getElementById('adminToggle').textContent = 'Admin Active';
-                document.getElementById('adminToggle').classList.add('text-green-400');
-                window.scrollTo({ top: document.getElementById('adminPanel').offsetTop - 100, behavior: 'smooth' });
-            } else if (pin!== null) {
-                alert('Incorrect PIN');
-            }
-        });
-
-        document.getElementById('documentsBtn').addEventListener('click', async () => {
-            document.getElementById('documentsModal').classList.remove('hidden');
-            await loadDocuments();
-        });
-
-        document.getElementById('closeModal').addEventListener('click', () => {
-            document.getElementById('documentsModal').classList.add('hidden');
-        });
-
-        document.getElementById('directiveForm').addEventListener('submit', handleDirectiveSubmit);
-
-        const quickZone = document.getElementById('quickUpdateZone');
-        const quickInput = document.getElementById('quickUpdateInput');
-
-        quickZone.addEventListener('click', () => quickInput.click());
-        quickZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            quickZone.classList.add('upload-zone-active');
-        });
-        quickZone.addEventListener('dragleave', () => quickZone.classList.remove('upload-zone-active'));
-        quickZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            quickZone.classList.remove('upload-zone-active');
-            if (e.dataTransfer.files.length > 0) handleQuickUpdate(e.dataTransfer.files[0]);
-        });
-        quickInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) handleQuickUpdate(e.target.files[0]);
-        });
-
-        document.getElementById('savePublishBtn').addEventListener('click', () => {
-            currentData.overview = document.getElementById('adminOverview').value;
-            currentData.priorities = document.getElementById('adminNextWeek').value.split(/\r?\n/).map(l => l.trim()).filter(l => l);
-            saveToStorage();
-            renderAll();
-            document.getElementById('adminStatus').textContent = '✓ Saved successfully';
-            document.getElementById('adminStatus').className = 'text-sm text-[var(--gold)]';
-            setTimeout(() => document.getElementById('adminStatus').textContent = '', 3000);
-        });
-    }
-
-    function updateDate() {
-        const now = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('briefDate').textContent = `Week 1 • ${now.toLocaleDateString('en-US', options)} • Jesse Ndambala • Chairman`;
-    }
-
-    function loadFromStorage() {
-        const saved = localStorage.getItem('mrhBriefData');
-        if (saved) {
-            try {
-                const parsed = JSON.parse(saved);
-                currentData = {
-                    overview: parsed.overview || '',
-                    observations: parsed.observations || DEFAULT_OBSERVATIONS,
-                    priorities: parsed.priorities || []
-                };
-            } catch (e) {
-                console.warn('Failed to load saved data');
-            }
+    document.getElementById('directiveForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const status = document.getElementById('directiveStatus');
+        const btn = e.target.querySelector('button');
+        btn.disabled = true;
+        status.textContent = 'Sending...';
+        status.className = 'text-sm text-[var(--text-muted)]';
+        try {
+            const res = await fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
+            if (res.ok) {
+                status.textContent = 'Directive sent to COO successfully';
+                status.className = 'text-sm text-[var(--gold)]';
+                e.target.reset();
+            } else throw new Error();
+        } catch {
+            status.textContent = 'Error sending directive. Please try again.';
+            status.className = 'text-sm text-red-400';
+        } finally {
+            btn.disabled = false;
+            setTimeout(() => status.textContent = '', 5000);
         }
-    }
+    };
 
-    function saveToStorage() {
-        localStorage.setItem('mrhBriefData', JSON.stringify(currentData));
-    }
+    const zone = document.getElementById('quickUpdateZone');
+    const input = document.getElementById('quickUpdateInput');
+    zone.onclick = () => input.click();
+    zone.ondragover = (e) => { e.preventDefault(); zone.classList.add('border-[var(--gold)]'); };
+    zone.ondragleave = () => zone.classList.remove('border-[var(--gold)]');
+    zone.ondrop = (e) => { e.preventDefault(); zone.classList.remove('border-[var(--gold)]'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); };
+    input.onchange = (e) => { if (e.target.files[0]) handleFile(e.target.files[0]); };
 
-    function renderAll() {
-        renderOverview();
-        renderObservations();
-        renderPriorities();
-    }
+    document.getElementById('savePublishBtn').onclick = () => {
+        data.overview = document.getElementById('adminOverview').value;
+        data.priorities = document.getElementById('adminNextWeek').value.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+        saveData();
+        render();
+        const status = document.getElementById('adminStatus');
+        status.textContent = '✓ Saved successfully';
+        status.className = 'text-sm text-[var(--gold)]';
+        setTimeout(() => status.textContent = '', 3000);
+    };
+}
 
-    function renderOverview() {
-        document.getElementById('overviewContent').textContent = currentData.overview || 'No overview set. Use Admin mode to add content.';
-        document.getElementById('adminOverview').value = currentData.overview;
-    }
+function setDate() {
+    const now = new Date();
+    document.getElementById('briefDate').textContent = `Week 1 • ${now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} • Jesse Ndambala • Chairman`;
+}
 
-    function renderObservations() {
-        const grid = document.getElementById('observationsGrid');
-        grid.innerHTML = Object.entries(currentData.observations).map(([title, text]) => `
-            <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
-                <div class="flex items-start gap-3">
-                    <div class="w-2 h-2 rounded-full bg-[var(--gold)] flex-shrink-0 mt-2"></div>
-                    <div class="flex-1">
-                        <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">${title}</h3>
-                        <p class="text-sm text-gray-300 leading-relaxed">${text}</p>
-                    </div>
+function loadData() {
+    const saved = localStorage.getItem('mrhBriefData');
+    if (saved) {
+        try {
+            const parsed = JSON.parse(saved);
+            data = { overview: parsed.overview || '', observations: parsed.observations || DEFAULT_OBS, priorities: parsed.priorities || [] };
+        } catch {}
+    }
+}
+
+function saveData() {
+    localStorage.setItem('mrhBriefData', JSON.stringify(data));
+}
+
+function render() {
+    document.getElementById('overviewContent').textContent = data.overview || 'No overview set. Use Admin mode to add content.';
+    document.getElementById('adminOverview').value = data.overview;
+
+    document.getElementById('observationsGrid').innerHTML = Object.entries(data.observations).map(([title, text]) => `
+        <div class="gradient-border rounded-xl p-5 sm:p-6">
+            <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-[var(--gold)] flex-shrink-0 mt-2"></div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">${title}</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">${text}</p>
                 </div>
             </div>
-        `).join('');
-    }
+        </div>
+    `).join('');
 
-    function renderPriorities() {
-        const list = document.getElementById('nextWeekList');
-        if (!currentData.priorities || currentData.priorities.length === 0) {
-            list.innerHTML = '<li class="text-[var(--text-muted)] text-sm">No priorities set. Use Admin mode to add.</li>';
-            return;
-        }
-        list.innerHTML = currentData.priorities.map(item => `
+    const list = document.getElementById('nextWeekList');
+    if (!data.priorities || data.priorities.length === 0) {
+        list.innerHTML = '<li class="text-[var(--text-muted)] text-sm">No priorities set. Use Admin mode to add.</li>';
+    } else {
+        list.innerHTML = data.priorities.map(item => `
             <li class="flex items-start gap-3">
                 <span class="text-[var(--gold)] mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                 </span>
                 <span class="text-gray-200 leading-relaxed">${item}</span>
             </li>
         `).join('');
-        document.getElementById('adminNextWeek').value = currentData.priorities.join('\n');
     }
+    document.getElementById('adminNextWeek').value = data.priorities.join('\n');
+}
 
-    function handleQuickUpdate(file) {
-        const status = document.getElementById('quickUpdateStatus');
-        if (!file.name.endsWith('.txt')) {
-            status.textContent = 'Please upload a.txt file';
+function handleFile(file) {
+    const status = document.getElementById('quickUpdateStatus');
+    if (!file.name.endsWith('.txt')) {
+        status.textContent = 'Please upload a.txt file';
+        status.className = 'mt-3 text-sm text-red-400';
+        return;
+    }
+    status.textContent = 'Processing...';
+    status.className = 'mt-3 text-sm text-[var(--text-muted)]';
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        try {
+            const sections = e.target.result.split('=== ').filter(s => s.trim());
+            sections.forEach(section => {
+                const lines = section.split('\n');
+                const header = lines[0].trim().toUpperCase();
+                const body = lines.slice(1).join('\n').trim();
+                if (header.includes('OVERVIEW')) data.overview = body;
+                else if (header.includes('OBSERVATION')) {
+                    body.split('\n').filter(l => l.trim()).forEach(line => {
+                        const match = line.match(/^([^:]+):\s*(.+)$/);
+                        if (match) data.observations[match[1].trim()] = match[2].trim();
+                    });
+                } else if (header.includes('PRIORIT')) {
+                    data.priorities = body.split('\n').map(l => l.replace(/^[-•]\s*/, '').trim()).filter(l => l);
+                }
+            });
+            saveData();
+            render();
+            status.textContent = '✓ Updated successfully! All sections refreshed.';
+            status.className = 'mt-3 text-sm text-[var(--gold)]';
+            setTimeout(() => status.textContent = '', 5000);
+        } catch {
+            status.textContent = 'Error parsing file';
             status.className = 'mt-3 text-sm text-red-400';
+        }
+    };
+    reader.readAsText(file);
+}
+
+async function loadDocs() {
+    const content = document.getElementById('modalContent');
+    try {
+        const res = await fetch(`${API_BASE}/public/documents?ref=${BRANCH}`);
+        if (!res.ok) throw new Error();
+        const files = await res.json();
+        const pdfs = files.filter(f => f.name.endsWith('.pdf'));
+        if (pdfs.length === 0) {
+            content.innerHTML = '<p class="text-center text-[var(--text-muted)] py-8">No documents available</p>';
             return;
         }
-
-        status.textContent = 'Processing...';
-        status.className = 'mt-3 text-sm text-[var(--text-muted)]';
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            try {
-                const content = e.target.result;
-                const sections = parseUpdateFile(content);
-
-                if (sections.overview) currentData.overview = sections.overview;
-                if (sections.observations && Object.keys(sections.observations).length > 0) {
-                    currentData.observations = {...currentData.observations,...sections.observations};
-                }
-                if (sections.priorities) currentData.priorities = sections.priorities;
-
-                saveToStorage();
-                renderAll();
-
-                status.textContent = '✓ Updated successfully! All sections refreshed.';
-                status.className = 'mt-3 text-sm text-[var(--gold)]';
-                setTimeout(() => status.textContent = '', 5000);
-            } catch (error) {
-                status.textContent = 'Error: ' + error.message;
-                status.className = 'mt-3 text-sm text-red-400';
-            }
-        };
-        reader.readAsText(file);
+        content.innerHTML = `<div class="space-y-3">${pdfs.map(pdf => `
+            <a href="${pdf.download_url}" target="_blank" class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--gold)] flex-shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span class="text-sm text-gray-200 flex-1">${pdf.name}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--text-muted)]"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+        `).join('')}</div>`;
+    } catch {
+        content.innerHTML = '<p class="text-center text-red-400 py-8">Error loading documents. Create a /public/documents folder in your repo and upload PDFs.</p>';
     }
-
-    function parseUpdateFile(content) {
-        const result = { overview: null, observations: {}, priorities: null };
-        const sections = content.split('=== ').filter(s => s.trim());
-
-        sections.forEach(section => {
-            const lines = section.split('\n');
-            const header = lines[0].trim().toUpperCase();
-            const body = lines.slice(1).join('\n').trim();
-
-            if (header.includes('OVERVIEW')) {
-                result.overview = body;
-            } else if (header.includes('OBSERVATION')) {
-                const obsLines = body.split('\n').filter(l => l.trim());
-                obsLines.forEach(line => {
-                    const match = line.match(/^([^:]+):\s*(.+)$/);
-                    if (match) {
-                        result.observations[match[1].trim()] = match[2].trim();
-                    }
-                });
-            } else if (header.includes('PRIORIT')) {
-                result.priorities = body.split('\n')
-                 .map(l => l.replace(/^[-•]\s*/, '').trim())
-                 .filter(l => l);
-            }
-        });
-
-        return result;
-    }
-
-    async function loadDocuments() {
-        const modalContent = document.getElementById('modalContent');
-        try {
-            const res = await fetch(`${API_BASE}/public/documents?ref=${BRANCH}`);
-            if (!res.ok) throw new Error('Failed to fetch');
-
-            const files = await res.json();
-            const pdfs = files.filter(f => f.name.endsWith('.pdf'));
-
-            if (pdfs.length === 0) {
-                modalContent.innerHTML = '<p class="text-center text-[var(--text-muted)] py-8">No documents available</p>';
-                return;
-            }
-
-            modalContent.innerHTML = `
-                <div class="space-y-3">
-                    ${pdfs.map(pdf => `
-                        <a href="${pdf.download_url}" target="_blank" class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--gold)] flex-shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 8 9"/></svg>
-                            <span class="text-sm text-gray-200 flex-1">${pdf.name}</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--text-muted)]"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        </a>
-                    `).join('')}
-                </div>
-            `;
-        } catch (error) {
-            modalContent.innerHTML = '<p class="text-center text-red-400 py-8">Error loading documents</p>';
-        }
-    }
-
-    async function handleDirectiveSubmit(e) {
-        e.preventDefault();
-        const form = e.target;
-        const status = document.getElementById('directiveStatus');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-        submitBtn.disabled = true;
-        status.textContent = 'Sending...';
-        status.className = 'text-sm text-[var(--text-muted)]';
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                status.textContent = 'Directive sent to COO successfully';
-                status.className = 'text-sm text-[var(--gold)]';
-                form.reset();
-            } else {
-                throw new Error('Failed to send');
-            }
-        } catch (error) {
-            status.textContent = 'Error sending directive. Please try again.';
-            status.className = 'text-sm text-red-400';
-        } finally {
-            submitBtn.disabled = false;
-            setTimeout(() => { status.textContent = ''; }, 5000);
-        }
-    }
-})();
+}
 </script>
 </body>
 </html>
