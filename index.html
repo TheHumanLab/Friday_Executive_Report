@@ -142,15 +142,13 @@
     </div>
 
 <script>
+<script>
 (function() {
     'use strict';
-    const REPO = 'thehumanlab/Friday_Executive_Report';
-    const BRANCH = 'main';
-    const API_BASE = `https://api.github.com/repos/${REPO}/contents`;
 
-    document.getElementById('documentsBtn').addEventListener('click', async () => {
+    document.getElementById('documentsBtn').addEventListener('click', () => {
         document.getElementById('documentsModal').classList.remove('hidden');
-        await loadDocuments();
+        loadDocuments();
     });
 
     document.getElementById('closeModal').addEventListener('click', () => {
@@ -159,47 +157,134 @@
 
     document.getElementById('directiveForm').addEventListener('submit', handleDirectiveSubmit);
 
-    async function loadDocuments() {
+    function loadDocuments() {
         const modalContent = document.getElementById('modalContent');
-        try {
-            const res = await fetch(`${API_BASE}/contents/public/documents?ref=${BRANCH}`);
-            if (!res.ok) throw new Error('Failed to fetch');
-            const files = await res.json();
-            const pdfs = files.filter(f => f.name.endsWith('.pdf'));
-            if (pdfs.length === 0) {
-                modalContent.innerHTML = '<p class="text-center text-[var(--text-muted)] py-8">No documents available</p>';
-                return;
-            }
-            modalContent.innerHTML = `
-                <div class="space-y-3">
-                    ${pdfs.map(pdf => `
-                        <a href="${pdf.download_url}" target="_blank" class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--gold)] flex-shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 8 9"/></svg>
-                            <span class="text-sm text-gray-200 flex-1">${pdf.name}</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--text-muted)]"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        </a>
-                    `).join('')}
-                </div>
-            `;
-        } catch (error) {
-            modalContent.innerHTML = '<p class="text-center text-red-400 py-8">Error loading documents</p>';
-        }
+
+        modalContent.innerHTML = `
+            <div class="space-y-3">
+
+                <a href="public/documents/Exec_Doc1.pdf" target="_blank"
+                   class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round"
+                         class="text-[var(--gold)] flex-shrink-0">
+
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+
+                    <span class="text-sm text-gray-200 flex-1">
+                        Executive Document 1
+                    </span>
+                </a>
+
+                <a href="public/documents/Exec_Doc2.pdf" target="_blank"
+                   class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round"
+                         class="text-[var(--gold)] flex-shrink-0">
+
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+
+                    <span class="text-sm text-gray-200 flex-1">
+                        Executive Document 2
+                    </span>
+                </a>
+
+                <a href="public/documents/Exec_Doc3.pdf" target="_blank"
+                   class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round"
+                         class="text-[var(--gold)] flex-shrink-0">
+
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+
+                    <span class="text-sm text-gray-200 flex-1">
+                        Executive Document 3
+                    </span>
+                </a>
+
+                <a href="public/documents/Exec_Doc4.pdf" target="_blank"
+                   class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round"
+                         class="text-[var(--gold)] flex-shrink-0">
+
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+
+                    <span class="text-sm text-gray-200 flex-1">
+                        Executive Document 4
+                    </span>
+                </a>
+
+                <a href="public/documents/Exec_Doc5.pdf" target="_blank"
+                   class="flex items-center gap-3 p-4 rounded-xl bg-[var(--navy)] hover:bg-[var(--navy-lighter)] border border-white/10 hover:border-[var(--gold)]/30 transition">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round"
+                         class="text-[var(--gold)] flex-shrink-0">
+
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+
+                    <span class="text-sm text-gray-200 flex-1">
+                        Executive Document 5
+                    </span>
+                </a>
+
+            </div>
+        `;
     }
 
     async function handleDirectiveSubmit(e) {
         e.preventDefault();
+
         const form = e.target;
         const status = document.getElementById('directiveStatus');
         const submitBtn = form.querySelector('button[type="submit"]');
+
         submitBtn.disabled = true;
         status.textContent = 'Sending...';
         status.className = 'text-sm text-[var(--text-muted)]';
+
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
                 headers: { 'Accept': 'application/json' }
             });
+
             if (response.ok) {
                 status.textContent = 'Directive sent to COO successfully';
                 status.className = 'text-sm text-[var(--gold)]';
@@ -207,13 +292,21 @@
             } else {
                 throw new Error('Failed to send');
             }
+
         } catch (error) {
             status.textContent = 'Error sending directive. Please try again.';
             status.className = 'text-sm text-red-400';
+
         } finally {
             submitBtn.disabled = false;
-            setTimeout(() => { status.textContent = ''; }, 5000);
+
+            setTimeout(() => {
+                status.textContent = '';
+            }, 5000);
         }
+
+})();
+</script>
     }
 })();
 </script>
