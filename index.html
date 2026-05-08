@@ -18,79 +18,22 @@
         --text: #FFFFFF;
         --text-muted: #9CA3AF;
     }
-
-    * {
-        font-family: 'Inter', sans-serif;
-    }
-
-    body {
-        background-color: var(--navy);
-        color: var(--text);
-    }
-
-.gradient-border {
-        position: relative;
-        background: linear-gradient(135deg, var(--navy-light), var(--navy-lighter));
-        border: 1px solid rgba(212, 175, 55, 0.15);
-    }
-
-.gradient-border::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        padding: 1px;
-        background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-    }
-
-.card-hover {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-.card-hover:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.08);
-        border-color: rgba(212, 175, 55, 0.3);
-    }
-
-.btn-gold {
-        background: linear-gradient(135deg, var(--gold), var(--gold-light));
-        color: var(--navy);
-        transition: all 0.3s ease;
-    }
-
-.btn-gold:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-    }
-
-.modal-backdrop {
-        backdrop-filter: blur(8px);
-        background: rgba(11, 14, 20, 0.85);
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-.fade-in {
-        animation: fadeIn 0.4s ease-out;
-    }
-
-.upload-zone-active {
-        border-color: var(--gold)!important;
-        background: rgba(212, 175, 55, 0.05);
-    }
+    * { font-family: 'Inter', sans-serif; }
+    body { background-color: var(--navy); color: var(--text); }
+   .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), var(--navy-lighter)); border: 1px solid rgba(212, 175, 55, 0.15); }
+   .gradient-border::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+   .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+   .card-hover:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.08); border-color: rgba(212, 175, 55, 0.3); }
+   .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); transition: all 0.3s ease; }
+   .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); }
+   .modal-backdrop { backdrop-filter: blur(8px); background: rgba(11, 14, 20, 0.85); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+   .fade-in { animation: fadeIn 0.4s ease-out; }
+   .upload-zone-active { border-color: var(--gold)!important; background: rgba(212, 175, 55, 0.05); }
 </style>
 </head>
 <body class="antialiased">
     <div id="app" class="min-h-screen">
-        <!-- Header -->
         <header class="border-b border-white/5 bg-[var(--navy)]/80 backdrop-blur-lg sticky top-0 z-40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -109,7 +52,6 @@
         </header>
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
-            <!-- This Week's Overview -->
             <section class="fade-in">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
@@ -120,7 +62,6 @@
                 </div>
             </section>
 
-            <!-- Key Operational Observations -->
             <section class="fade-in">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
@@ -129,16 +70,12 @@
                 <div id="observationsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5"></div>
             </section>
 
-            <!-- Executive Documents -->
             <section class="fade-in">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">EXECUTIVE DOCUMENTS</h2>
                 </div>
-                <button
-                    id="documentsBtn"
-                    class="inline-flex items-center gap-3 bg-[var(--gold)] text-black px-8 py-5 rounded-2xl font-semibold hover:opacity-90 transition"
-                >
+                <button id="documentsBtn" class="inline-flex items-center gap-3 bg-[var(--gold)] text-black px-8 py-5 rounded-2xl font-semibold hover:opacity-90 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2h-5l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
@@ -146,7 +83,6 @@
                 </button>
             </section>
 
-            <!-- Next Week Priorities -->
             <section class="fade-in">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
@@ -157,7 +93,6 @@
                 </div>
             </section>
 
-            <!-- Chairman Directives -->
             <section class="fade-in">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
@@ -166,13 +101,7 @@
                 <div class="gradient-border rounded-2xl p-6 sm:p-8">
                     <p class="text-sm text-[var(--text-muted)] mb-4">Send note directly to COO</p>
                     <form id="directiveForm" action="https://formspree.io/f/xdabloba" method="POST" class="space-y-4">
-                        <textarea
-                            id="directiveText"
-                            name="directive"
-                            rows="5"
-                            required
-                            class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] transition"
-                            placeholder="Enter directive or feedback..."></textarea>
+                        <textarea id="directiveText" name="directive" rows="5" required class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] transition" placeholder="Enter directive or feedback..."></textarea>
                         <div class="flex items-center justify-between flex-wrap gap-4">
                             <button type="submit" class="btn-gold px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -184,7 +113,6 @@
                 </div>
             </section>
 
-            <!-- Admin Panel -->
             <section id="adminPanel" class="hidden fade-in">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
@@ -202,7 +130,6 @@
                         </div>
                         <div id="quickUpdateStatus" class="mt-3 text-sm text-center"></div>
                     </div>
-
                     <div class="border-t border-white/10 pt-6">
                         <p class="text-xs text-[var(--text-muted)] mb-4">Manual editing:</p>
                         <div class="space-y-4">
@@ -224,7 +151,6 @@
             </section>
         </main>
 
-        <!-- Footer -->
         <footer class="border-t border-white/5 mt-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -235,7 +161,6 @@
         </footer>
     </div>
 
-    <!-- Documents Modal -->
     <div id="documentsModal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
         <div class="bg-[var(--navy-light)] border border-[var(--gold)]/20 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden shadow-2xl">
             <div class="flex items-center justify-between p-6 border-b border-white/10">
@@ -289,7 +214,6 @@
     });
 
     function initEventListeners() {
-        // Admin Toggle - THIS IS THE KEY FIX
         document.getElementById('adminToggle').addEventListener('click', () => {
             const pin = prompt('Enter Admin PIN:');
             if (pin === ADMIN_PIN) {
@@ -302,7 +226,6 @@
             }
         });
 
-        // Documents Modal
         document.getElementById('documentsBtn').addEventListener('click', async () => {
             document.getElementById('documentsModal').classList.remove('hidden');
             await loadDocuments();
@@ -312,10 +235,8 @@
             document.getElementById('documentsModal').classList.add('hidden');
         });
 
-        // Formspree
         document.getElementById('directiveForm').addEventListener('submit', handleDirectiveSubmit);
 
-        // Quick Update Drag-Drop
         const quickZone = document.getElementById('quickUpdateZone');
         const quickInput = document.getElementById('quickUpdateInput');
 
@@ -334,10 +255,9 @@
             if (e.target.files.length > 0) handleQuickUpdate(e.target.files[0]);
         });
 
-        // Manual Save
         document.getElementById('savePublishBtn').addEventListener('click', () => {
             currentData.overview = document.getElementById('adminOverview').value;
-            currentData.priorities = document.getElementById('adminNextWeek').value.split('\n').filter(l => l.trim());
+            currentData.priorities = document.getElementById('adminNextWeek').value.split(/\r?\n/).map(l => l.trim()).filter(l => l);
             saveToStorage();
             renderAll();
             document.getElementById('adminStatus').textContent = '✓ Saved successfully';
@@ -383,28 +303,12 @@
         document.getElementById('adminOverview').value = currentData.overview;
     }
 
-   function renderObservations() {
-    const grid = document.getElementById('observationsGrid');
-    grid.innerHTML = Object.entries(currentData.observations).map(([title, text]) => `
-        <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
-            <div class="flex items-start gap-3">
-                <div class="w-2 h-2 rounded-full bg-[var(--gold)] flex-shrink-0 mt-2"></div>
-                <div class="flex-1">
-                    <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">${title}</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">${text}</p>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-        };
-
+    function renderObservations() {
+        const grid = document.getElementById('observationsGrid');
         grid.innerHTML = Object.entries(currentData.observations).map(([title, text]) => `
             <div class="gradient-border rounded-xl p-5 sm:p-6 card-hover">
                 <div class="flex items-start gap-3">
-                    <div class="mt-1 text-[var(--gold)]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icons[title] || ''}</svg>
-                    </div>
+                    <div class="w-2 h-2 rounded-full bg-[var(--gold)] flex-shrink-0 mt-2"></div>
                     <div class="flex-1">
                         <h3 class="font-semibold text-sm mb-2 text-[var(--gold)]">${title}</h3>
                         <p class="text-sm text-gray-300 leading-relaxed">${text}</p>
@@ -489,8 +393,8 @@
                 });
             } else if (header.includes('PRIORIT')) {
                 result.priorities = body.split('\n')
-                  .map(l => l.replace(/^[-•]\s*/, '').trim())
-                  .filter(l => l);
+                 .map(l => l.replace(/^[-•]\s*/, '').trim())
+                 .filter(l => l);
             }
         });
 
