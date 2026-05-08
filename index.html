@@ -162,7 +162,7 @@
     async function loadDocuments() {
         const modalContent = document.getElementById('modalContent');
         try {
-            const res = await fetch(`${API_BASE}/public/documents?ref=${BRANCH}`);
+            const res = await fetch(`${API_BASE}/documents?ref=${BRANCH}`);
             if (!res.ok) throw new Error('Failed to fetch');
             const files = await res.json();
             const pdfs = files.filter(f => f.name.endsWith('.pdf'));
