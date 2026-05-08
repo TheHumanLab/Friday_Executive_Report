@@ -144,7 +144,6 @@
                     </svg>
                     View Supporting Documents
                 </button>
-                <div id="documentsStatus" class="mt-4 text-sm text-[var(--gold)] hidden"></div>
             </section>
 
             <!-- Next Week Priorities -->
@@ -192,7 +191,6 @@
                     <h2 class="text-lg sm:text-xl font-semibold tracking-wide">ADMIN MODE</h2>
                 </div>
                 <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
-                    <!-- FOOLPROOF QUICK UPDATE -->
                     <div class="bg-[var(--navy)] border border-[var(--gold)]/30 rounded-xl p-6">
                         <label class="block text-sm font-medium mb-2 text-[var(--gold)]">⚡ Quick Weekly Update - Drag & Drop</label>
                         <p class="text-xs text-[var(--text-muted)] mb-3">Drop your weekly-update.txt file here. Updates Overview, Observations & Priorities automatically.</p>
@@ -206,7 +204,7 @@
                     </div>
 
                     <div class="border-t border-white/10 pt-6">
-                        <p class="text-xs text-[var(--text-muted)] mb-4">Manual editing (advanced):</p>
+                        <p class="text-xs text-[var(--text-muted)] mb-4">Manual editing:</p>
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium mb-2 text-[var(--gold)]">This Week's Overview</label>
@@ -283,12 +281,70 @@
         priorities: []
     };
 
-    // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
         loadFromStorage();
         renderAll();
         updateDate();
+        initEventListeners();
     });
+
+    function initEventListeners() {
+        // Admin Toggle - THIS IS THE KEY FIX
+        document.getElementById('adminToggle').addEventListener('click', () => {
+            const pin = prompt('Enter Admin PIN:');
+            if (pin === ADMIN_PIN) {
+                document.getElementById('adminPanel').classList.remove('hidden');
+                document.getElementById('adminToggle').textContent = 'Admin Active';
+                document.getElementById('adminToggle').classList.add('text-green-400');
+                window.scrollTo({ top: document.getElementById('adminPanel').offsetTop - 100, behavior: 'smooth' });
+            } else if (pin!== null) {
+                alert('Incorrect PIN');
+            }
+        });
+
+        // Documents Modal
+        document.getElementById('documentsBtn').addEventListener('click', async () => {
+            document.getElementById('documentsModal').classList.remove('hidden');
+            await loadDocuments();
+        });
+
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('documentsModal').classList.add('hidden');
+        });
+
+        // Formspree
+        document.getElementById('directiveForm').addEventListener('submit', handleDirectiveSubmit);
+
+        // Quick Update Drag-Drop
+        const quickZone = document.getElementById('quickUpdateZone');
+        const quickInput = document.getElementById('quickUpdateInput');
+
+        quickZone.addEventListener('click', () => quickInput.click());
+        quickZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            quickZone.classList.add('upload-zone-active');
+        });
+        quickZone.addEventListener('dragleave', () => quickZone.classList.remove('upload-zone-active'));
+        quickZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            quickZone.classList.remove('upload-zone-active');
+            if (e.dataTransfer.files.length > 0) handleQuickUpdate(e.dataTransfer.files[0]);
+        });
+        quickInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) handleQuickUpdate(e.target.files[0]);
+        });
+
+        // Manual Save
+        document.getElementById('savePublishBtn').addEventListener('click', () => {
+            currentData.overview = document.getElementById('adminOverview').value;
+            currentData.priorities = document.getElementById('adminNextWeek').value.split('\n').filter(l => l.trim());
+            saveToStorage();
+            renderAll();
+            document.getElementById('adminStatus').textContent = '✓ Saved successfully';
+            document.getElementById('adminStatus').className = 'text-sm text-[var(--gold)]';
+            setTimeout(() => document.getElementById('adminStatus').textContent = '', 3000);
+        });
+    }
 
     function updateDate() {
         const now = new Date();
@@ -300,7 +356,12 @@
         const saved = localStorage.getItem('mrhBriefData');
         if (saved) {
             try {
-                currentData = JSON.parse(saved);
+                const parsed = JSON.parse(saved);
+                currentData = {
+                    overview: parsed.overview || '',
+                    observations: parsed.observations || DEFAULT_OBSERVATIONS,
+                    priorities: parsed.priorities || []
+                };
             } catch (e) {
                 console.warn('Failed to load saved data');
             }
@@ -367,45 +428,16 @@
         document.getElementById('adminNextWeek').value = currentData.priorities.join('\n');
     }
 
-    // FOOLPROOF DRAG-DROP UPDATER
-    const quickZone = document.getElementById('quickUpdateZone');
-    const quickInput = document.getElementById('quickUpdateInput');
-    const quickStatus = document.getElementById('quickUpdateStatus');
-
-    quickZone.addEventListener('click', () => quickInput.click());
-
-    quickZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        quickZone.classList.add('upload-zone-active');
-    });
-
-    quickZone.addEventListener('dragleave', () => {
-        quickZone.classList.remove('upload-zone-active');
-    });
-
-    quickZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        quickZone.classList.remove('upload-zone-active');
-        if (e.dataTransfer.files.length > 0) {
-            handleQuickUpdate(e.dataTransfer.files[0]);
-        }
-    });
-
-    quickInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
-            handleQuickUpdate(e.target.files[0]);
-        }
-    });
-
     function handleQuickUpdate(file) {
+        const status = document.getElementById('quickUpdateStatus');
         if (!file.name.endsWith('.txt')) {
-            quickStatus.textContent = 'Please upload a.txt file';
-            quickStatus.className = 'mt-3 text-sm text-red-400';
+            status.textContent = 'Please upload a.txt file';
+            status.className = 'mt-3 text-sm text-red-400';
             return;
         }
 
-        quickStatus.textContent = 'Processing...';
-        quickStatus.className = 'mt-3 text-sm text-[var(--text-muted)]';
+        status.textContent = 'Processing...';
+        status.className = 'mt-3 text-sm text-[var(--text-muted)]';
 
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -414,18 +446,20 @@
                 const sections = parseUpdateFile(content);
 
                 if (sections.overview) currentData.overview = sections.overview;
-                if (sections.observations) currentData.observations = {...currentData.observations,...sections.observations};
+                if (sections.observations && Object.keys(sections.observations).length > 0) {
+                    currentData.observations = {...currentData.observations,...sections.observations};
+                }
                 if (sections.priorities) currentData.priorities = sections.priorities;
 
                 saveToStorage();
                 renderAll();
 
-                quickStatus.textContent = '✓ Updated successfully! Refresh to see changes.';
-                quickStatus.className = 'mt-3 text-sm text-[var(--gold)]';
-                setTimeout(() => quickStatus.textContent = '', 5000);
+                status.textContent = '✓ Updated successfully! All sections refreshed.';
+                status.className = 'mt-3 text-sm text-[var(--gold)]';
+                setTimeout(() => status.textContent = '', 5000);
             } catch (error) {
-                quickStatus.textContent = 'Error: ' + error.message;
-                quickStatus.className = 'mt-3 text-sm text-red-400';
+                status.textContent = 'Error: ' + error.message;
+                status.className = 'mt-3 text-sm text-red-400';
             }
         };
         reader.readAsText(file);
@@ -452,24 +486,13 @@
                 });
             } else if (header.includes('PRIORIT')) {
                 result.priorities = body.split('\n')
-                   .map(l => l.replace(/^[-•]\s*/, '').trim())
-                   .filter(l => l);
+                  .map(l => l.replace(/^[-•]\s*/, '').trim())
+                  .filter(l => l);
             }
         });
 
         return result;
     }
-
-    // Documents Modal
-    document.getElementById('documentsBtn').addEventListener('click', async () => {
-        const modal = document.getElementById('documentsModal');
-        modal.classList.remove('hidden');
-        await loadDocuments();
-    });
-
-    document.getElementById('closeModal').addEventListener('click', () => {
-        document.getElementById('documentsModal').classList.add('hidden');
-    });
 
     async function loadDocuments() {
         const modalContent = document.getElementById('modalContent');
@@ -501,8 +524,7 @@
         }
     }
 
-    // Formspree Directive Submit
-    document.getElementById('directiveForm').addEventListener('submit', async (e) => {
+    async function handleDirectiveSubmit(e) {
         e.preventDefault();
         const form = e.target;
         const status = document.getElementById('directiveStatus');
@@ -533,31 +555,7 @@
             submitBtn.disabled = false;
             setTimeout(() => { status.textContent = ''; }, 5000);
         }
-    });
-
-    // Admin Toggle
-    document.getElementById('adminToggle').addEventListener('click', () => {
-        const pin = prompt('Enter Admin PIN:');
-        if (pin === ADMIN_PIN) {
-            isAdmin = true;
-            document.getElementById('adminPanel').classList.remove('hidden');
-            document.getElementById('adminToggle').textContent = 'Admin Active';
-        } else if (pin!== null) {
-            alert('Incorrect PIN');
-        }
-    });
-
-    // Manual Save
-    document.getElementById('savePublishBtn').addEventListener('click', () => {
-        currentData.overview = document.getElementById('adminOverview').value;
-        currentData.priorities = document.getElementById('adminNextWeek').value.split('\n').filter(l => l.trim());
-        saveToStorage();
-        renderAll();
-        document.getElementById('adminStatus').textContent = '✓ Saved successfully';
-        document.getElementById('adminStatus').className = 'text-sm text-[var(--gold)]';
-        setTimeout(() => document.getElementById('adminStatus').textContent = '', 3000);
-    });
-
+    }
 })();
 </script>
 </body>
