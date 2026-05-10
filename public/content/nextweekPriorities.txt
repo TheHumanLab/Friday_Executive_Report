@@ -1,1 +1,3 @@
-next week ill be focused on x y and z testing
+next week ill be focusing on:
+1) getting oDoo ready
+2) testing
