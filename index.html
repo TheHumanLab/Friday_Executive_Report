@@ -11,11 +11,13 @@
     :root { --navy:#0B0E14; --navy-light:#151921; --gold:#D4AF37; --text:#FFFFFF; --text-muted:#9CA3AF; }
     * { font-family: 'Inter', sans-serif; }
     body { background-color: var(--navy); color: var(--text); }
-    .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), #1D222E); border: 1px solid rgba(212,175,55,0.15); }
-    .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
-    .btn-gold:hover { transform: translateY(-1px); }
+   .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), #1D222E); border: 1px solid rgba(212,175,55,0.15); }
+   .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
+   .btn-gold:hover { transform: translateY(-1px); }
+   .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 50; align-items: center; justify-content: center; padding: 1rem; }
+   .modal.show { display: flex; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-in { animation: fadeIn 0.4s ease-out; }
+   .fade-in { animation: fadeIn 0.4s ease-out; }
 </style>
 </head>
 <body class="antialiased">
@@ -47,10 +49,11 @@
 
 <section class="fade-in">
     <h2 class="text-lg sm:text-xl font-semibold mb-5">EXECUTIVE DOCUMENTS</h2>
-    <div class="gradient-border rounded-2xl p-6 sm:p-8">
-        <div id="documentList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <p class="text-[var(--text-muted)] col-span-full">Checking for documents...</p>
-        </div>
+    <div class="gradient-border rounded-2xl p-6 sm:p-8 text-center">
+        <button onclick="openDocsModal()" class="btn-gold px-8 py-4 rounded-lg font-semibold text-base">
+            View Supporting Documents
+        </button>
+        <p class="text-xs text-[var(--text-muted)] mt-3" id="docCount">Checking for documents...</p>
     </div>
 </section>
 
@@ -78,6 +81,19 @@
 </main>
 </div>
 
+<!-- DOCUMENTS POPUP MODAL -->
+<div id="docsModal" class="modal" onclick="closeDocsModal()">
+    <div class="gradient-border rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h- overflow-y-auto" onclick="event.stopPropagation()">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-semibold">Supporting Documents</h3>
+            <button onclick="closeDocsModal()" class="text-[var(--text-muted)] hover:text-white text-2xl leading-none">&times;</button>
+        </div>
+        <div id="modalDocList" class="space-y-3">
+            <p class="text-[var(--text-muted)]">Loading documents...</p>
+        </div>
+    </div>
+</div>
+
 <script>
 // Auto week + date
 const now = new Date();
@@ -87,33 +103,48 @@ document.getElementById('autoWeekHeader').textContent = `Week ${weekNum} • ${n
 // Load text files
 function loadText(file, id) {
     fetch(`public/content/${file}?t=${Date.now()}`)
-    .then(r => r.ok ? r.text() : '')
-    .then(t => document.getElementById(id).innerHTML = t.replace(/\n/g, '<br>'))
-    .catch(() => document.getElementById(id).innerHTML = 'No content this week.');
+   .then(r => r.ok? r.text() : '')
+   .then(t => document.getElementById(id).innerHTML = t.replace(/\n/g, '<br>'))
+   .catch(() => document.getElementById(id).innerHTML = 'No content this week.');
 }
 
-// Load documents - checks for these 5 exact filenames
+// CHANGE THESE 2 LINES TO YOUR GITHUB USERNAME + REPO NAME
+const GITHUB_USER = 'TheHumanLab';
+const GITHUB_REPO = 'Friday_Executive_Report';
+
+// Auto-load ANY PDF from public/documents/
 async function loadDocs() {
-    const list = document.getElementById("documentList");
-    list.innerHTML = '';
-    const docs = [
-        { name: "Financial Summary", file: "doc1.pdf" },
-        { name: "Risk Register", file: "doc2.pdf" },
-        { name: "Operations Report", file: "doc3.pdf" },
-        { name: "Board Pack", file: "doc4.pdf" },
-        { name: "Market Update", file: "doc5.pdf" }
-    ];
-    let found = 0;
-    for (const doc of docs) {
-        try {
-            const res = await fetch(`public/documents/${doc.file}?t=${Date.now()}`, { method: 'HEAD' });
-            if (res.ok) {
-                list.innerHTML += `<a href="public/documents/${doc.file}" target="_blank" class="btn-gold px-4 py-3 rounded-lg font-medium text-sm text-center block">${doc.name}</a>`;
-                found++;
-            }
-        } catch(e) {}
+    try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/public/documents`);
+        const files = await res.json();
+        const pdfs = files.filter(f => f.name.toLowerCase().endsWith('.pdf'));
+
+        document.getElementById('docCount').textContent = pdfs.length > 0
+           ? `${pdfs.length} document${pdfs.length > 1? 's' : ''} available`
+            : 'No documents uploaded this week';
+
+        const list = document.getElementById('modalDocList');
+        if (pdfs.length === 0) {
+            list.innerHTML = '<p class="text-[var(--text-muted)] text-center py-8">No documents uploaded this week.</p>';
+            return;
+        }
+
+        list.innerHTML = pdfs.map(file => {
+            const name = file.name.replace('.pdf', '').replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            return `<a href="${file.download_url}" target="_blank" class="btn-gold px-4 py-3 rounded-lg font-medium text-sm block text-center">${name}</a>`;
+        }).join('');
+
+    } catch (e) {
+        document.getElementById('docCount').textContent = 'Unable to load documents';
+        document.getElementById('modalDocList').innerHTML = '<p class="text-red-400 text-center py-8">Error loading documents. Check GitHub settings.</p>';
     }
-    if (found === 0) list.innerHTML = '<p class="text-[var(--text-muted)] col-span-full">No documents uploaded this week.</p>';
+}
+
+function openDocsModal() {
+    document.getElementById('docsModal').classList.add('show');
+}
+function closeDocsModal() {
+    document.getElementById('docsModal').classList.remove('show');
 }
 
 // Form handling
