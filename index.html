@@ -108,66 +108,97 @@
     </div>
 
     <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
-
-        <!-- This is the missing piece -->
         <div id="chairmanDirectives" class="text-sm text-gray-300"></div>
 
-        <p class="text-sm text-gray-300">Send note directly to COO</p>
-
         <form id="directiveForm" action="https://formspree.io/f/xdabloba" method="POST" class="space-y-4">
-            <textarea name="directive" required
+            <label for="directive" class="text-sm text-gray-300">Send note directly to COO</label>
+            <textarea 
+                id="directive"
+                name="directive" 
+                required
                 placeholder="Enter directive or feedback..."
-                class="w-full h-40 p-4 rounded-lg bg-[var(--navy-light)] border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] text-sm"></textarea>
+                class="w-full h-40 p-4 rounded-lg bg-[var(--navy-light)] border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] text-sm">
+            </textarea>
 
             <button type="submit" class="btn-gold px-6 py-3 rounded-lg font-semibold text-sm">
                 Submit Directive
             </button>
         </form>
 
-        <p id="successMessage" class="hidden text-green-400 text-sm font-medium">
+        <p id="successMessage" class="hidden text-green-400 text-sm font-medium" aria-live="polite">
             Thank you, Jesse. I will action accordingly.
+        </p>
+        <p id="errorMessage" class="hidden text-red-400 text-sm font-medium" aria-live="polite">
+            Submission failed. Please try again or email KJ directly.
         </p>
     </div>
 </section>
 
 </main>
 
-</div>
+<footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-white/5">
+    <p class="text-xs text-[var(--text-muted)]">Last updated: <span id="lastUpdated"></span></p>
+</footer>
 
 <script>
-// Load Weekly Overview
-fetch("content/weeklyOverview.txt")
-    .then(r => r.text())
-    .then(t => document.getElementById("weeklyOverview").innerHTML = t.replace(/\n/g, "<br>"));
-
-// Load Next Week Priorities
-fetch("content/nextweekPriorities.txt")
-    .then(r => r.text())
-    .then(t => document.getElementById("nextWeek").innerHTML = t.replace(/\n/g, "<br>"));
-
-// Load Chairman Directives (optional text block)
-fetch("content/chairmanDirectives.txt")
-    .then(r => r.text())
-    .then(t => {
-        const el = document.getElementById("chairmanDirectives");
-        if (el) el.innerHTML = t.replace(/\n/g, "<br>");
+// Helper: safely inject text with line breaks
+function setTextContent(el, text) {
+    el.innerHTML = ''; // clear
+    text.split('\n').forEach((line, i) => {
+        if (i > 0) el.appendChild(document.createElement('br'));
+        el.appendChild(document.createTextNode(line));
     });
+}
 
-// Handle Formspree Success Message
+// Load content with error handling
+function loadContent(url, elementId, fallback) {
+    fetch(url)
+        .then(r => {
+            if (!r.ok) throw new Error('File not found');
+            return r.text();
+        })
+        .then(t => setTextContent(document.getElementById(elementId), t))
+        .catch(() => {
+            document.getElementById(elementId).innerHTML = 
+                `<span class="text-red-400">${fallback}</span>`;
+        });
+}
+
+loadContent("content/weeklyOverview.txt", "weeklyOverview", "Unable to load weekly overview.");
+loadContent("content/nextweekPriorities.txt", "nextWeek", "Unable to load priorities.");
+loadContent("content/chairmanDirectives.txt", "chairmanDirectives", "");
+
+// Form handling with error state
 document.getElementById("directiveForm").addEventListener("submit", async function(e) {
     e.preventDefault();
     const form = e.target;
+    const successMsg = document.getElementById("successMessage");
+    const errorMsg = document.getElementById("errorMessage");
+    
+    successMsg.classList.add("hidden");
+    errorMsg.classList.add("hidden");
 
-    const response = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { "Accept": "application/json" }
-    });
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+        });
 
-    if (response.ok) {
-        form.reset();
-        document.getElementById("successMessage").classList.remove("hidden");
+        if (response.ok) {
+            form.reset();
+            successMsg.classList.remove("hidden");
+        } else {
+            throw new Error('Form submission failed');
+        }
+    } catch (err) {
+        errorMsg.classList.remove("hidden");
     }
+});
+
+// Set footer timestamp
+document.getElementById("lastUpdated").textContent = new Date().toLocaleDateString('en-ZA', {
+    year: 'numeric', month: 'long', day: 'numeric'
 });
 </script>
 
