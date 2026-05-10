@@ -96,9 +96,8 @@
 
 <script>
 // Auto week + date
-const now = new Date();
-const weekNum = Math.ceil((((now - new Date(now.getFullYear(), 0, 1)) / 86400000) + new Date(now.getFullYear(), 0, 1).getDay() + 1) / 7);
-document.getElementById('autoWeekHeader').textContent = `Week ${weekNum} • ${now.toLocaleDateString('en-ZA', {weekday:'long',year:'numeric',month:'long',day:'numeric'})} • Jesse Ndambala • Chairman`;
+// Static header
+document.getElementById('autoWeekHeader').textContent = `Jesse Ndambala • Chairman`;
 
 // Load text files
 function loadText(file, id) {
