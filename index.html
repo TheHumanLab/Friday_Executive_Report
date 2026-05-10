@@ -80,7 +80,7 @@
         <h2 class="text-lg sm:text-xl font-semibold tracking-wide">EXECUTIVE DOCUMENTS</h2>
     </div>
 
-    <button onclick="window.open('public/documents/', '_blank')" 
+    <button onclick="window.open('documents/', '_blank')" 
             class="btn-gold px-6 py-3 rounded-lg font-semibold text-sm sm:text-base">
         View Supporting Documents
     </button>
@@ -132,12 +132,12 @@
 
 <script>
 // Load Weekly Overview
-fetch("public/content/weeklyOverview.txt")
+fetch("content/weeklyOverview.txt")
     .then(r => r.text())
     .then(t => document.getElementById("weeklyOverview").innerHTML = t.replace(/\n/g, "<br>"));
 
 // Load Next Week Priorities
-fetch("public/content/nextweekPriorities.txt")
+fetch("content/nextweekPriorities.txt")
     .then(r => r.text())
     .then(t => document.getElementById("nextWeek").innerHTML = t.replace(/\n/g, "<br>"));
 
