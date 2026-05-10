@@ -11,13 +11,13 @@
     :root { --navy:#0B0E14; --navy-light:#151921; --gold:#D4AF37; --text:#FFFFFF; --text-muted:#9CA3AF; }
     * { font-family: 'Inter', sans-serif; }
     body { background-color: var(--navy); color: var(--text); }
-   .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), #1D222E); border: 1px solid rgba(212,175,55,0.15); }
-   .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
-   .btn-gold:hover { transform: translateY(-1px); }
-   .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 50; align-items: center; justify-content: center; padding: 1rem; }
-   .modal.show { display: flex; }
+  .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), #1D222E); border: 1px solid rgba(212,175,55,0.15); }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
+  .btn-gold:hover { transform: translateY(-1px); }
+  .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 50; align-items: center; justify-content: center; padding: 1rem; }
+  .modal.show { display: flex; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-   .fade-in { animation: fadeIn 0.4s ease-out; }
+  .fade-in { animation: fadeIn 0.4s ease-out; }
 </style>
 </head>
 <body class="antialiased">
@@ -103,12 +103,12 @@ document.getElementById('autoWeekHeader').textContent = `Week ${weekNum} • ${n
 // Load text files
 function loadText(file, id) {
     fetch(`public/content/${file}?t=${Date.now()}`)
-   .then(r => r.ok? r.text() : '')
-   .then(t => document.getElementById(id).innerHTML = t.replace(/\n/g, '<br>'))
-   .catch(() => document.getElementById(id).innerHTML = 'No content this week.');
+  .then(r => r.ok? r.text() : '')
+  .then(t => document.getElementById(id).innerHTML = t.replace(/\n/g, '<br>'))
+  .catch(() => document.getElementById(id).innerHTML = 'No content this week.');
 }
 
-// CHANGE THESE 2 LINES TO YOUR GITHUB USERNAME + REPO NAME
+// GITHUB CONFIG - Already set for you
 const GITHUB_USER = 'TheHumanLab';
 const GITHUB_REPO = 'Friday_Executive_Report';
 
@@ -120,7 +120,7 @@ async function loadDocs() {
         const pdfs = files.filter(f => f.name.toLowerCase().endsWith('.pdf'));
 
         document.getElementById('docCount').textContent = pdfs.length > 0
-           ? `${pdfs.length} document${pdfs.length > 1? 's' : ''} available`
+          ? `${pdfs.length} document${pdfs.length > 1? 's' : ''} available`
             : 'No documents uploaded this week';
 
         const list = document.getElementById('modalDocList');
@@ -136,7 +136,7 @@ async function loadDocs() {
 
     } catch (e) {
         document.getElementById('docCount').textContent = 'Unable to load documents';
-        document.getElementById('modalDocList').innerHTML = '<p class="text-red-400 text-center py-8">Error loading documents. Check GitHub settings.</p>';
+        document.getElementById('modalDocList').innerHTML = '<p class="text-red-400 text-center py-8">Error loading documents. Check if repo is public.</p>';
     }
 }
 
