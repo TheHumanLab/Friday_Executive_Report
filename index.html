@@ -25,7 +25,6 @@
     .gradient-border::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
     .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); transition: all 0.3s ease; }
     .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); }
-    .modal-backdrop { backdrop-filter: blur(8px); background: rgba(11, 14, 20, 0.85); }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .fade-in { animation: fadeIn 0.4s ease-out; }
 </style>
@@ -34,9 +33,7 @@
 <body class="antialiased">
 <div id="app" class="min-h-screen">
 
-<!-- ====================================================== -->
-<!-- HEADER (STATIC — NEVER CHANGES) -->
-<!-- ====================================================== -->
+<!-- HEADER -->
 <header class="border-b border-white/5 bg-[var(--navy)]/80 backdrop-blur-lg sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -46,9 +43,9 @@
                     <span class="font-light text-[var(--gold)]">FRIDAY EXECUTIVE BRIEF</span>
                 </h1>
 
-                <!-- UPDATE THIS DATE + WEEK NUMBER ONLY -->
+                <!-- YOU ONLY UPDATE THIS LINE WEEKLY -->
                 <p class="text-sm text-[var(--text-muted)] mt-1">
-                    Week 1 • May 8, 2026 • Jesse Ndambala • Chairman
+                    Week X • DATE HERE • Jesse Ndambala • Chairman
                 </p>
             </div>
 
@@ -60,11 +57,9 @@
     </div>
 </header>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
 
-<!-- ====================================================== -->
-<!-- WEEKLY OVERVIEW (THIS IS THE ONLY TEXT YOU CHANGE) -->
-<!-- ====================================================== -->
+<!-- WEEKLY OVERVIEW -->
 <section class="fade-in">
     <div class="flex items-center gap-3 mb-5">
         <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
@@ -72,205 +67,96 @@
     </div>
 
     <div class="gradient-border rounded-2xl p-6 sm:p-8">
-        <div class="space-y-5 text-sm sm:text-base leading-8 text-gray-200">
-
-            <!-- ✨✨✨ REPLACE THIS TEXT EACH WEEK ✨✨✨ -->
-            <p>
-                This is a test.
-            </p>
-
-            <p>
-                This is a test.
-            </p>
-
-            <p>
-                lets see if this worked.
-            </p>
-            <!-- ✨✨✨ END WEEKLY TEXT ✨✨✨ -->
-
+        <div id="weeklyOverview" class="space-y-5 text-sm sm:text-base leading-8 text-gray-200">
+            <p class="text-[var(--text-muted)] italic">Loading overview...</p>
         </div>
     </div>
 </section>
 
-<!-- ====================================================== -->
-<!-- EXECUTIVE DOCUMENTS BUTTON -->
-<!-- ====================================================== -->
+<!-- EXECUTIVE DOCUMENTS -->
 <section class="fade-in">
     <div class="flex items-center gap-3 mb-5">
         <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
         <h2 class="text-lg sm:text-xl font-semibold tracking-wide">EXECUTIVE DOCUMENTS</h2>
     </div>
 
-    <!-- UPDATE THIS LINK EACH WEEK -->
-    <a href="public/documents/Week2/" 
-       class="inline-flex items-center gap-3 bg-[var(--gold)] text-black px-8 py-5 rounded-2xl font-semibold hover:opacity-90 transition">
-
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                  d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2h-5l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-        </svg>
-
+    <button onclick="window.open('public/documents/', '_blank')" 
+            class="btn-gold px-6 py-3 rounded-lg font-semibold text-sm sm:text-base">
         View Supporting Documents
-    </a>
+    </button>
 </section>
-<!-- ====================================================== -->
-<!-- CHAIRMAN DIRECTIVES (STATIC — DOES NOT CHANGE WEEKLY) -->
-<!-- ====================================================== -->
+
+<!-- NEXT WEEK PRIORITIES -->
+<section class="fade-in">
+    <div class="flex items-center gap-3 mb-5">
+        <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
+        <h2 class="text-lg sm:text-xl font-semibold tracking-wide">NEXT WEEK PRIORITIES</h2>
+    </div>
+
+    <div class="gradient-border rounded-2xl p-6 sm:p-8">
+        <div id="nextWeek" class="space-y-5 text-sm sm:text-base leading-8 text-gray-200">
+            <p class="text-[var(--text-muted)] italic">Loading priorities...</p>
+        </div>
+    </div>
+</section>
+
+<!-- CHAIRMAN DIRECTIVES -->
 <section class="fade-in">
     <div class="flex items-center gap-3 mb-5">
         <div class="h-8 w-1 bg-gradient-to-b from-[var(--gold)] to-transparent rounded-full"></div>
         <h2 class="text-lg sm:text-xl font-semibold tracking-wide">CHAIRMAN DIRECTIVES</h2>
     </div>
 
-    <div class="gradient-border rounded-2xl p-6 sm:p-8">
-        <p class="text-sm text-[var(--text-muted)] mb-4">Send note directly to COO</p>
+    <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
+        <p class="text-sm text-gray-300">Send note directly to COO</p>
 
-        <form id="directiveForm" 
-              action="https://formspree.io/f/xdabloba" 
-              method="POST" 
-              class="space-y-4">
+        <form id="directiveForm" action="https://formspree.io/f/xdabloba" method="POST" class="space-y-4">
+            <textarea name="directive" required
+                placeholder="Enter directive or feedback..."
+                class="w-full h-40 p-4 rounded-lg bg-[var(--navy-light)] border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] text-sm"></textarea>
 
-            <textarea id="directiveText" 
-                      name="directive" 
-                      rows="5" 
-                      required
-                      class="w-full bg-[var(--navy)] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] transition"
-                      placeholder="Enter directive or feedback..."></textarea>
-
-            <div class="flex items-center justify-between flex-wrap gap-4">
-                <button type="submit" 
-                        class="btn-gold px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                         <line x1="22" y1="2" x2="11" y2="13"/>
-                         <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                    </svg>
-                    Submit Directive
-                </button>
-
-                <div id="directiveStatus" class="text-sm"></div>
-            </div>
+            <button type="submit" class="btn-gold px-6 py-3 rounded-lg font-semibold text-sm">
+                Submit Directive
+            </button>
         </form>
+
+        <p id="successMessage" class="hidden text-green-400 text-sm font-medium">
+            Thank you, Jesse. I will action accordingly.
+        </p>
     </div>
 </section>
 
 </main>
 
-<footer class="border-t border-white/5 mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <p class="text-xs text-[var(--text-muted)]">Confidential Internal Executive Brief — MRH Tanzania</p>
-    </div>
-</footer>
-</div>
-
-<!-- ====================================================== -->
-<!-- SUPPORTING DOCUMENTS MODAL (NOW DYNAMIC PER WEEK) -->
-<!-- ====================================================== -->
-<div id="documentsModal" 
-     class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
-
-    <div class="bg-[var(--navy-light)] border border-[var(--gold)]/20 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl">
-
-        <div class="flex items-center justify-between p-6 border-b border-white/10">
-            <h3 class="text-lg font-semibold">Supporting Documents</h3>
-            <button id="closeModal" class="text-gray-400 hover:text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-                     viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                     <line x1="18" y1="6" x2="6" y2="18"/>
-                     <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-            </button>
-        </div>
-
-        <div id="modalContent" class="p-6 overflow-y-auto max-h-[calc(80vh-80px)]">
-            <div class="flex items-center justify-center py-8">
-                <svg class="animate-spin h-6 w-6 text-[var(--gold)]" 
-                     xmlns="http://www.w3.org/2000/svg" fill="none" 
-                     viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" 
-                            stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" 
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                    </path>
-                </svg>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
-(function () {
+// Load Weekly Overview
+fetch("public/content/weeklyOverview.txt")
+    .then(r => r.text())
+    .then(t => document.getElementById("weeklyOverview").innerHTML = t.replace(/\n/g, "<br>"));
 
-    // OPEN DOCUMENT MODAL
-    document.getElementById('documentsBtn').addEventListener('click', function () {
-        document.getElementById('documentsModal').classList.remove('hidden');
+// Load Next Week Priorities
+fetch("public/content/nextweekPriorities.txt")
+    .then(r => r.text())
+    .then(t => document.getElementById("nextWeek").innerHTML = t.replace(/\n/g, "<br>"));
+
+// Handle Formspree Success Message
+document.getElementById("directiveForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
     });
 
-    // CLOSE DOCUMENT MODAL
-    document.getElementById('closeModal').addEventListener('click', function () {
-        document.getElementById('documentsModal').classList.add('hidden');
-    });
-
-    // ============================================
-    // DYNAMIC DOCUMENT LOADING (WEEKLY FOLDER)
-    // ============================================
-
-    // UPDATE THIS VALUE EACH WEEK
-   const currentWeekFolder = "https://github.com/TheHumanLab/Friday_Executive_Report/tree/main/public/documents/Week2";
-
-    const modalContent = document.getElementById('modalContent');
-
-    // Replace loading spinner with actual links
-    modalContent.innerHTML = `
-        <div class="space-y-3">
-
-            <a href="${currentWeekFolder}" target="_blank"
-               class="block p-4 rounded-xl bg-[var(--navy)] border border-white/10 hover:border-[var(--gold)]/30 transition">
-               Open Document Folder
-            </a>
-
-            <p class="text-xs text-[var(--text-muted)] mt-2">
-                All supporting documents for this week are stored in the folder above.
-            </p>
-
-        </div>
-    `;
-
-    // ============================================
-    // FORM SUBMISSION (FORMSPREE)
-    // ============================================
-    document.getElementById('directiveForm').addEventListener('submit', async function (e) {
-
-        e.preventDefault();
-
-        const form = e.target;
-        const status = document.getElementById('directiveStatus');
-
-        status.textContent = 'Sending...';
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                status.textContent = 'Directive sent successfully';
-                form.reset();
-            } else {
-                status.textContent = 'Error sending directive';
-            }
-
-        } catch (error) {
-            status.textContent = 'Error sending directive';
-        }
-
-    });
-
-})();
+    if (response.ok) {
+        form.reset();
+        document.getElementById("successMessage").classList.remove("hidden");
+    }
+});
 </script>
 
 </body>
