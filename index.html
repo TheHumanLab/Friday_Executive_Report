@@ -108,6 +108,10 @@
     </div>
 
     <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
+
+        <!-- This is the missing piece -->
+        <div id="chairmanDirectives" class="text-sm text-gray-300"></div>
+
         <p class="text-sm text-gray-300">Send note directly to COO</p>
 
         <form id="directiveForm" action="https://formspree.io/f/xdabloba" method="POST" class="space-y-4">
@@ -140,6 +144,14 @@ fetch("content/weeklyOverview.txt")
 fetch("content/nextweekPriorities.txt")
     .then(r => r.text())
     .then(t => document.getElementById("nextWeek").innerHTML = t.replace(/\n/g, "<br>"));
+
+// Load Chairman Directives (optional text block)
+fetch("content/chairmanDirectives.txt")
+    .then(r => r.text())
+    .then(t => {
+        const el = document.getElementById("chairmanDirectives");
+        if (el) el.innerHTML = t.replace(/\n/g, "<br>");
+    });
 
 // Handle Formspree Success Message
 document.getElementById("directiveForm").addEventListener("submit", async function(e) {
