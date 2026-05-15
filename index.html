@@ -111,7 +111,7 @@ function loadText(file, id) {
 const GITHUB_USER = 'TheHumanLab';
 const GITHUB_REPO = 'Friday_Executive_Report';
 
-// Auto-load ANY PDF from public/documents/
+// Auto-load supported documents from public/documents/
 async function loadDocs() {
     try {
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/public/documents`);
