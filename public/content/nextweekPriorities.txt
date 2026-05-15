@@ -1,28 +1,32 @@
-Finalise and formally implement delegated authority and financial approval thresholds
+1.	Finalise and formally implement delegated authority and financial approval thresholds
 
-Complete immediate financial control stabilisation:
-reconciliations
-audit clarity
-urgent liabilities
-pending commitments
-unresolved approvals
+2.	Complete immediate financial control stabilisation:
+•	reconciliations
+•	audit clarity
+•	urgent liabilities
+•	pending commitments
+•	unresolved approvals
 
-Establish central executive visibility of:
-pending approvals
-blocked decisions
-operational bottlenecks
-financial exposures
+3.	Establish central executive visibility of:
+•	pending approvals
+•	blocked decisions
+•	operational bottlenecks
+•	financial exposures
 
-Strengthen governance reporting standards across all departments to require:
-clearly identified risks
-ownership
-deadlines
-escalation requirements
-measurable performance reporting
-decision-specific requests
+4.	Strengthen governance reporting standards across all departments to require:
+•	clearly identified risks
+•	ownership
+•	deadlines
+•	escalation requirements
+•	measurable performance reporting
+•	decision-specific requests
 
-Clarify approval pathways, decision ownership, and escalation protocols across departments
-Review procurement, supplier dependency, and operational execution bottlenecks
-Strengthen commercial management reporting and performance visibility
-Clarify operational accountability structures and role ownership
-Continue full departmental review to complete organisational risk visibility
+5.	Clarify approval pathways, decision ownership, and escalation protocols across departments
+
+6.	Review procurement, supplier dependency, and operational execution bottlenecks
+
+7.	Strengthen commercial management reporting and performance visibility
+
+8.	Clarify operational accountability structures and role ownership
+
+9.	Continue full departmental review to complete organisational risk visibility
