@@ -1,3 +1,6 @@
-next week ill be focusing on:
-1) getting oDoo ready
-2) testing
+– Finalise governance and control documentation pending approval
+– Progress full SOP build and alignment with approved governance framework
+– Prepare operational documentation and system structures for Odoo deployment
+– Continue refinement of executive reporting, audit controls, and oversight mechanisms
+– Resolve outstanding approval and decision authority dependencies
+– Advance operational readiness across core business functions
