@@ -116,23 +116,30 @@ async function loadDocs() {
     try {
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/public/documents`);
         const files = await res.json();
-        const pdfs = files.filter(f => f.name.toLowerCase().endsWith('.pdf'));
+       const docs = files.filter(f =>
+    ['.pdf', '.xlsx', '.xls', '.docx', '.doc', '.pptx', '.txt', '.csv']
+    .some(ext => f.name.toLowerCase().endsWith(ext))
+);
 
-        document.getElementById('docCount').textContent = pdfs.length > 0
-          ? `${pdfs.length} document${pdfs.length > 1? 's' : ''} available`
-            : 'No documents uploaded this week';
+document.getElementById('docCount').textContent = docs.length > 0
+    ? `${docs.length} document${docs.length > 1 ? 's' : ''} available`
+    : 'No documents uploaded this week';
 
-        const list = document.getElementById('modalDocList');
-        if (pdfs.length === 0) {
-            list.innerHTML = '<p class="text-[var(--text-muted)] text-center py-8">No documents uploaded this week.</p>';
-            return;
-        }
+const list = document.getElementById('modalDocList');
 
-        list.innerHTML = pdfs.map(file => {
-            const name = file.name.replace('.pdf', '').replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-            return `<a href="${file.download_url}" target="_blank" class="btn-gold px-4 py-3 rounded-lg font-medium text-sm block text-center">${name}</a>`;
-        }).join('');
+if (docs.length === 0) {
+    list.innerHTML = '<p class="text-[var(--text-muted)] text-center py-8">No documents uploaded this week.</p>';
+    return;
+}
 
+list.innerHTML = docs.map(file => {
+    const name = file.name
+        .replace(/\.[^/.]+$/, '')
+        .replace(/[-_]/g, ' ')
+        .replace(/\b\w/g, l => l.toUpperCase());
+
+    return `<a href="${file.download_url}" target="_blank" class="btn-gold px-4 py-3 rounded-lg font-medium text-sm block text-center">${name}</a>`;
+}).join('');
     } catch (e) {
         document.getElementById('docCount').textContent = 'Unable to load documents';
         document.getElementById('modalDocList').innerHTML = '<p class="text-red-400 text-center py-8">Error loading documents. Check if repo is public.</p>';
