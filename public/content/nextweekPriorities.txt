@@ -1,33 +1,28 @@
 Finalise and formally implement delegated authority and financial approval thresholds
-Obtain full visibility of all pending approvals, unresolved financial commitments, blocked decisions, and operational bottlenecks
-Complete outstanding bank reconciliations and confirm overall financial control status
-Establish clear audit status, ownership, timelines, and immediate next actions
-Review all urgent financial liabilities, statutory obligations, compliance exposures, and immediate payment risks
-Implement a central executive decision / approvals tracker for visibility and accountability
 
-Strengthen departmental reporting standards to require:
+Complete immediate financial control stabilisation:
+reconciliations
+audit clarity
+urgent liabilities
+pending commitments
+unresolved approvals
+
+Establish central executive visibility of:
+pending approvals
+blocked decisions
+operational bottlenecks
+financial exposures
+
+Strengthen governance reporting standards across all departments to require:
 clearly identified risks
-named ownership
-defined deadlines
+ownership
+deadlines
 escalation requirements
-specific decision requests
-measurable performance reporting where relevant
+measurable performance reporting
+decision-specific requests
 
-Clarify approval pathways, escalation protocols, and decision ownership across all departments
-Review procurement, supplier control processes, and vendor dependency risks
-Assess commercial reporting standards and ensure sales / revenue functions provide decision-grade performance visibility
-Define operational accountability by department to remove role ambiguity, duplicated effort, and ownership gaps
-Assess current operational bottlenecks created by approval dependency and centralised decision-making
-Identify immediate structural “quick wins” that can improve execution flow while broader operating changes are being implemented
-
-Establish a weekly executive governance review cadence covering:
-financial controls
-approvals
-operational blockers
-risk escalation
-unresolved commitments
-key departmental performance visibility
-
-Continue reviewing remaining departmental submissions to complete full organisational risk and operational visibility
-
-Begin development of a broader operating control framework to support longer-term governance maturity and scalable execution
+Clarify approval pathways, decision ownership, and escalation protocols across departments
+Review procurement, supplier dependency, and operational execution bottlenecks
+Strengthen commercial management reporting and performance visibility
+Clarify operational accountability structures and role ownership
+Continue full departmental review to complete organisational risk visibility
