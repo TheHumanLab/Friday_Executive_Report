@@ -1,6 +1,20 @@
-– Finalise governance and control documentation pending approval
-– Progress full SOP build and alignment with approved governance framework
-– Prepare operational documentation and system structures for Odoo deployment
-– Continue refinement of executive reporting, audit controls, and oversight mechanisms
-– Resolve outstanding approval and decision authority dependencies
-– Advance operational readiness across core business functions
+* Finalise and formally implement delegated authority and financial approval thresholds
+* Obtain full visibility of all pending approvals, unresolved financial commitments, and blocked operational matters
+* Complete outstanding bank reconciliations and confirm financial control status
+* Establish clear audit status, ownership, timelines, and next actions
+* Review all urgent financial liabilities, statutory obligations, and immediate payment exposures
+* Implement a central decision / approvals tracker for executive visibility
+* Strengthen departmental reporting standards to require:
+
+  * clear risks
+  * ownership
+  * deadlines
+  * escalation requirements
+  * specific decision requests
+* Clarify approval pathways and escalation protocols across all departments
+* Review procurement and supplier control processes, including delayed vendor dependencies
+* Define operational accountability by department to remove role ambiguity and ownership gaps
+* Assess current operational bottlenecks created by approval dependency
+* Establish weekly executive governance review cadence for risk, approvals, financial controls, and operational blockers
+* Identify immediate “quick win” structural fixes that can improve execution flow without waiting for wider redesign
+* Continue reviewing remaining departmental submissions for full organisational risk visibility
