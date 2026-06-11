@@ -1,13 +1,13 @@
-Commercial capability strengthened through the appointment of a new Chief Commercial Officer, establishing formal executive oversight of sales and marketing activities.
+• Commercial capability strengthened through the appointment of a Chief Commercial Officer, establishing formal executive oversight of sales and marketing activities and supporting the transition toward more structured commercial operations.
 
-Customer retention indicators remain positive, with repeat purchasing activity continuing across multiple accounts and early evidence of growing market acceptance within Tanzania operations.
+• Commercial activity continues to mature, evidenced by repeat customer behaviour, CRM development, structured sales tracking and the emergence of institutional opportunities such as NHC Houses.
 
-Institutional sales development progressed through continued engagement with NHC Houses; however, conversion remains dependent on completion of marketing collateral and sales support materials.
+• Commercial infrastructure is becoming a growth constraint, with marketing collateral and sales support materials now directly impacting customer acquisition, credibility and conversion opportunities.
 
-Finance remains the primary management focus, with concurrent MRH Tanzania and Bellatrix audits creating workload pressure across the finance function. Missing historical documentation continues to present the most significant audit risk.
+• Finance remains under significant pressure as concurrent MRH Tanzania and Bellatrix audits continue alongside routine financial operations, tax clearance activities and Odoo payment integration development.
 
-Odoo payment integration activities are progressing and represent an important step toward improved financial governance, reporting capability, and operational scalability.
+• Audit activities are exposing weaknesses in historical documentation availability and audit readiness, indicating a broader governance and records management challenge rather than a purely finance-related issue.
 
-Overall organisational conditions remain stable. The principal challenges have shifted from operational execution toward governance maturity, audit readiness, financial controls, and commercial infrastructure development.
+• Governance visibility remains partially constrained due to the absence of Legal & Compliance and Office of the CEO reporting during the current reporting cycle.
 
 Status: AMBER
