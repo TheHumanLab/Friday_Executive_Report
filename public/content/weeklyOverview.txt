@@ -1,21 +1,13 @@
-Commercial function strengthened through appointment of new CCO.
-Repeat customer activity indicates growing market acceptance.
-NHC Houses opportunity awaiting marketing collateral.
-Concurrent audits creating finance workload pressure.
-Missing historical documentation remains primary audit risk.
+Commercial capability strengthened through the appointment of a new Chief Commercial Officer, establishing formal executive oversight of sales and marketing activities.
 
-Emerging Structural Conditions
+Customer retention indicators remain positive, with repeat purchasing activity continuing across multiple accounts and early evidence of growing market acceptance within Tanzania operations.
 
-Commercial Infrastructure Constraint
+Institutional sales development progressed through continued engagement with NHC Houses; however, conversion remains dependent on completion of marketing collateral and sales support materials.
 
-Sales growth beginning to outpace commercial support assets.
+Finance remains the primary management focus, with concurrent MRH Tanzania and Bellatrix audits creating workload pressure across the finance function. Missing historical documentation continues to present the most significant audit risk.
 
-Audit Readiness Risk
+Odoo payment integration activities are progressing and represent an important step toward improved financial governance, reporting capability, and operational scalability.
 
-Missing historical documentation affecting audit progress.
+Overall organisational conditions remain stable. The principal challenges have shifted from operational execution toward governance maturity, audit readiness, financial controls, and commercial infrastructure development.
 
-Governance Maturity Increasing
-
-Formal reporting and executive structure continuing to mature.
-
-Status: Positive
+Status: AMBER
