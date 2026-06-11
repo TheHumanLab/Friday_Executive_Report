@@ -1,17 +1,18 @@
-REPORTS RECEIVED
+REPORTING COVERAGE
 
-✓ Operations – Jesca Kyabukoba (Operations Manager)
+Reports Received
 
-✓ Commercial – Godwin Andreas (Sales & Marketing Manager)
+✓ Operations
+✓ Commercial
+✓ Finance
 
-✓ Finance – Samson Myombo (Finance Manager)
+Reports Not Received
 
-REPORTS NOT RECEIVED
-
-✗ Legal & Compliance – Report not submitted
-
-✗ Office of the CEO – Report not submitted
+✗ Legal & Compliance
+✗ Office of CEO
 
 Coverage Status: 60%
 
-Operational, Commercial and Finance visibility remained sufficient to support executive reporting. However, the absence of Legal & Compliance and Office of the CEO submissions reduced full organisational visibility and limited oversight of legal, compliance, executive and strategic matters during the reporting period.
+Observation:
+
+Operational visibility continues to improve through direct functional reporting. Governance visibility remains constrained by the absence of Legal & Compliance and Office of the CEO submissions.
