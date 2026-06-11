@@ -142,12 +142,12 @@ function loadText(file, id) {
  .then(t => {
       const el = document.getElementById(id);
       if (!el) return;
-      const formatted = t.trim()? t.replace(/\r\n/g, '\n') : 'No content this week.';
+      const formatted = t.trim()? t.replace(/\r\n/g, '\n') : '';
       el.textContent = formatted;
   })
  .catch(() => {
       const el = document.getElementById(id);
-      if (el) el.textContent = 'No content this week.';
+      if (el) el.textContent = '';
   });
 }
 
