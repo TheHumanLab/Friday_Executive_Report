@@ -1,0 +1,8 @@
+Reporting Coverage
+Function	Status
+Operations	Submitted
+Commercial	Submitted
+Finance	Submitted
+Legal & Compliance	Not Submitted
+
+Note: No Legal & Compliance report was received for the reporting period despite the established reporting process. As a result, no legal, regulatory, contractual, or compliance updates could be independently verified for this reporting cycle.
