@@ -1,8 +1,19 @@
-Reporting Coverage
-Function	Status
-Operations	Submitted
-Commercial	Submitted
-Finance	Submitted
-Legal & Compliance	Not Submitted
+Reports Received
 
-Note: No Legal & Compliance report was received for the reporting period despite the established reporting process. As a result, no legal, regulatory, contractual, or compliance updates could be independently verified for this reporting cycle.
+✓ Operations – Jesca Kyabukoba (Operations Manager)
+
+✓ Commercial – Godwin Andreas (Sales & Marketing Manager)
+
+✓ Finance – Samson Myombo (Finance Manager)
+
+✗ Legal & Compliance – Mary / Regimus (Report not submitted)
+
+✗ Office of the CEO – Report not submitted
+
+Coverage Status: 60%
+
+3 of 5 expected executive and functional reports received for the reporting period.
+
+Observation:
+
+Operational, Commercial and Finance visibility remains adequate for executive reporting. Legal & Compliance and Office of the CEO reporting were not submitted, reducing full organisational visibility and limiting governance oversight for the reporting period.
