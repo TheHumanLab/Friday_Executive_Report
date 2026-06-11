@@ -11,19 +11,19 @@
     :root { --navy:#F8F6F1; --navy-light:#151921; --gold:#D4AF37; --text:#0033A0; --text-muted:#9CA3AF; }
     * { font-family: 'Inter', sans-serif; }
     body { background-color: var(--navy); color: var(--text); }
-  .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), #1D222E); border: 1px solid rgba(212,175,55,0.15); }
-  .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
-  .btn-gold:hover { transform: translateY(-1px); }
-  .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 50; align-items: center; justify-content: center; padding: 1rem; }
-  .modal.show { display: flex; }
+ .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), #1D222E); border: 1px solid rgba(212,175,55,0.15); }
+ .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
+ .btn-gold:hover { transform: translateY(-1px); }
+ .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 50; align-items: center; justify-content: center; padding: 1rem; }
+ .modal.show { display: flex; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  .fade-in { animation: fadeIn 0.4s ease-out; }
+ .fade-in { animation: fadeIn 0.4s ease-out; }
 </style>
 </head>
 <body class="antialiased">
 <div class="min-h-screen">
 
-<header class="border-b border-white/5 bg-[var(--navy)]/80 sticky top-0 z-40">
+<header class="border-b border-white/5 bg-[var(--navy)]/80 sticky top-0 z-40 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-5">
         <div class="flex flex-col sm:flex-row sm:justify-between gap-4">
             <div>
@@ -33,52 +33,61 @@
             <div class="text-left sm:text-right">
                 <p class="text-sm font-medium">Prepared by KJ | COO</p>
                 <p class="text-xs text-[var(--text-muted)]">Confidential Executive Brief</p>
+                <p id="docCount" class="text-xs text-[var(--gold)] mt-1"></p>
             </div>
         </div>
     </div>
 </header>
 
+<main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
+
 <section class="fade-in">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
         <!-- AREA STATUS -->
         <div class="gradient-border rounded-2xl p-6">
-            ...
+            <h3 class="text-base font-semibold text-white mb-3">Area Status</h3>
+            <p class="text-sm text-[var(--text-muted)]">Static content here</p>
         </div>
 
         <!-- KPI SECTION -->
         <div class="lg:col-span-2 gradient-border rounded-2xl p-6">
-            ...
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="text-base font-semibold text-white">KPIs</h3>
+                <button onclick="openDocsModal()" class="text-xs text-[var(--gold)] hover:underline">View Documents</button>
+            </div>
+            <p class="text-sm text-[var(--text-muted)]">Static KPI content here</p>
         </div>
-
     </div>
 </section>
+
 <section class="fade-in">
     <h2 class="text-lg sm:text-xl font-semibold mb-5">WEEKLY OVERVIEW</h2>
     <div class="gradient-border rounded-2xl p-6 sm:p-8">
-        <div id="weeklyOverview" class="text-sm sm:text-base leading-8 text-gray-200">Loading...</div>
+        <div id="weeklyOverview" class="text-sm sm:text-base leading-8 text-gray-200 whitespace-pre-line">Loading...</div>
     </div>
 </section>
-    <section class="fade-in">
+
+<section class="fade-in">
     <h2 class="text-lg sm:text-xl font-semibold mb-5">REPORTING COVERAGE</h2>
     <div class="gradient-border rounded-2xl p-6 sm:p-8">
-        <div id="ReportingCoverage" class="text-sm sm:text-base leading-8 text-gray-200">Loading...</div>
+        <div id="ReportingCoverage" class="text-sm sm:text-base leading-8 text-gray-200 whitespace-pre-line">Loading...</div>
     </div>
 </section>
+
 <section class="fade-in">
     <h2 class="text-lg sm:text-xl font-semibold mb-5">NEXT WEEK PRIORITIES</h2>
     <div class="gradient-border rounded-2xl p-6 sm:p-8">
-        <div id="nextWeek" class="text-sm sm:text-base leading-8 text-gray-200">Loading...</div>
+        <div id="nextWeek" class="text-sm sm:text-base leading-8 text-gray-200 whitespace-pre-line">Loading...</div>
     </div>
 </section>
 
 <section class="fade-in">
     <h2 class="text-lg sm:text-xl font-semibold mb-5">CHAIRMAN DIRECTIVES</h2>
     <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
-        <div id="chairmanDirectives" class="text-sm text-gray-300"></div>
+        <div id="chairmanDirectives" class="text-sm text-gray-300 whitespace-pre-line"></div>
         <form id="directiveForm" action="https://formspree.io/f/xdabloba" method="POST" class="space-y-4">
             <label for="directive" class="text-sm text-gray-300">Send note directly to COO</label>
-            <textarea id="directive" name="directive" required placeholder="Enter directive..." class="w-full h-40 p-4 rounded-lg bg-[var(--navy-light)] border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] text-sm"></textarea>
+            <textarea id="directive" name="directive" required placeholder="Enter directive..." class="w-full h-40 p-4 rounded-lg bg-[var(--navy-light)] border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] text-sm text-white"></textarea>
             <button type="submit" class="btn-gold px-6 py-3 rounded-lg font-semibold text-sm">Submit Directive</button>
         </form>
         <p id="successMessage" class="hidden text-green-400 text-sm">Thank you, Jesse. I will action accordingly.</p>
@@ -91,9 +100,9 @@
 
 <!-- DOCUMENTS POPUP MODAL -->
 <div id="docsModal" class="modal" onclick="closeDocsModal()">
-    <div class="gradient-border rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
+    <div class="gradient-border rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h- overflow-y-auto" onclick="event.stopPropagation()">
         <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-semibold">Supporting Documents</h3>
+            <h3 class="text-xl font-semibold text-white">Supporting Documents</h3>
             <button onclick="closeDocsModal()" class="text-[var(--text-muted)] hover:text-white text-2xl leading-none">&times;</button>
         </div>
         <div id="modalDocList" class="space-y-3">
@@ -103,63 +112,71 @@
 </div>
 
 <script>
-// Auto week + date
-// Static header
-document.getElementById('autoWeekHeader').textContent = `Jesse Ndambala • Chairman • Week ending 12.06 `;
-12
-// Load text files
+// Auto week + date - FIXED stray "12" that broke the script
+document.getElementById('autoWeekHeader').textContent = `Jesse Ndambala • Chairman • Week ending 12.06.2026`;
+
+// Load text files from public/content/
 function loadText(file, id) {
     fetch(`public/content/${file}?t=${Date.now()}`)
-  .then(r => r.ok? r.text() : '')
-  .then(t => document.getElementById(id).innerHTML = t.replace(/\n/g, '<br>'))
-  .catch(() => document.getElementById(id).innerHTML = 'No content this week.');
+ .then(r => r.ok? r.text() : '')
+ .then(t => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const formatted = t.trim()? t.replace(/\r\n/g, '\n') : 'No content this week.';
+      el.textContent = formatted;
+  })
+ .catch(() => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = 'No content this week.';
+  });
 }
 
-// GITHUB CONFIG - Already set for you
+// GITHUB CONFIG
 const GITHUB_USER = 'TheHumanLab';
 const GITHUB_REPO = 'Friday_Executive_Report';
 
-// Auto-load supported documents from public/documents/
+// Auto-load supported documents
 async function loadDocs() {
     try {
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/public/documents`);
         const files = await res.json();
-       const docs = files.filter(f =>
-    ['.pdf', '.xlsx', '.xls', '.docx', '.doc', '.pptx', '.txt', '.csv']
-    .some(ext => f.name.toLowerCase().endsWith(ext))
-);
+        const docs = Array.isArray(files)? files.filter(f =>
+            ['.pdf', '.xlsx', '.xls', '.docx', '.doc', '.pptx', '.txt', '.csv']
+           .some(ext => f.name.toLowerCase().endsWith(ext))
+        ) : [];
 
-document.getElementById('docCount').textContent = docs.length > 0
-    ? `${docs.length} document${docs.length > 1 ? 's' : ''} available`
-    : 'No documents uploaded this week';
+        const docCount = document.getElementById('docCount');
+        if (docCount) {
+            docCount.textContent = docs.length > 0
+               ? `${docs.length} document${docs.length > 1? 's' : ''} available`
+                : 'No documents uploaded this week';
+        }
 
-const list = document.getElementById('modalDocList');
+        const list = document.getElementById('modalDocList');
+        if (!list) return;
 
-if (docs.length === 0) {
-    list.innerHTML = '<p class="text-[var(--text-muted)] text-center py-8">No documents uploaded this week.</p>';
-    return;
-}
+        if (docs.length === 0) {
+            list.innerHTML = '<p class="text-[var(--text-muted)] text-center py-8">No documents uploaded this week.</p>';
+            return;
+        }
 
-list.innerHTML = docs.map(file => {
-    const name = file.name
-        .replace(/\.[^/.]+$/, '')
-        .replace(/[-_]/g, ' ')
-        .replace(/\b\w/g, l => l.toUpperCase());
-
-    return `<a href="${file.download_url}" target="_blank" class="btn-gold px-4 py-3 rounded-lg font-medium text-sm block text-center">${name}</a>`;
-}).join('');
+        list.innerHTML = docs.map(file => {
+            const name = file.name
+               .replace(/\.[^/.]+$/, '')
+               .replace(/[-_]/g, ' ')
+               .replace(/\b\w/g, l => l.toUpperCase());
+            return `<a href="${file.download_url}" target="_blank" class="btn-gold px-4 py-3 rounded-lg font-medium text-sm block text-center">${name}</a>`;
+        }).join('');
     } catch (e) {
-        document.getElementById('docCount').textContent = 'Unable to load documents';
-        document.getElementById('modalDocList').innerHTML = '<p class="text-red-400 text-center py-8">Error loading documents. Check if repo is public.</p>';
+        const docCount = document.getElementById('docCount');
+        if (docCount) docCount.textContent = 'Unable to load documents';
+        const list = document.getElementById('modalDocList');
+        if (list) list.innerHTML = '<p class="text-red-400 text-center py-8">Error loading documents. Check if repo is public.</p>';
     }
 }
 
-function openDocsModal() {
-    document.getElementById('docsModal').classList.add('show');
-}
-function closeDocsModal() {
-    document.getElementById('docsModal').classList.remove('show');
-}
+function openDocsModal() { document.getElementById('docsModal').classList.add('show'); }
+function closeDocsModal() { document.getElementById('docsModal').classList.remove('show'); }
 
 // Form handling
 document.getElementById("directiveForm").addEventListener("submit", async function(e) {
@@ -174,8 +191,9 @@ document.getElementById("directiveForm").addEventListener("submit", async functi
     } catch { document.getElementById("errorMessage").classList.remove("hidden"); }
 });
 
-// Run everything
+// Run everything - ADDED missing ReportingCoverage
 loadText('weeklyOverview.txt', 'weeklyOverview');
+loadText('reportingCoverage.txt', 'ReportingCoverage');
 loadText('nextweekPriorities.txt', 'nextWeek');
 loadText('chairmanDirectives.txt', 'chairmanDirectives');
 loadDocs();
