@@ -49,13 +49,35 @@
             <p class="text-sm text-[var(--text-muted)]">Static content here</p>
         </div>
 
-        <!-- KPI SECTION -->
+        <!-- KPI SECTION - UPDATED -->
         <div class="lg:col-span-2 gradient-border rounded-2xl p-6">
-            <div class="flex justify-between items-center mb-3">
+            <div class="flex justify-between items-center mb-4">
                 <h3 class="text-base font-semibold text-white">KPIs</h3>
                 <button onclick="openDocsModal()" class="text-xs text-[var(--gold)] hover:underline">View Documents</button>
             </div>
-            <p class="text-sm text-[var(--text-muted)]">Static KPI content here</p>
+
+            <div class="space-y-3">
+                <!-- Operations -->
+                <div class="flex items-center justify-between bg-[var(--navy-light)]/60 rounded-lg px-4 py-3 border border-white/10">
+                    <span class="text-sm text-gray-200">Operations</span>
+                    <span class="w-3.5 h-3.5 rounded-full border border-white/30" style="background-color:#22c55e;" title="Green"></span>
+                </div>
+                <!-- Finance -->
+                <div class="flex items-center justify-between bg-[var(--navy-light)]/60 rounded-lg px-4 py-3 border border-white/10">
+                    <span class="text-sm text-gray-200">Finance</span>
+                    <span class="w-3.5 h-3.5 rounded-full border border-white/30" style="background-color:#f59e0b;" title="Amber"></span>
+                </div>
+                <!-- Commercial -->
+                <div class="flex items-center justify-between bg-[var(--navy-light)]/60 rounded-lg px-4 py-3 border border-white/10">
+                    <span class="text-sm text-gray-200">Commercial</span>
+                    <span class="w-3.5 h-3.5 rounded-full border border-white/30" style="background-color:#ef4444;" title="Red"></span>
+                </div>
+                <!-- Legal -->
+                <div class="flex items-center justify-between bg-[var(--navy-light)]/60 rounded-lg px-4 py-3 border border-white/10">
+                    <span class="text-sm text-gray-200">Legal</span>
+                    <span class="w-3.5 h-3.5 rounded-full border border-white/30" style="background-color:#ffffff;" title="White"></span>
+                </div>
+            <p class="text- text-[var(--text-muted)] mt-4">Change weekly: edit the hex in each style="background-color:#..." — green #22c55e, amber #f59e0b, red #ef4444, white #ffffff</p>
         </div>
     </div>
 </section>
@@ -112,10 +134,8 @@
 </div>
 
 <script>
-// Auto week + date - FIXED stray "12" that broke the script
 document.getElementById('autoWeekHeader').textContent = `Jesse Ndambala • Chairman • Week ending 12.06.2026`;
 
-// Load text files from public/content/
 function loadText(file, id) {
     fetch(`public/content/${file}?t=${Date.now()}`)
  .then(r => r.ok? r.text() : '')
@@ -131,11 +151,9 @@ function loadText(file, id) {
   });
 }
 
-// GITHUB CONFIG
 const GITHUB_USER = 'TheHumanLab';
 const GITHUB_REPO = 'Friday_Executive_Report';
 
-// Auto-load supported documents
 async function loadDocs() {
     try {
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/public/documents`);
@@ -178,7 +196,6 @@ async function loadDocs() {
 function openDocsModal() { document.getElementById('docsModal').classList.add('show'); }
 function closeDocsModal() { document.getElementById('docsModal').classList.remove('show'); }
 
-// Form handling
 document.getElementById("directiveForm").addEventListener("submit", async function(e) {
     e.preventDefault();
     const form = e.target;
@@ -191,7 +208,6 @@ document.getElementById("directiveForm").addEventListener("submit", async functi
     } catch { document.getElementById("errorMessage").classList.remove("hidden"); }
 });
 
-// Run everything - ADDED missing ReportingCoverage
 loadText('weeklyOverview.txt', 'weeklyOverview');
 loadText('reportingCoverage.txt', 'ReportingCoverage');
 loadText('nextweekPriorities.txt', 'nextWeek');
