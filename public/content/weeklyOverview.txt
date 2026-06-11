@@ -1,5 +1,3 @@
-• Commercial leadership transition is underway with a CCO appointment confirmed but not yet active.
-
 • Commercial capability strengthened through the appointment of a Chief Commercial Officer, establishing formal executive oversight of sales and marketing activities and supporting the transition toward more structured commercial operations.
 
 • Commercial activity continues to mature, evidenced by repeat customer behaviour, CRM development, structured sales tracking and the emergence of institutional opportunities such as NHC Houses.
@@ -10,6 +8,6 @@
 
 • Audit activities are exposing weaknesses in historical documentation availability and audit readiness, indicating a broader governance and records management challenge rather than a purely finance-related issue.
 
-• Governance visibility remains partially constrained due to the absence of Legal & Compliance and Office of the CEO reporting during the current reporting cycle.
+• Governance visibility remains constrained by the absence of Legal & Compliance.
 
 Status: AMBER
