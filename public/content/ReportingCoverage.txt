@@ -1,5 +1,3 @@
-REPORTING COVERAGE
-
 Reports Received
 
 ✓ Operations
