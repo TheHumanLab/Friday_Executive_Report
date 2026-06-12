@@ -11,253 +11,271 @@
     :root { --navy:#F8F6F1; --navy-light:#151921; --gold:#D4AF37; --text:#0033A0; --text-muted:#9CA3AF; }
     * { font-family: 'Inter', sans-serif; }
     body { background-color: var(--navy); color: var(--text); }
- .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), #1D222E); border: 1px solid rgba(212,175,55,0.15); }
- .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
- .btn-gold:hover { transform: translateY(-1px); }
- .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 50; align-items: center; justify-content: center; padding: 1rem; }
- .modal.show { display: flex; }
+    .gradient-border { position: relative; background: linear-gradient(135deg, var(--navy-light), #1D222E); border: 1px solid rgba(212,175,55,0.15); }
+    .btn-gold { background: linear-gradient(135deg, var(--gold), #E5C96B); color: var(--navy); transition: all 0.3s ease; }
+    .btn-gold:hover { transform: translateY(-1px); }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 50; align-items: center; justify-content: center; padding: 1rem; }
+    .modal.show { display: flex; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
- .fade-in { animation: fadeIn 0.4s ease-out; }
+    .fade-in { animation: fadeIn 0.4s ease-out; }
 </style>
 </head>
 <body class="antialiased">
 <div class="min-h-screen">
 
-<header class="border-b border-white/5 bg-[var(--navy)]/80 sticky top-0 z-40 backdrop-blur">
+  <!-- ── HEADER ── -->
+  <header class="border-b border-white/5 bg-[var(--navy)]/80 sticky top-0 z-40 backdrop-blur">
     <div class="max-w-7xl mx-auto px-4 py-5">
-        <div class="flex flex-col sm:flex-row sm:justify-between gap-4">
+      <div class="flex flex-col sm:flex-row sm:justify-between gap-4">
 
-            <div>
-                <h1 class="text-xl sm:text-2xl font-bold">
-                    MICHELLE REGINATA HOLDINGS LTD |
-                    <span class="font-light text-[var(--gold)]">
-                        FRIDAY EXECUTIVE BRIEF
-                    </span>
-                </h1>
-
-                <p class="text-sm text-[var(--text-muted)] mt-1" id="autoWeekHeader">
-                    Loading...
-                </p>
-            </div>
-
-            <div class="text-left sm:text-right">
-                <p class="text-sm font-medium">Prepared by KJ | COO</p>
-                <p class="text-xs text-[var(--text-muted)]">
-                    Confidential Executive Brief
-                </p>
-                <p id="docCount" class="text-xs text-[var(--gold)] mt-1"></p>
-            </div>
-    </div>
-</header>
-
-<main class="max-w-7xl mx-auto px-4 py-12 space-y-10">
-        <!-- KPI SECTION -->
-        <div class="gradient-border rounded-2xl p-6">
-
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-semibold text-white">KPIs</h3>
-
-                <button onclick="openDocsModal()"
-                        class="text-[var(--gold)] text-sm hover:underline">
-                    View Documents
-                </button>
-            </div>
-
-     <div id="dashboardKPIs" class="space-y-5">
-    <div class="text-gray-400 text-sm">
-        Loading dashboard...
-    </div>
-</div>
-                </div>
-
+        <div>
+          <h1 class="text-xl sm:text-2xl font-bold">
+            MICHELLE REGINATA HOLDINGS LTD |
+            <span class="font-light text-[var(--gold)]">FRIDAY EXECUTIVE BRIEF</span>
+          </h1>
+          <p class="text-sm text-[var(--text-muted)] mt-1" id="autoWeekHeader">Loading...</p>
         </div>
 
-    </div>
-</section>
-
-<section class="fade-in">
-    <h2 class="text-lg sm:text-xl font-semibold mb-5">EXECUTIVE OVERVIEW</h2>
-
-    <div class="gradient-border rounded-2xl p-6 sm:p-8">
-        <div id="weeklyOverview"
-             class="text-sm sm:text-base leading-8 text-gray-200 whitespace-pre-line">
-            Loading...
+        <div class="text-left sm:text-right">
+          <p class="text-sm font-medium">Prepared by KJ | COO</p>
+          <p class="text-xs text-[var(--text-muted)]">Confidential Executive Brief</p>
+          <p id="docCount" class="text-xs text-[var(--gold)] mt-1"></p>
         </div>
-    </div>
-</section>
-<section class="fade-in">
-    <h2 class="text-lg sm:text-xl font-semibold mb-5">NEXT WEEK PRIORITIES</h2>
-    <div class="gradient-border rounded-2xl p-6 sm:p-8">
-        <div id="nextWeek" class="text-sm sm:text-base leading-8 text-gray-200 whitespace-pre-line">Loading...</div>
-    </div>
-</section>
 
-<section class="fade-in">
-    <h2 class="text-lg sm:text-xl font-semibold mb-5">CHAIRMAN DIRECTIVES</h2>
-    <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN ── -->
+  <main class="max-w-7xl mx-auto px-4 py-12 space-y-10">
+
+    <!-- KPI SECTION -->
+    <section class="fade-in">
+      <div class="gradient-border rounded-2xl p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-xl font-semibold text-white">KPIs</h3>
+          <button onclick="openDocsModal()" class="text-[var(--gold)] text-sm hover:underline">
+            View Documents
+          </button>
+        </div>
+        <div id="dashboardKPIs" class="space-y-5">
+          <div class="text-gray-400 text-sm">Loading dashboard...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXECUTIVE OVERVIEW -->
+    <section class="fade-in">
+      <h2 class="text-lg sm:text-xl font-semibold mb-5">EXECUTIVE OVERVIEW</h2>
+      <div class="gradient-border rounded-2xl p-6 sm:p-8">
+        <div id="weeklyOverview" class="text-sm sm:text-base leading-8 text-gray-200 whitespace-pre-line">
+          Loading...
+        </div>
+      </div>
+    </section>
+
+    <!-- NEXT WEEK PRIORITIES -->
+    <section class="fade-in">
+      <h2 class="text-lg sm:text-xl font-semibold mb-5">NEXT WEEK PRIORITIES</h2>
+      <div class="gradient-border rounded-2xl p-6 sm:p-8">
+        <div id="nextWeek" class="text-sm sm:text-base leading-8 text-gray-200 whitespace-pre-line">
+          Loading...
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAIRMAN DIRECTIVES -->
+    <section class="fade-in">
+      <h2 class="text-lg sm:text-xl font-semibold mb-5">CHAIRMAN DIRECTIVES</h2>
+      <div class="gradient-border rounded-2xl p-6 sm:p-8 space-y-6">
         <div id="chairmanDirectives" class="text-sm text-gray-300 whitespace-pre-line"></div>
         <form id="directiveForm" action="https://formspree.io/f/xdabloba" method="POST" class="space-y-4">
-            <label for="directive" class="text-sm text-gray-300">Send note directly to COO</label>
-            <textarea id="directive" name="directive" required placeholder="Enter directive..." class="w-full h-40 p-4 rounded-lg bg-[var(--navy-light)] border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] text-sm text-white"></textarea>
-            <button type="submit" class="btn-gold px-6 py-3 rounded-lg font-semibold text-sm">Submit Directive</button>
+          <label for="directive" class="text-sm text-gray-300">Send note directly to COO</label>
+          <textarea id="directive" name="directive" required placeholder="Enter directive..."
+            class="w-full h-40 p-4 rounded-lg bg-[var(--navy-light)] border border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] text-sm text-white">
+          </textarea>
+          <button type="submit" class="btn-gold px-6 py-3 rounded-lg font-semibold text-sm">
+            Submit Directive
+          </button>
         </form>
         <p id="successMessage" class="hidden text-green-400 text-sm">Thank you, Jesse. I will action accordingly.</p>
         <p id="errorMessage" class="hidden text-red-400 text-sm">Submission failed. Please try again.</p>
-    </div>
-</section>
+      </div>
+    </section>
 
-</main>
+  </main>
 </div>
 
-<!-- DOCUMENTS POPUP MODAL -->
+<!-- ── DOCUMENTS MODAL ── -->
 <div id="docsModal" class="modal" onclick="closeDocsModal()">
-    <div class="gradient-border rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h- overflow-y-auto" onclick="event.stopPropagation()">
-        <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-semibold text-white">Supporting Documents</h3>
-            <button onclick="closeDocsModal()" class="text-[var(--text-muted)] hover:text-white text-2xl leading-none">&times;</button>
-        </div>
-        <div id="modalDocList" class="space-y-3">
-            <p class="text-[var(--text-muted)]">Loading documents...</p>
-        </div>
+  <div class="gradient-border rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+       onclick="event.stopPropagation()">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-xl font-semibold text-white">Supporting Documents</h3>
+      <button onclick="closeDocsModal()" class="text-[var(--text-muted)] hover:text-white text-2xl leading-none">&times;</button>
     </div>
+    <div id="modalDocList" class="space-y-3">
+      <p class="text-[var(--text-muted)]">Loading documents...</p>
+    </div>
+  </div>
 </div>
 
 <script>
-document.getElementById('autoWeekHeader').textContent = `Jesse Ndambala • Chairman • Week ending 12.06.2026`;
+  // ── Week header ──────────────────────────────────────────────────────────────
+  document.getElementById('autoWeekHeader').textContent =
+    'Jesse Ndambala • Chairman • Week ending 12.06.2026';
 
-function loadText(file, id) {
+  // ── Generic text loader ──────────────────────────────────────────────────────
+  function loadText(file, id) {
     fetch(`public/content/${file}?t=${Date.now()}`)
- .then(r => r.ok? r.text() : '')
- .then(t => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const formatted = t.trim()? t.replace(/\r\n/g, '\n') : '';
-      el.textContent = formatted;
-  })
- .catch(() => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = '';
-  });
-}
+      .then(r => r.ok ? r.text() : '')
+      .then(t => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = t.trim() ? t.replace(/\r\n/g, '\n') : '';
+      })
+      .catch(() => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '';
+      });
+  }
 
-const GITHUB_USER = 'TheHumanLab';
-const GITHUB_REPO = 'Friday_Executive_Report';
+  // ── GitHub document loader ───────────────────────────────────────────────────
+  const GITHUB_USER = 'TheHumanLab';
+  const GITHUB_REPO = 'Friday_Executive_Report';
 
-async function loadDocs() {
+  async function loadDocs() {
     try {
-        const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/public/documents`);
-        const files = await res.json();
-        const docs = Array.isArray(files)? files.filter(f =>
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/public/documents`
+      );
+      const files = await res.json();
+      const docs = Array.isArray(files)
+        ? files.filter(f =>
             ['.pdf', '.xlsx', '.xls', '.docx', '.doc', '.pptx', '.txt', '.csv']
-           .some(ext => f.name.toLowerCase().endsWith(ext))
-        ) : [];
+              .some(ext => f.name.toLowerCase().endsWith(ext))
+          )
+        : [];
 
-        const docCount = document.getElementById('docCount');
-        if (docCount) {
-            docCount.textContent = docs.length > 0
-               ? `${docs.length} document${docs.length > 1? 's' : ''} available`
-                : 'No documents uploaded this week';
-        }
+      const docCount = document.getElementById('docCount');
+      if (docCount) {
+        docCount.textContent = docs.length > 0
+          ? `${docs.length} document${docs.length > 1 ? 's' : ''} available`
+          : 'No documents uploaded this week';
+      }
 
-        const list = document.getElementById('modalDocList');
-        if (!list) return;
+      const list = document.getElementById('modalDocList');
+      if (!list) return;
 
-        if (docs.length === 0) {
-            list.innerHTML = '<p class="text-[var(--text-muted)] text-center py-8">No documents uploaded this week.</p>';
-            return;
-        }
+      if (docs.length === 0) {
+        list.innerHTML =
+          '<p class="text-[var(--text-muted)] text-center py-8">No documents uploaded this week.</p>';
+        return;
+      }
 
-        list.innerHTML = docs.map(file => {
-            const name = file.name
-               .replace(/\.[^/.]+$/, '')
-               .replace(/[-_]/g, ' ')
-               .replace(/\b\w/g, l => l.toUpperCase());
-            return `<a href="${file.download_url}" target="_blank" class="btn-gold px-4 py-3 rounded-lg font-medium text-sm block text-center">${name}</a>`;
-        }).join('');
+      list.innerHTML = docs.map(file => {
+        const name = file.name
+          .replace(/\.[^/.]+$/, '')
+          .replace(/[-_]/g, ' ')
+          .replace(/\b\w/g, l => l.toUpperCase());
+        return `<a href="${file.download_url}" target="_blank"
+                   class="btn-gold px-4 py-3 rounded-lg font-medium text-sm block text-center">
+                  ${name}
+                </a>`;
+      }).join('');
+
     } catch (e) {
-        const docCount = document.getElementById('docCount');
-        if (docCount) docCount.textContent = 'Unable to load documents';
-        const list = document.getElementById('modalDocList');
-        if (list) list.innerHTML = '<p class="text-red-400 text-center py-8">Error loading documents. Check if repo is public.</p>';
+      const docCount = document.getElementById('docCount');
+      if (docCount) docCount.textContent = 'Unable to load documents';
+      const list = document.getElementById('modalDocList');
+      if (list) list.innerHTML =
+        '<p class="text-red-400 text-center py-8">Error loading documents. Check if repo is public.</p>';
     }
-}
+  }
 
-function openDocsModal() { document.getElementById('docsModal').classList.add('show'); }
-function closeDocsModal() { document.getElementById('docsModal').classList.remove('show'); }
+  // ── Modal helpers ────────────────────────────────────────────────────────────
+  function openDocsModal()  { document.getElementById('docsModal').classList.add('show'); }
+  function closeDocsModal() { document.getElementById('docsModal').classList.remove('show'); }
 
-document.getElementById("directiveForm").addEventListener("submit", async function(e) {
+  // ── Directive form ───────────────────────────────────────────────────────────
+  document.getElementById('directiveForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     const form = e.target;
-    document.getElementById("successMessage").classList.add("hidden");
-    document.getElementById("errorMessage").classList.add("hidden");
+    document.getElementById('successMessage').classList.add('hidden');
+    document.getElementById('errorMessage').classList.add('hidden');
     try {
-        const res = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" }});
-        if (res.ok) { form.reset(); document.getElementById("successMessage").classList.remove("hidden"); }
-        else { throw new Error(); }
-    } catch { document.getElementById("errorMessage").classList.remove("hidden"); }
-});
-async function loadDashboardKPIs() {
-try {
-const res = await fetch(`public/content/dashboard.txt?t=${Date.now()}`);
-const text = await res.text();
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        document.getElementById('successMessage').classList.remove('hidden');
+      } else {
+        throw new Error();
+      }
+    } catch {
+      document.getElementById('errorMessage').classList.remove('hidden');
+    }
+  });
 
-    const lines = text
+  // ── Dashboard KPI loader ─────────────────────────────────────────────────────
+  async function loadDashboardKPIs() {
+    try {
+      const res = await fetch(`public/content/dashboard.txt?t=${Date.now()}`);
+      const text = await res.text();
+
+      const lines = text
         .split('\n')
         .map(line => line.trim())
         .filter(line => line.length > 0);
 
-    const container = document.getElementById('dashboardKPIs');
+      const container = document.getElementById('dashboardKPIs');
 
-    const colours = {
-        "On Track": "#22c55e",
-        "At Risk": "#f59e0b",
-        "Off Track": "#ef4444",
-        "No Report Submitted": "#ffffff"
-    };
+      const colours = {
+        'On Track':              '#22c55e',
+        'At Risk':               '#f59e0b',
+        'Off Track':             '#ef4444',
+        'No Report Submitted':   '#ffffff'
+      };
 
-    container.innerHTML = lines.map(line => {
-        const parts = line.split('|');
-
-        const title = parts[0] || '';
+      container.innerHTML = lines.map(line => {
+        const parts  = line.split('|');
+        const title  = parts[0] || '';
         const status = parts[1] || '';
         const detail = parts.slice(2).join(' | ') || '';
 
         return `
-            <div>
-                <div class="flex items-center justify-between bg-[var(--navy-light)]/60 rounded-lg px-4 py-3 border border-white/10">
-                    <div>
-                        <div class="text-sm text-gray-200">${title}</div>
-                        <div class="text-xs text-gray-400 mt-1">${status}</div>
-                    </div>
-
-                    <span class="w-4 h-4 rounded-full border border-white/30"
-                          style="background-color:${colours[status] || '#ffffff'};">
-                    </span>
-                </div>
-
-                <div class="pl-4 pt-2 text-xs text-gray-400">
-                    ${detail}
-                </div>
+          <div>
+            <div class="flex items-center justify-between bg-[var(--navy-light)]/60 rounded-lg px-4 py-3 border border-white/10">
+              <div>
+                <div class="text-sm text-gray-200">${title}</div>
+                <div class="text-xs text-gray-400 mt-1">${status}</div>
+              </div>
+              <span class="w-4 h-4 rounded-full border border-white/30"
+                    style="background-color:${colours[status] || '#ffffff'};">
+              </span>
             </div>
-        `;
-    }).join('');
+            <div class="pl-4 pt-2 text-xs text-gray-400">${detail}</div>
+          </div>`;
+      }).join('');
 
-} catch (err) {
-    const container = document.getElementById('dashboardKPIs');
-
-    if (container) {
-        container.innerHTML =
-            '<div class="text-red-400 text-sm">Unable to load dashboard.</div>';
+    } catch (err) {
+      const container = document.getElementById('dashboardKPIs');
+      if (container) {
+        container.innerHTML = '<div class="text-red-400 text-sm">Unable to load dashboard.</div>';
+      }
     }
-}
+  } // ← FIX: closing brace was missing in original, causing all calls below
+    //         to be swallowed inside the function body
 
-loadDashboardKPIs();
-
-loadText('weeklyOverview.txt', 'weeklyOverview');
-loadText('ReportingCoverage.txt', 'ReportingCoverage');
-loadText('nextweekPriorities.txt', 'nextWeek');
-loadText('chairmanDirectives.txt', 'chairmanDirectives');
-loadDocs();
+  // ── Bootstrap all loaders ────────────────────────────────────────────────────
+  loadDashboardKPIs();
+  loadText('weeklyOverview.txt',    'weeklyOverview');
+  loadText('nextweekPriorities.txt','nextWeek');
+  loadText('chairmanDirectives.txt','chairmanDirectives');
+  loadDocs();
 </script>
 </body>
 </html>
