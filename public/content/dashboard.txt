@@ -1,1 +1,5 @@
-
+Operations|On Track|Operational Issues: 0 | Major Dependencies: 2
+Finance|At Risk|Audits: 4 | Deadline: 25 Jun
+Commercial|On Track|Revenue: TZS 480k | Units Sold: 24
+Legal & Compliance|At Risk|Licence Renewal Outstanding
+Office of CEO|No Report Submitted|Report Not Submitted
