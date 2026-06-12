@@ -196,6 +196,62 @@ document.getElementById("directiveForm").addEventListener("submit", async functi
         else { throw new Error(); }
     } catch { document.getElementById("errorMessage").classList.remove("hidden"); }
 });
+async function loadDashboardKPIs() {
+try {
+const res = await fetch(`public/content/dashboard.txt?t=${Date.now()}`);
+const text = await res.text();
+
+    const lines = text
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
+
+    const container = document.getElementById('dashboardKPIs');
+
+    const colours = {
+        "On Track": "#22c55e",
+        "At Risk": "#f59e0b",
+        "Off Track": "#ef4444",
+        "No Report Submitted": "#ffffff"
+    };
+
+    container.innerHTML = lines.map(line => {
+        const parts = line.split('|');
+
+        const title = parts[0] || '';
+        const status = parts[1] || '';
+        const detail = parts.slice(2).join(' | ') || '';
+
+        return `
+            <div>
+                <div class="flex items-center justify-between bg-[var(--navy-light)]/60 rounded-lg px-4 py-3 border border-white/10">
+                    <div>
+                        <div class="text-sm text-gray-200">${title}</div>
+                        <div class="text-xs text-gray-400 mt-1">${status}</div>
+                    </div>
+
+                    <span class="w-4 h-4 rounded-full border border-white/30"
+                          style="background-color:${colours[status] || '#ffffff'};">
+                    </span>
+                </div>
+
+                <div class="pl-4 pt-2 text-xs text-gray-400">
+                    ${detail}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+} catch (err) {
+    const container = document.getElementById('dashboardKPIs');
+
+    if (container) {
+        container.innerHTML =
+            '<div class="text-red-400 text-sm">Unable to load dashboard.</div>';
+    }
+}
+
+}
 
 loadText('weeklyOverview.txt', 'weeklyOverview');
 loadText('ReportingCoverage.txt', 'ReportingCoverage');
