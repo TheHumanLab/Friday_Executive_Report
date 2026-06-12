@@ -5,14 +5,10 @@ Reports Received
 ✓ Operations
 ✓ Commercial
 ✓ Finance
+✓ Legal & Compliance
 
-Reports Not Received
-
-✗ Legal & Compliance
-✗ Office of CEO
-
-Coverage Status: 60%
+Coverage Status: 80%
 
 Observation:
 
-Operational visibility continues to improve through direct functional reporting. Governance visibility remains constrained by the absence of Legal & Compliance and Office of the CEO submissions.
+Reporting visibility improved significantly through direct functional reporting. 
