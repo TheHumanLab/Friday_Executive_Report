@@ -1,16 +1,18 @@
-• Commercial activity generated TZS 480,000 in revenue and 24 unit sales during the reporting period, with repeat purchases received from existing customers including Hekima Garden, Very Good Restaurant and Shayo.
+COMMERCIAL
 
-• Commercial capability continues to mature through implementation of sales tracking processes and development of a CRM structure to support customer retention and pipeline visibility.
+Revenue                TZS 480,000
+Units Sold             24
+Repeat Customers       3
+Institutional Leads    1
 
-• Institutional interest continues to emerge, with NHC Houses requesting commercial materials prior to progressing discussions, reinforcing the growing importance of structured marketing collateral and sales support infrastructure.
+Key Development
+CRM structure implemented.
 
-• Commercial infrastructure remains a developing constraint, with delays in business cards, flyers and price lists affecting customer engagement and conversion opportunities.
+Key Constraint
+Marketing collateral delays affecting conversion.
 
-• Executive commercial leadership capability strengthened through the appointment of Grace Jonazi as Chief Commercial Officer, reducing a previously identified organisational capacity constraint and creating formal executive ownership of commercial growth initiatives.
-
-• Commercial activity continues to mature, evidenced by repeat customer behaviour, CRM development, structured sales tracking and the emergence of institutional opportunities such as NHC Houses.
-
-• Commercial infrastructure is becoming a growth constraint, with marketing collateral and sales support materials now directly impacting customer acquisition, credibility and conversion opportunities.
+Assessment
+ON TRACK
 
 • Finance remains under significant pressure as concurrent MRH Tanzania and Bellatrix audits continue alongside routine financial operations, tax clearance activities and Odoo payment integration development.
 
