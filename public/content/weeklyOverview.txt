@@ -1,25 +1,8 @@
-COMMERCIAL
-
-Revenue                TZS 480,000
-Units Sold             24
-Repeat Customers       3
-Institutional Leads    1
-
-Key Development
-CRM structure implemented.
-
-Key Constraint
-Marketing collateral delays affecting conversion.
-
-Assessment
-ON TRACK
-
-• Finance remains under significant pressure as concurrent MRH Tanzania and Bellatrix audits continue alongside routine financial operations, tax clearance activities and Odoo payment integration development.
-
-• Audit activities are exposing weaknesses in historical documentation availability and audit readiness, indicating a broader governance and records management challenge rather than a purely finance-related issue.
-
-• Legal risk reduced following a successful appeal outcome; however, compliance risk increased as MRH Tanzania is currently operating without a renewed business licence pending completion of audit and tax clearance requirements.
-
-• Audit delays are now creating secondary organisational risks beyond Finance, directly affecting regulatory compliance, licence renewal and governance exposure.
-
-Status: AMBER
+• Commercial activity generated TZS 480,000 in revenue and 24 unit sales during the reporting period. Repeat purchases were received from Hekima Garden, Very Good Restaurant and Shayo, indicating encouraging early customer retention trends.
+• Institutional opportunities continue to emerge, with NHC Houses expressing interest in Puma Harvest products and requesting formal marketing materials before progressing discussions.
+• Commercial capability continues to mature through structured sales tracking, inventory monitoring and implementation of a temporary CRM framework.
+• Delays in business cards, flyers and price lists are beginning to affect customer acquisition efforts and institutional sales progression, making commercial collateral an immediate operational priority.
+• Finance remains under significant pressure as concurrent MRH Tanzania and Bellatrix audits continue alongside routine financial operations and Odoo-related initiatives.
+• Legal & Compliance secured a favourable appeal outcome for Puma Harvest, with the previous judgement overturned and legal costs awarded in the company's favour.
+• The most significant compliance issue remains the unresolved MRH Tanzania business licence renewal, which is currently dependent on audited financial statements and tax clearance requirements.
+• Executive discussions this week reinforced that the organisation is entering a scaling phase, with systems maturity, management capacity and reporting visibility becoming increasingly important to support future growth.
