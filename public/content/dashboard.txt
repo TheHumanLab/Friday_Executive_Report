@@ -1,9 +1,5 @@
-Operations|On Track|Operational Issues: 0 | Major Dependencies: 2
-
-Finance|At Risk|Audits: 4 | Deadline: 25 Jun
-
-Commercial|On Track|Revenue: TZS 480k | Units Sold: 24 | Repeat Customers: 3 | Opportunities: 1
-
-Legal & Compliance|At Risk|Licence Renewal: Outstanding | Active Labour Matter: 1
-
-Office of CEO|No Report Submitted|Report Not Submitted
+Operations|On Track|green|Operational Issues: 0 | Major Dependencies: 2
+Finance|At Risk|amber|Audits: 4 | Deadline: 25 Jun
+Commercial|On Track|green|Revenue: TZS 480k | Units Sold: 24 | Repeat Customers: 3 | Opportunities: 1
+Legal & Compliance|At Risk|amber|Licence Renewal: Outstanding | Active Labour Matter: 1
+Office of CEO|No Report Submitted|white|
