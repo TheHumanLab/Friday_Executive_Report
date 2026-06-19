@@ -53,6 +53,42 @@ header{display:flex;justify-content:space-between;align-items:center;gap:16px;ma
     </div>
   </header>
 
+  <section style="margin-bottom:22px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px" id="topKpis"></div>
+</section>
+
+<style>
+.kpi-top{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(2,6,23,.05)}
+.kpi-top .icon{width:32px;height:32px;margin:0 auto 6px;background:#0a2342;color:white;border-radius:50%;display:grid;place-items:center;font-size:16px}
+.kpi-top .label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;font-weight:600}
+.kpi-top .value{font-size:20px;font-weight:800;color:#0a2342;margin:4px 0}
+.kpi-top .trend{font-size:12px;color:#0f7173;font-weight:600}
+.kpi-top .trend.down{color:#b45309}
+</style>
+
+<script>
+// Add to your existing render() function
+function loadTopKpis(){
+  fetch('public/content/topkpis.txt?v='+Date.now())
+    .then(r=>r.text())
+    .then(t=>{
+      const icons=['📈','💰','🔻','🎯','👥','📋','👤','✅'];
+      const html = t.split('\n').filter(Boolean).map((line,i)=>{
+        const [label,val,trend]=''+line.split('|');
+        return `<div class="kpi-top">
+          <div class="icon">${icons[i]||'•'}</div>
+          <div class="label">${label}</div>
+          <div class="value">${val}</div>
+          <div class="trend ${trend.includes('▲')?'':'down'}">${trend}</div>
+        </div>`;
+      }).join('');
+      document.getElementById('topKpis').innerHTML = html;
+    })
+    .catch(()=>{});
+}
+// call it in your render()
+document.addEventListener('DOMContentLoaded',()=>{ if(typeof render==='function') render(); loadTopKpis(); });
+</script>
   <section class="panel">
     <div class="panel-head"><h2>KPIs</h2><a class="link" href="public/documents/" target="_blank">View Documents</a></div>
     <div class="kpi" id="kpiList"></div>
