@@ -14,9 +14,9 @@ header{display:flex;justify-content:space-between;align-items:center;gap:16px;ma
 .brand img{height:48px}
 .brand h1{margin:0;font-size:26px;font-weight:800;color:var(--navy)}
 .brand h1 span{color:var(--gold);font-weight:600;margin-left:8px}
-.brand.sub{margin-top:4px;color:var(--muted);font-size:13px}
+.sub{margin-top:4px;color:var(--muted);font-size:13px}
 .meta{text-align:right;font-size:13px;color:var(--navy)}
-.meta.who{font-weight:700}.meta.note{color:var(--gold);margin-top:4px}
+.meta.who{font-weight:700}.note{color:var(--gold);margin-top:4px}
 .panel{background:var(--card);color:#e5e7eb;border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(2,6,23,.18)}
 .panel-head{display:flex;justify-content:space-between;margin-bottom:14px}
 .panel-head h2{margin:0;font-size:18px}
@@ -34,6 +34,13 @@ header{display:flex;justify-content:space-between;align-items:center;gap:16px;ma
 .list{margin:0;padding-left:18px}.list li{margin:8px 0}
 .grid{display:grid;gap:18px}
 @media(min-width:900px){.grid{grid-template-columns:1.2fr.8fr}}
+/* TOP INFOGRAPHICS */
+.kpi-top{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(2,6,23,.05)}
+.kpi-top.icon{width:32px;height:32px;margin:0 auto 6px;background:#0a2342;color:white;border-radius:50%;display:grid;place-items:center;font-size:16px}
+.kpi-top.label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;font-weight:600;white-space:nowrap}
+.kpi-top.value{font-size:20px;font-weight:800;color:#0a2342;margin:4px 0;white-space:nowrap}
+.kpi-top.trend{font-size:12px;color:#0f7173;font-weight:600}
+.kpi-top.trend.down{color:#b45309}
 </style>
 </head>
 <body>
@@ -54,41 +61,9 @@ header{display:flex;justify-content:space-between;align-items:center;gap:16px;ma
   </header>
 
   <section style="margin-bottom:22px">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px" id="topKpis"></div>
-</section>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px" id="topKpis"></div>
+  </section>
 
-<style>
-.kpi-top{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(2,6,23,.05)}
-.kpi-top .icon{width:32px;height:32px;margin:0 auto 6px;background:#0a2342;color:white;border-radius:50%;display:grid;place-items:center;font-size:16px}
-.kpi-top .label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;font-weight:600}
-.kpi-top .value{font-size:20px;font-weight:800;color:#0a2342;margin:4px 0}
-.kpi-top .trend{font-size:12px;color:#0f7173;font-weight:600}
-.kpi-top .trend.down{color:#b45309}
-</style>
-
-<script>
-// Add to your existing render() function
-function loadTopKpis(){
-  fetch('public/content/topkpis.txt?v='+Date.now())
-    .then(r=>r.text())
-    .then(t=>{
-      const icons=['📈','💰','🔻','🎯','👥','📋','👤','✅'];
-      const html = t.split('\n').filter(Boolean).map((line,i)=>{
-        const [label,val,trend]=''+line.split('|');
-        return `<div class="kpi-top">
-          <div class="icon">${icons[i]||'•'}</div>
-          <div class="label">${label}</div>
-          <div class="value">${val}</div>
-          <div class="trend ${trend.includes('▲')?'':'down'}">${trend}</div>
-        </div>`;
-      }).join('');
-      document.getElementById('topKpis').innerHTML = html;
-    })
-    .catch(()=>{});
-}
-// call it in your render()
-document.addEventListener('DOMContentLoaded',()=>{ if(typeof render==='function') render(); loadTopKpis(); });
-</script>
   <section class="panel">
     <div class="panel-head"><h2>KPIs</h2><a class="link" href="public/documents/" target="_blank">View Documents</a></div>
     <div class="kpi" id="kpiList"></div>
@@ -110,30 +85,38 @@ document.addEventListener('DOMContentLoaded',()=>{ if(typeof render==='function'
 const BASE = 'public/content/';
 const get = async (f,fb='')=>{try{const r=await fetch(BASE+f+'?v='+Date.now());return r.ok?await r.text():fb}catch{return fb}};
 
-function safe(t){return (t||'').toString()}
-
 function parseDashboard(txt){
-  // Works with BOTH formats: pipe-delimited OR plain text
   const lines = txt.split(/\r?\n/).filter(l=>l.trim());
-  if(!lines.length) return [];
-  // If first line contains '|', use new format
-  if(lines[0].includes('|')){
-    return lines.map(l=>{
-      const p=l.split('|');
-      return {title:safe(p[0]),status:safe(p[1]),color:safe(p[2]||'white').toLowerCase(),meta:safe(p[3])}
-    });
-  }
-  // Fallback: create 5 default cards from your Word report
-  return [
+  if(!lines.length ||!lines[0].includes('|')) return [
     {title:'Operations',status:'On Track',color:'green',meta:'Projects On Track: 4 | Delayed: 2'},
     {title:'Finance',status:'At Risk',color:'amber',meta:'Revenue: TZS 1.17M | Audits: 3 in progress'},
     {title:'Commercial',status:'On Track',color:'green',meta:'Sales: 58 units | +143% vs last week'},
     {title:'Legal & Compliance',status:'At Risk',color:'amber',meta:'Licence renewal pending'},
     {title:'Office of CEO',status:'AMBER',color:'amber',meta:'Overall Status: AMBER'}
   ];
+  return lines.map(l=>{const p=l.split('|');return{title:p[0]||'',status:p[1]||'',color:(p[2]||'white').toLowerCase(),meta:p[3]||''}});
+}
+
+function loadTopKpis(){
+  fetch(BASE+'topkpis.txt?v='+Date.now())
+   .then(r=>r.ok?r.text():'')
+   .then(t=>{
+      const icons=['📈','💰','📉','🎯','👥','📋','👤','✅'];
+      const html = t.split('\n').filter(Boolean).map((line,i)=>{
+        const [label,val,trend] = line.split('|'); // FIXED
+        return `<div class="kpi-top">
+          <div class="icon">${icons[i]||'•'}</div>
+          <div class="label">${(label||'').trim()}</div>
+          <div class="value">${(val||'').trim()}</div>
+          <div class="trend">${(trend||'').trim()}</div>
+        </div>`;
+      }).join('');
+      document.getElementById('topKpis').innerHTML = html;
+    });
 }
 
 function render(){
+  loadTopKpis();
   get('dashboard.txt').then(d=>{
     const items=parseDashboard(d);
     document.getElementById('kpiList').innerHTML = items.map(it=>`
@@ -147,8 +130,7 @@ function render(){
   get('chairmanDirectives.txt').then(t=>document.getElementById('observations').textContent=t||'No observations');
   get('nextweekPriorities.txt').then(t=>document.getElementById('priorities').innerHTML=t.split('\n').filter(Boolean).map(x=>`<li>${x}</li>`).join('')||'<li>None</li>');
   get('decisionsRequired.txt').then(t=>document.getElementById('decisions').innerHTML=t.split('\n').filter(Boolean).map(x=>`<li>${x}</li>`).join('')||'<li>None</li>');
-
-  const d=new Date(); document.getElementById('subline').textContent=`Jesse Ndambala • Chairman • Week ending ${d.toLocaleDateString('en-GB')}`;
+  document.getElementById('subline').textContent=`Jesse Ndambala • Chairman • Week ending ${new Date().toLocaleDateString('en-GB')}`;
   document.getElementById('docNote').textContent='Live';
 }
 document.addEventListener('DOMContentLoaded',render);
